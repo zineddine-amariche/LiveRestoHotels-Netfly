@@ -1,0 +1,8 @@
+// auth types
+export const GET_RESTO = 'GET_RESTO';
+export const GET_RESTO_LOADING = 'GET_RESTO_LOADING';
+export const GET_RESTO_FAILED = 'GET_RESTO_FAILED';
+export const GET_ONE_RESTO = "GET_ONE_RESTO"
+export const GET_ONE_RESTO_LOADING = 'GET_ONE_RESTO_LOADING';
+export const GET_ONE_RESTO_FAILED = 'GET_ONE_RESTO_FAILED';
+

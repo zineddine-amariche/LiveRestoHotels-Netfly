@@ -1,0 +1,47 @@
+{
+
+
+    "///////////":"/////////////HEADER-BODY//////",
+
+    "details_head_body_moreInfo":"Plus d'informations" ,
+    "details_head_body_comment_other":"{{count}} commentaires ",
+    "details_head_body_comment_one":"{{count}}  commentaire",
+
+
+    "/////////////":"/////////////BODY//////",
+
+    "details_body_best_winds":"Meilleures  ventes",
+    "details_body_categories":"Catégories",
+
+
+
+
+    "/////////////////":"////////Panier///////",
+    "details_cart_title":"Panier",
+    "details_cart_subtotal":"Sous total : ",
+    "details_cart_currency":"€",
+    "details_cart_delivery_charges":"Frais de livraison :",
+    "details_cart_pay":"Payer",
+    "details_cart_item_add_note":"Ajouter une  note",
+
+
+
+   "////////////////":"/////////////////////////TABS//////",
+   "details_tab_best_winds":"Meilleurs vents",
+   "details_tab_lunch_menus":"Menus midi",
+   "details_tab_menus":"Menus",
+   "details_tab_pizzas":"Pizzas",
+   "details_tab_best_make_pizzas":"Composez votre pizza",
+   "details_tab_tacos":"Tacos",
+   "details_tab_burgers":"Burgers",
+   "details_tab_sandwiches":"Sandwiches",
+   "details_tab_panini":"Panini",
+   "details_tab_pastas":"Pates",
+   "details_tab_tex-mex":"Tex-mex",
+   "details_tab_salad":"Salades",
+   "details_tab_desserts":"Desserts et glaces",
+   "details_tab_drinks":"Boissons"
+ 
+ 
+
+}

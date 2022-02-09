@@ -1,0 +1,37 @@
+{
+
+
+    "footer_about":"About us" ,
+    "footer_concept":"Concept" ,
+    "footer_us":"Who are we?" ,
+    "footer_FAQ":"FAQ" ,
+    "footer_offre_emploi":"Job offers" ,
+    "footer_offre_stage":"Internship opportunities" ,
+    "footer_recruiter":"Recruiters" ,
+    "footer_press":"Press" ,
+    "footer_jobs":"Jobs" ,
+    "footer_contact":"Contact" ,
+
+    "footer_find_us":"Where to find Live Resto? :" ,
+    "footer_askHelp":"Ask for help :",
+    "footer_howToUse":"How does the app work?",
+    "footer_tutorial":"Tutorial",
+
+    "footer_newsletter":"The newsletter that does the job:" ,
+    "footer_info1":"twice a week, stories, jobs and tips in your mailbox." ,
+    "footer_email":"e-mail",
+    "footer_email_error":"email address must be valid",
+    "footer_subscribe":"Subscribe now" ,
+    "footer_info2":"You can unsubscribe at any time. We are not susceptible, I promise, to learn more about our data protection policy" ,
+    "footer_products":"Our Products" ,
+    "footer_liveResto":"LiveResto" ,
+    "footer_delivery":"Delivery" ,
+    "footer_follow":"follow us" ,
+    "footer_legal":"Legal information" ,
+    "footer_CGU":"UGC" , 
+    "footer_policy":"Confidentiality policy" ,
+    "footer_lng":"EN"
+
+
+
+}

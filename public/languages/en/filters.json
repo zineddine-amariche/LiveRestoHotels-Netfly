@@ -1,0 +1,43 @@
+{
+    "filter_characteristics":"Characteristics :",
+    "filter_halal":"Halal" , 
+    "filter_casher":"Casher" , 
+    "filter_vegetarian":"Vegetarian" , 
+
+    
+    
+    "filter_restrictions":"Dietary Restrictions :" ,
+    "filter_restrictions_gluten":"Gluten free" , 
+    "filter_restrictions_vegan":"Vegan" , 
+    "filter_restrictions_vegetalian":"Vegetalian" , 
+    "filter_restrictions_vegetarian":"Vegetarian" , 
+    "filter_restrictions_crustaceans":"Crustaceans",
+    "filter_restrictions_eggs":"Eggs" ,
+
+
+
+    "filter_country_france":"France" ,
+    "filter_country_indonesia":"Indonesia" ,
+    "filter_country_spain":"Spain" ,
+    "filter_country_italy":"Italy" ,
+    "filter_country_portugal":"Portugal" ,
+    "filter_country_vietnam":"Vietnam" , 
+
+    "filter_trad_cooking_french":"French Traditional Cuisine",
+    "filter_trad_cooking_corse":"Corsican cooking",
+    "filter_trad_cooking_breton":"Breton cuisine Creperie" ,
+
+
+    "filter_type_cooking_burger":"Burgers" , 
+    "filter_type_cooking_pasta":"Pasta" ,
+    "filter_type_cooking_meat":"Meat" ,
+    "filter_type_cooking_fish":"Fish" ,
+    "filter_type_cooking_salad":"Salads" ,
+    "filter_type_cooking_noodles":"Noodles" 
+    
+
+    
+
+
+
+}

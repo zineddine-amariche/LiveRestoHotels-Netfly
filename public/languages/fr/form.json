@@ -1,0 +1,42 @@
+{
+    "form_connect":"Se connecter à votre compte",
+    "form_forgot":"Mot de passe oublier",
+    "form_submit":"Se connecter" ,
+    "form_remember_me":"Se souvenir de moi",
+    "form_input_email":"Address e-mail",
+    "form_input_email_error":"email doit être un email valide",
+    "form_input_password":"Mot de passe",
+    "form_input_password_error":"Mot de passe doit être valide  ",
+
+
+
+    "form_carousel_1_title":"Un petit creux",
+    "form_carousel_1_text1":"Le service de livraison haute gamme Live Resto room service vous propose une expérience culinaire incroyable et confortable directement depuis votre chambre.",
+    "form_carousel_1_text2":"Voyagez à travers le monde grâce à un grand nombre de choix de plats des meilleurs restaurants de VILLE.",
+    "form_carousel_1_text3":"Nos livreurs sont polis, souriants, motivés, honnêtes et surtout professionnel. Ils auront le plaisir de vous livrer votre repas chaud et dans les temps sans dégradation ni oubli.",
+    "form_carousel_1_plat1":"Nom du plat ", 
+    "form_carousel_1_plat2":"Nom du plat ", 
+    "form_carousel_1_plat3":"Nom du plat ", 
+
+    "form_carousel_2_title1":"Etape 1:",
+    "form_carousel_2_subtitle1":"Je choisis un restaurant parmi la sélection proposée",
+    "form_carousel_2_text1":" Des spécialités françaises, italiennes, asiatiques, tunisiennes, libanaises et bien d’autres encore sont à votre disposition pour passer un moment exceptionnel en famille, entre amis ou même seul.",
+    
+    
+    "form_carousel_2_title2":"Etape 2:",
+    "form_carousel_2_subtitle2":"  Je choisis le plat qui saura satisfaire mes papilles.",
+    "form_carousel_2_text2":" Live Resto room service vous garantis des plats réalisés avec un grand savoir faire et un respect des cultures dans les cuisines des restaurants par des chefs passionnés de leur métier.",
+
+
+
+    "form_carousel_3_title1":"Etape 3:",
+    "form_carousel_3_subtitle1":"J’indique le numéro de ma chambre au livreur.",
+    "form_carousel_3_text1":"  En fonction des règles sanitaires en vigueur, un livreur polis et souriant se déplace jusqu’à votre chambre pour vous donner votre repas en main propre. Votre repas arrive chaud et dans les temps, vous n’avez plus qu’à déguster et savourer.",
+    
+    
+    "form_carousel_3_title2":"Etape 4:",
+    "form_carousel_3_subtitle2":"Je choisis mon mode de payement.",
+    "form_carousel_3_text2":"Par carte bancaire directement sur l’application ou en espèce directement au livreur, vous avez le choix. L’application garantit une sécurité sans faille de vos données. Elles ne seront pas enregistrées afin de préserver vos données."
+
+
+}

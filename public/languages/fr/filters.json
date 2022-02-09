@@ -1,0 +1,43 @@
+{
+    "filter_characteristics":"Caractéristiques :",
+    "filter_halal":"Halal" , 
+    "filter_casher":"Casher" , 
+    "filter_vegetarian":"Végétarien" , 
+
+    
+    
+    "filter_restrictions":"Restrictions alimentaires :" ,
+    "filter_restrictions_gluten":"Sans Gluten " , 
+    "filter_restrictions_vegan":"Végan" , 
+    "filter_restrictions_vegetalian":"Végétalien" , 
+    "filter_restrictions_vegetarian":"Végétarien" , 
+    "filter_restrictions_crustaceans":"Crustaceans",
+    "filter_restrictions_eggs":"Oeufs" ,
+
+
+
+    "filter_country_france":"France" ,
+    "filter_country_indonesia":"Indonesie" ,
+    "filter_country_spain":"Espagne" ,
+    "filter_country_italy":"Italie" ,
+    "filter_country_portugal":"Portugal" ,
+    "filter_country_vietnam":"Vietnam" , 
+
+    "filter_trad_cooking_french":"Cuisine traditionnelle française",
+    "filter_trad_cooking_corse":"Cuisine corse",
+    "filter_trad_cooking_breton":"Cuisine bretonne Crêperie" ,
+
+
+    "filter_type_cooking_burger":"Burgers" , 
+    "filter_type_cooking_pasta":"Pâtes" ,
+    "filter_type_cooking_meat":"Viandes" ,
+    "filter_type_cooking_fish":"Poisson" ,
+    "filter_type_cooking_salad":"Salades" ,
+    "filter_type_cooking_noodles":"Nouilles" 
+    
+
+    
+
+
+
+}

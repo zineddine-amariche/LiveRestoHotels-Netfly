@@ -1,0 +1,42 @@
+{
+    "form_connect":"Log in to your account",
+    "form_forgot":"Forgot your password?",
+    "form_submit":"Sign in" ,
+    "form_remember_me":"remember me",
+    "form_input_email":"e-mail address",
+    "form_input_email_error":"email address must be valid",
+    "form_input_password":"Your password",
+    "form_input_password_error":"Password must be valid",
+  
+
+    "form_carousel_1_title":"A little peckish",
+    "form_carousel_1_text1":"Live Resto's premium room service delivery offers an incredible and comfortable dining experience right from your room.",
+    "form_carousel_1_text2":"Travel the world with a wide variety of food choices from the best restaurants in CITY.",
+    "form_carousel_1_text3":"Our delivery people are polite, smiling, motivated, honest and above all professional. They will have the pleasure to deliver your hot meal on time without any damage or forgetfulness.",
+    "form_carousel_1_plat1":"Name of the meal", 
+    "form_carousel_1_plat2":"Name of the meal", 
+    "form_carousel_1_plat3":"Name of the meal", 
+
+    "form_carousel_2_title1":"Step 1:",
+    "form_carousel_2_subtitle1":"I choose a restaurant from the selection offered",
+    "form_carousel_2_text1":" French, Italian, Asian, Tunisian, Lebanese and many other specialties are at your disposal to spend an exceptional moment with family, friends or even alone.",
+    
+    
+    "form_carousel_2_title2":"Step 2:",
+    "form_carousel_2_subtitle2":"  I choose the dish that will satisfy my taste buds.",
+    "form_carousel_2_text2":" Live Resto room service guarantees you dishes made with a great knowledge and respect of the cultures in the kitchens of the restaurants by chefs passionate about their job.",
+
+
+
+    "form_carousel_3_title1":"Step 3:",
+    "form_carousel_3_subtitle1":"I give my room number to the delivery man.que le numéro de ma chambre au livreur.",
+    "form_carousel_3_text1":"  According to the sanitary rules in force, a polite and smiling delivery man comes to your room to give you your meal in person. Your meal arrives hot and on time, all you have to do is taste and enjoy.",
+    
+    
+    "form_carousel_3_title2":"Step 4:",
+    "form_carousel_3_subtitle2":"I choose my payment method.",
+    "form_carousel_3_text2":"By credit card directly on the application or in cash directly to the deliveryman, you have the choice. The application guarantees a flawless security of your data. They will not be recorded in order to preserve your data."
+
+
+
+}

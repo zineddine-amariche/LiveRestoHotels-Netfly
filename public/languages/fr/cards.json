@@ -1,0 +1,10 @@
+{
+    "card_title":"Pizza Borely" , 
+    "card_subtitle":"La Pizzeria de l'escale, un vrai régal" ,
+    "card_delivery":"Prochaine livraison :{{heure_livraison}}" ,
+    "card_order":"Commander" ,
+    "card_more":"voir plus" 
+
+
+
+}

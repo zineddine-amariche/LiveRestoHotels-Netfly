@@ -1,0 +1,25 @@
+.carousel-control-prev{
+    background-image: url('./assets/Hover=False.svg')!important;
+    background-repeat: no-repeat!important;
+    background-position: center!important;
+    left: -120px!important;
+}
+.carousel-control-next{
+    background-image: url('./assets/Hover=False (1).svg') !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    right: -120px !important;
+}
+
+.carousel-indicators  {
+
+}
+.carousel-indicators > button {
+   
+}
+
+
+ a {
+    text-decoration: none;
+
+} 

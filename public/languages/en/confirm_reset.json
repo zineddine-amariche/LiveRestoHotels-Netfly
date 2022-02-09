@@ -1,0 +1,16 @@
+{
+    "confirm_reset_password":"reset the password",
+    "reset_demande":"request reset code" ,
+    "confirm_rest_email":"e-mail address",
+    "confirm_rest_email_error":"email address must be valid",
+   "confirm_rest_password":"Your password",
+   "confirm_rest_password_error":"Password must be valid",
+    "confirm_verify_email":"check your e-mail for the code",
+    "confirm_reset":"reinitialize",
+    "confirm_newPassword":"new password",
+    "confirm_confirmPassword":"confirm new password",
+    "confirm_confirmPassword_error":" new password must be valid",
+    "confirm_code":"code" ,
+    "confirm_code_error":"code doit etre valide"  
+ 
+ }

@@ -1,0 +1,54 @@
+{
+
+
+
+    "///////////":"/////////////HEADER-BODY//////",
+
+    "details_head_body_moreInfo":"More informations" ,
+    "details_head_body_comment_other":"{{count}} comments ",
+    "details_head_body_comment_one":"{{count}}  comment",
+
+
+    "/////////////":"/////////////BODY//////",
+
+    "details_body_best_winds":"Best Winds",
+    "details_body_categories":"Categories",
+
+
+
+
+    "/////////////////":"////////Panier///////",
+    "details_cart_title":"Cart",
+    "details_cart_subtotal":"Sub total : ",
+    "details_cart_currency":"$",
+    "details_cart_delivery_charges":"Delivery charges :",
+    "details_cart_pay":"Pay",
+
+
+
+    "details_cart_item_add_note":"Add a note",
+
+
+
+
+
+
+    "////////////////":"/////////////////////////TABS//////",
+    "details_tab_best_winds":"Best winds",
+    "details_tab_lunch_menus":"Lunch Menus",
+    "details_tab_menus":"Menus",
+    "details_tab_pizzas":"Pizzas",
+    "details_tab_best_make_pizzas":"Make your own pizza",
+    "details_tab_tacos":"Tacos",
+    "details_tab_burgers":"Burgers",
+    "details_tab_sandwiches":"Sandwiches",
+    "details_tab_panini":"Panini",
+    "details_tab_pastas":"Pasta",
+    "details_tab_tex-mex":"Tex-mex",
+    "details_tab_salad":"Salads",
+    "details_tab_desserts":"Desserts and ice cream",
+    "details_tab_drinks":"Drinks"
+  
+  
+ 
+ }

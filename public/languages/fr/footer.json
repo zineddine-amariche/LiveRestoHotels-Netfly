@@ -1,0 +1,42 @@
+{
+
+
+    "footer_about":"A propos" ,
+    "footer_concept":"Concept" ,
+    "footer_us":"Qui sommes-nous ?" ,
+    "footer_FAQ":"FAQ" ,
+    "footer_offre_emploi":"Offres d'emploi" ,
+    "footer_offre_stage":"Offres de stage" ,
+    "footer_recruiter":"Recruteurs" ,
+    "footer_press":"Presse" ,
+    "footer_jobs":"Emplois" ,
+    "footer_contact":"Contact" ,
+
+
+
+
+
+
+    "footer_find_us":" Ou retrouver Live Resto ? :" ,
+    "footer_askHelp":"Demander de l'aide :",
+    "footer_howToUse":"Comment fonctionne l’appli ?",
+    "footer_tutorial":"Didacticiel",
+    "footer_newsletter":"La newsletter qui fait le taf :" ,
+    "footer_info1":"deux fois par semaine , des histoire, des jobs et des conseils dans votre boite mail ." ,
+    "footer_email":"Address e-mail",
+    "footer_email_error":"email doit être un email valide",   
+     "footer_subscribe":"Abonnez vous" ,
+    "footer_info2":"  Vous pouver vous désabonner a tout moment. on n'est pas susceptibles , promis , pour en savoir plus sur notre politique de protection des données " ,
+    "footer_products":"Nos Produit" ,
+    "footer_liveResto":"LiveResto" ,
+    "footer_delivery":"Livraison" ,
+    "footer_follow":"Suivez nous" ,
+    "footer_legal":"Mentions légales" ,
+    "footer_CGU":"CGU" , 
+    "footer_policy":"Politique de confidentialité" ,
+    "footer_lng":"FR"
+    
+
+
+
+}

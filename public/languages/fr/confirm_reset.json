@@ -1,0 +1,18 @@
+{
+   "confirm_reset_password":"réinitialiser le mot de passe",
+   "reset_demande":"demander le code de réinitialisation" ,
+   "confirm_rest_email":"Address e-mail",
+   "confirm_rest_email_error":"email doit être un email valide",
+   "confirm_rest_password":"Mot de passe",
+   "confirm_rest_password_error":"Mot de passe doit être valide  ",
+   "confirm_verify_email":"vérifiez votre e-mail pour le code",
+   "confirm_reset":"réinitialiser",
+   "confirm_newPassword":"nouveau mot de passe",
+   "confirm_confirmPassword":"confirmer le nouveau mot de passe",
+   "confirm_confirmPassword_error":"nouveau mot de passe doit etre valide",
+   "confirm_code":"code" ,
+   "confirm_code_error":"code doit etre valide "
+
+
+
+}

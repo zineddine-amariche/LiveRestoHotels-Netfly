@@ -1,0 +1,5 @@
+// VALIDATE types
+export const VALIDATE = 'VALIDATE';
+export const VALIDATE_LOADING = 'VALIDATE_LOADING';
+export const VALIDATE_FAILED = 'VALIDATE_FAILED';
+
