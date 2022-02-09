@@ -29,8 +29,9 @@ const LoginToHome = () => {
   const navigate = useNavigate();
   const auth = useSelector((state) => state.auth);
   const Activation = useSelector((state) => state.Activation);
-  const { isActive } = Activation;
   const dispatch = useDispatch();
+  const { isAuth, isActive } = auth;
+
   console.log("isActive", isActive);
   const [openSuuces, setOpen] = React.useState(true);
   const [state, setState] = React.useState({
@@ -39,7 +40,6 @@ const LoginToHome = () => {
     horizontal: "center",
   });
   const { vertical, horizontal, open } = state;
-
   const handleClose = (event, reason) => {
     if (auth.error) {
       setState(!state);
@@ -62,12 +62,52 @@ const LoginToHome = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Container component="main" maxWidth="xs">
+          <Box component="main" maxWidth="xs" className={classes.BoxContainerHold} >
             <Box marginTop="100px" display="flex" justifyContent="center">
               <img src={Logo} alt="NBK Logo" className={classes.BoxImage} />
             </Box>
-            <Form></Form>
-          </Container>
+            {isAuth ? (
+           
+                <Paper className={classes.HoldBoxSec} elevation={0}>
+                  {/* <Paper></Paper> */}
+                  <Paper className={classes.boxPaper}>
+                    <Paper className={classes.title} elevation={0}>
+                      {t("login_welcome")}
+                    </Paper>
+                    <Paper className={classes.textBOx}>
+                      {t("login_appforHotels")}
+                    </Paper>
+                    <Paper className={classes.textBOx2} elevation={0}>
+                      {t("login_access_restaurant")}
+                    </Paper>
+                    <div className={classes.containerFab}>
+                      <Fab
+                        sx={{ bg: "white" }}
+                        aria-label="go"
+                        onClick={() => {
+                          dispatch(dispatchAction());
+                          // dispatch({ type: AUTH_ACTIVATE });
+                          {
+                            !AcctiveLess &&
+                              localStorage.setItem("isActive", true);
+                          }
+
+                          // dispatch({type:AUTH_ACTIVATE});
+                          navigate("/");
+                        }}
+                      >
+                        <ArrowRightAlt
+                          sx={{ color: "btnBackground" }}
+                          fontSize="large"
+                        />
+                      </Fab>
+                    </div>
+                  </Paper>
+                </Paper>
+            ) : (
+              <Form></Form>
+            )}
+          </Box>
         </Box>
       ) : (
         <Paper className={classes.Heighter}>

@@ -22,13 +22,14 @@ import { useSelector } from "react-redux";
 import Alert from "@material-ui/lab/Alert";
 import { useDispatch } from "react-redux";
 import { AUTH_ACTIVATE } from "../../redux/types/authTypes";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import LoginToHome from "./LoginToHome";
 const Login = () => {
   const { t } = useTranslation(["login"]);
   const { classes, matches, Faketoken } = useLogin();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const auth = useSelector((state) => state.auth);
-  const { isAuth,isActive } = auth;
+  const { isAuth, isActive } = auth;
   const dispatch = useDispatch();
 
   const [openSuuces, setOpen] = React.useState(true);
@@ -38,9 +39,6 @@ const Login = () => {
     horizontal: "center",
   });
   const { vertical, horizontal, open } = state;
-  const handleClick = () => {
-    setOpen(true);
-  };
 
   const handleClose = (event, reason) => {
     if (auth.error) {
@@ -53,24 +51,19 @@ const Login = () => {
       setOpen(!openSuuces);
     }
   };
-
+  console.log("matches", matches);
   return (
-    <>
-      {!matches ? (
-        <Box
-          width="100%"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Container component="main" maxWidth="xs">
-            <Box marginTop="100px" display="flex" justifyContent="center">
-              <img src={Logo} alt="NBK Logo" className={classes.BoxImage} />
-            </Box>
-            <Form></Form>
-          </Container>
+    <Paper className={classes.ContainerLogin}>
+      {!matches && (
+        <Box className={classes.ContainerLoginItems}>
+          <Box className={classes.ImageBoxContainer}>
+            <img src={Logo} alt="NBK Logo" className={classes.BoxImage} />
+          </Box>
+          <Form></Form>
         </Box>
-      ) : (
+      )}
+
+      {matches && (
         <Paper className={classes.Heighter}>
           <Paper className={classes.Abolute}>
             {auth.error && (
@@ -120,42 +113,14 @@ const Login = () => {
               paper: classes.drawerPaper,
             }}
           >
-         
-              <Container component="main" maxWidth="xs">
-                <div className={classes.paper}>
-                  <Form></Form>
-                </div>
-              </Container>
+            <Box className={classes.BoxContainerForm}>
+              <Form></Form>
+            </Box>
           </Drawer>
         </Paper>
       )}
-    </>
+    </Paper>
   );
 };
 
 export default Login;
-
-{
-  /*  */
-}
-
-{
-  /* <Alert severity="error">{auth.error}</Alert> */
-}
-{
-  /* {auth.error &&   */
-}
-{
-  /* // <Alert */
-}
-{
-  /* //   anchorOrigin={{ vertical, horizontal }} */
-}
-{
-  /* //   open={openn}
-        //   severity="error"
-        //   // onClose={handleClose}
-        //   message="I love snacks"
-        //   key={vertical + horizontal}
-        // >{auth.error} </Alert> */
-}

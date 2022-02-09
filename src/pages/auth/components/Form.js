@@ -11,17 +11,17 @@ import {
   Button,
   Link,
   Typography,
-
+  Paper,
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useLogin from "../hooks/useLogin";
-import {useTranslation} from"react-i18next" ; 
+import { useTranslation } from "react-i18next";
 
 export default function Form() {
   const [open, setOpen] = React.useState(true);
-  const {t} = useTranslation(['form']) ; 
+  const { t } = useTranslation(["form"]);
 
   const {
     classes,
@@ -44,29 +44,28 @@ export default function Form() {
     setOpen(false);
   };
   return (
-    <>
+    <Paper sx={{bg:"#fff" , padding:"25px 25px", }} elevation={0} >
       <Box marginTop="20px" display="flex" justifyContent="center">
         <Typography
           sx={{ color: "btnBackground", marginBottom: 15 }}
           component="h1"
           variant="h5"
         >
-          {t('form_connect')}
+          {t("form_connect")}
         </Typography>
       </Box>
-   
 
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
         <TextField
           error={!!errors.email?.message}
-          helperText={errors.email ? t('form_input_email_error'): null}
+          helperText={errors.email ? t("form_input_email_error") : null}
           className={classes.inputStyles}
           type="email"
           variant="outlined"
           margin="normal"
           required
           id="email"
-          label={t('form_input_email')}
+          label={t("form_input_email")}
           autoComplete="email"
           autoFocus
           {...register("email")}
@@ -75,13 +74,13 @@ export default function Form() {
         />
         <TextField
           error={!!errors.password?.message}
-          helperText={errors.password ? t("form_input_password_error") :null}
+          helperText={errors.password ? t("form_input_password_error") : null}
           className={classes.inputStyles}
           variant="outlined"
           margin="normal"
           required
           name="password"
-          label={t('form_input_password')}
+          label={t("form_input_password")}
           type="password"
           id="password"
           autoComplete="current-password"
@@ -98,38 +97,22 @@ export default function Form() {
         >
           <FormControlLabel
             control={
-              <Checkbox
-                value="remember"
-                sx={{ color: "btnBackground" }}
-              />
+              <Checkbox value="remember" sx={{ color: "btnBackground" }} />
             }
-            label={t('form_remember_me')}
+            label={t("form_remember_me")}
           />
           <Link
             href="/resetPassword"
             variant="body2"
             sx={{ color: "btnBackground" }}
           >
-            {t('form_forgot')}
+            {t("form_forgot")}
           </Link>
         </Box>
-        {/* <Button
-          disabled={auth.loading || isSubmitting}
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-        >
-          {auth.loading && (
-            <CircularProgress color="black" className={classes.circularProgress} size={20} />
-          )}
-          Se connecter
-        </Button> */}
+
         <Button
           variant="contained"
           fullWidth
-          // onClick={handelShow}
           type="submit"
           sx={{
             bg: "#237a57",
@@ -137,9 +120,9 @@ export default function Form() {
             fontWeight: "600",
           }}
         >
-          {t('form_submit')}
+          {t("form_submit")}
         </Button>
       </form>
-    </>
+    </Paper>
   );
 }

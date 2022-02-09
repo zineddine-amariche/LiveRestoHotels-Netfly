@@ -35,7 +35,7 @@ export default function useLogin() {
   const classes = useStyles();
   const theme = useTheme();
   const navigate  = useNavigate()
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const [authUser, setAuthUser] = useState(initialState);

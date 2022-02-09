@@ -17,7 +17,7 @@ function Dashboard() {
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
 
-  const [ShowFilter, setShowFilter] = useState(false);
+  const [ShowFilter, setShowFilter] = useState(true);
   const [modal, setModal] = useState(false);
   const ShowFilterHandeler = () => {
     setShowFilter(!ShowFilter);

@@ -1,3 +1,10 @@
+/** @jsxImportSource theme-ui */
+// xs, extra-small: 0px
+// sm, small: 600px
+// md, medium: 900px
+// lg, large: 1200px
+// xl, extra-large: 1536px
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import background from "../../../../assets/page1.gif";
@@ -10,13 +17,24 @@ import image3 from "../../../../assets/choix-plat.gif";
 import image4 from "../../../../assets/sonnette.gif";
 import image5 from "../../../../assets/gif-payement.gif";
 
-const drawerWidth = 450;
+const drawerWidth = "25%";
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
     padding: 10,
     display: "flex",
+  },
+  ContainerLogin: {
+    backgroundColor: "#fff",
+    height: "100vh",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  LoginNotMatches: {
+    backgroundColor: "#edd",
+    width: "80%",
   },
   loginCarousel: {
     height: "100vh",
@@ -109,14 +127,61 @@ const useStyles = makeStyles((theme) => ({
   },
   Heighter: {
     maxHeight: "100vh",
+    display:'flex',
+    justifyContent:'space-between',
+    width:"100%"
   },
 
   ContainerPaperCarousel: {
-    backgroundColor: "#eee",
-    width: "76.5%",
+    backgroundColor: "#000",
+    width: "75%",
   },
   BoxImage: {
+    width: "30%",
+    marginRight: 25,
+    [theme.breakpoints.down("md")]: {
+      width: "15%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "20%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      width: "30%",
+    },
+  },
+  ContainerLoginItems: {
+    backgroundColor: "#e7e7e7",
+    margin: "20px",
     width: "50%",
+    [theme.breakpoints.down("md")]: {
+      backgroundColor: "#fff",
+      width: "55%",
+    },
+    [theme.breakpoints.down("sm")]: {
+      backgroundColor: "#fff",
+      width: "70%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      backgroundColor: "#fff",
+      width: "90%",
+    },
+  },
+  ImageBoxContainer: {
+    backgroundColor: "#fff",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: ".5s ease-in",
+    [theme.breakpoints.down("md")]: {
+      backgroundColor: "#fff",
+      marginBottom: 35,
+    },
+    [theme.breakpoints.down("sm")]: {
+      marginBottom: 25,
+    },
+    [theme.breakpoints.down("xs")]: {
+      marginBottom: 35,
+    },
   },
   Abolute: {
     position: "absolute",
@@ -128,7 +193,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     padding: 20,
   },
-  PaperConatinerSilder2:{
+  PaperConatinerSilder2: {
     height: "100vh",
     backgroundColor: "#aac840",
     width: "100%",
@@ -141,6 +206,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     flexDirection: "column",
     backgroundColor: "transparent",
+    // backgroundColor: "#aac840",
+    // backgroundColor: "#ccc",
+
   },
   TextNumber: {
     fontFamily: "Oswald",
@@ -149,9 +217,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "100px",
     lineHeight: "148px",
     color: "#fff",
-    width: "193.93px",
+    minWidth: "193.93px",
     height: "155.78px",
-    paddingLeft: 60,
+    paddingLeft: 20,
   },
   TextInfo: {
     padding: 10,
@@ -162,7 +230,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     lineHeight: "18px",
   },
-  
+
   TextInfBig: {
     padding: 10,
 
@@ -186,15 +254,21 @@ const useStyles = makeStyles((theme) => ({
     width: "445.28px",
     height: "170.7px",
     color: "#fff",
-    paddingTop:"40px",
-    paddingLeft:20
+    paddingTop: "40px",
   },
   LeftSlid: {
     display: "flex",
     backgroundColor: "transparent",
     height: "40vh",
+    // alignItems: "center",
+    // backgroundColor: "#d47",
+  },
+  LeftSlidMidle:{
+    display: "flex",
+    backgroundColor: "transparent",
+    height: "40vh",
     alignItems: "baseline",
-    paddingLeft: 40,
+    paddingLeft: 0,
   },
   LeftSlid2: {
     display: "flex",
@@ -211,7 +285,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
   },
   BoxImageGif2: {
-    width: "279.78px",
+    minWidth: "279.78px",
     height: "279.78px",
     backgroundImage: "url(" + image1 + ")",
     backgroundPosition: "center",
@@ -219,7 +293,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
   },
   BoxImageGif3: {
-    width: "279.78px",
+    minWidth: "279.78px",
     height: "279.78px",
     backgroundImage: "url(" + image3 + ")",
     backgroundPosition: "center",
@@ -227,11 +301,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     marginBottom: 100,
     backgroundColor: "transparent",
-    marginLeft:86
+    marginLeft: 86,
   },
 
-  BoxImageGif4:{
-    width: "279.78px",
+  BoxImageGif4: {
+    minWidth: "279.78px",
     height: "279.78px",
     backgroundImage: "url(" + image4 + ")",
     backgroundPosition: "center",
@@ -239,10 +313,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     marginBottom: 100,
     backgroundColor: "transparent",
-    marginLeft:86
+    marginLeft: 36,
   },
-  BoxImageGif5:{
-    width: "279.78px",
+  BoxImageGif5: {
+    minWidth: "279.78px",
     height: "279.78px",
     backgroundImage: "url(" + image5 + ")",
     backgroundPosition: "center",
@@ -250,7 +324,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     marginBottom: 100,
     backgroundColor: "transparent",
-    marginLeft:86
+    marginLeft: 86,
   },
   ImagesSlideHor: {
     backgroundColor: "transparent",
@@ -262,13 +336,26 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   BoxTopSlid: {
-    width: "80%",
+    width: "95%",
     position: "relative",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
     backgroundColor: "transparent",
     marginTop: 80,
+    // backgroundColor: "#ddd",
+    paddingRight: 45,
+  },
+  BoxTopSlidMidle:{
+    width: "97%",
+    position: "relative",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "transparent",
+    marginTop: 80,
+    // backgroundColor: "#ccc",
+    paddingRight: 45,
   },
   BoxTopSlid2: {
     position: "relative",
@@ -277,8 +364,10 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     backgroundColor: "transparent",
     marginTop: 20,
-    width:"65%",
-    
+    width: "95%",
+    // backgroundColor: "#ccc",
+    padding:'0px 30px'
+
   },
 
   FirstImageH: {
@@ -332,8 +421,21 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     textAlign: "center",
     color: "#fff",
-    textShadow:"1px 2px 3px #000"
+    textShadow: "1px 2px 3px #000",
   },
+  BoxContainerHold:{
+    height: "60vh",
+    // backgroundColor: "#ccc",
+
+  },
+  HoldBoxSec:{
+    justifyContent: "center",
+    display: " flex",
+    flexDirection: "column",
+    alignItems: "center",
+    padding: "10px 10px",
+    backgroundColor: "#fff",
+  }
 }));
 
 export default useStyles;
