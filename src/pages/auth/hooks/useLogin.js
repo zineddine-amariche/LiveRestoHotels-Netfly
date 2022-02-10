@@ -9,15 +9,18 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { fr } from "yup-locales";
 import { setLocale } from "yup";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import useStyles from "./styles/stylesLogin";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 setLocale(fr);
-import {dispatchLogin, dispatchLoginError} from "../../../redux/actions/authAction"
-import { LOGIN } from "../../../redux/types/authTypes";
+import {
+  dispatchLogin,
+  dispatchLoginError,
+} from "../../../redux/actions/authAction";
+import { LOGIN, LOGIN_FAILED } from "../../../redux/types/authTypes";
 const schema = yup
   .object({
     email: yup.string().email().required(),
@@ -34,7 +37,7 @@ const initialState = {
 export default function useLogin() {
   const classes = useStyles();
   const theme = useTheme();
-  const navigate  = useNavigate()
+  const navigate = useNavigate();
   const matches = useMediaQuery(theme.breakpoints.up("lg"));
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
@@ -46,14 +49,10 @@ export default function useLogin() {
     watch,
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(schema) });
-  const handelShow = () => {
-    setFaketoken(!Faketoken);
-  };
-  const handelDeoconecter = () => {
-    setFaketoken(false);
-  };
+
+
   const url = "https://dev500.live-resto.fr/api/customers/auth";
- 
+
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     // console.log(`value`, value)
@@ -65,30 +64,15 @@ export default function useLogin() {
       "Accept-Language": "fr",
     },
   };
-  const onSubmit = async (_, e) => {
-    e.preventDefault();
+  const onSubmit = async (values) => {
     try {
-      const res = await axios.post(
-        url,
-        authUser,
-        configHead
-      );
-      // console.log(`res`, res.data);
+      const res = await axios.post(url, values, configHead);
+      console.log("res", res);
       localStorage.setItem("Login", res.data.customer.id);
       localStorage.setItem("token", res.data.customer.token);
-      dispatch({type: LOGIN , payload : res.data.customer})
-      // dispatch(dispatchLogin())
-      //  history.push("/");
-    } catch (err) {
-      dispatch(dispatchLoginError())
-
-      console.log(`err`, err);
-      // err.response.error.msg &&
-      //   setAuthUser({
-      //     ...authUser,
-      //     err: err.response.error.message,
-      //     success: "",
-      //   });
+      dispatch({ type: LOGIN, payload: res.data.customer });
+    } catch (error) {
+      dispatch({ type: LOGIN_FAILED, payload: "email or password wrong" });
     }
   };
   return {
@@ -103,7 +87,6 @@ export default function useLogin() {
     onSubmit,
     handleChangeInput,
     authUser,
-    handelShow,
     Faketoken,
   };
 }

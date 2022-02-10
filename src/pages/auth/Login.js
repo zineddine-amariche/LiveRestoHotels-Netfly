@@ -39,19 +39,22 @@ const Login = () => {
     horizontal: "center",
   });
   const { vertical, horizontal, open } = state;
+  console.log("open", open);
 
   const handleClose = (event, reason) => {
     if (auth.error) {
-      setState(!state);
+       setState(!state);
     }
   };
 
-  const handleCloseSuccess = (event, reason) => {
-    if (openSuuces) {
-      setOpen(!openSuuces);
-    }
-  };
-  console.log("matches", matches);
+  // const handleCloseSuccess = (event, reason) => {
+  //   if (openSuuces) {
+  //     auth.error && setOpen(!openSuuces);
+  //   }
+  // };
+  // useEffect(() => {
+  //   setState(!open);
+  // }, [open]);
   return (
     <Paper className={classes.ContainerLogin}>
       {!matches && (

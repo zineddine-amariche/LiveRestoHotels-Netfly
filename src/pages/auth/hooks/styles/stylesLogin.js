@@ -109,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
   inputStyles: {
     width: "100%",
     height: "83%",
+    marginTop:'15px',
     "& .Mui-focused": {
       color: "#237a57",
       fontWeight: "bold",
@@ -435,6 +436,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     padding: "10px 10px",
     backgroundColor: "#fff",
+  },
+  InputContainer:{
+    display:'flex',
+    flexDirection: 'column',
+  },
+
+  spanError:{
+    color:'red'
   }
 }));
 
