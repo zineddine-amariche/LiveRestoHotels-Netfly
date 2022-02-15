@@ -6,6 +6,8 @@ import { Close } from "@material-ui/icons";
 import { Box, Button } from "@material-ui/core";
 import useStyles from "./Styles";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { dispatchCheck_Id_Delete } from "../../../../redux/actions/ActionCheck_id";
 // import img from "../../assets/DeleteUser.png";
 const Modal = (props) => {
   const classes = useStyles();
@@ -15,6 +17,12 @@ const Modal = (props) => {
   state.map((i) => {
     sum += i.quantity * i.price;
   });
+  const dispatch = useDispatch()
+  const deleteAll = () => {
+    dispatch({ type: "DELETE_ALL_ITEMS" });
+    dispatch(dispatchCheck_Id_Delete());
+
+  };
   return (
     <Box className="avsolyte" onClick={() => ModalClose()}>
       <Box className="model-box">
@@ -52,12 +60,20 @@ const Modal = (props) => {
 
           <Box className="footer-G">
             <Button
+              className="back-delete"
+              onClick={() => {
+                deleteAll();
+              }}
+            >
+              Vider le panier
+            </Button>
+            <Button
               className="back"
               onClick={() => {
                 // handelCloseModal();
               }}
             >
-              Ok
+              ok
             </Button>
           </Box>
         </Box>

@@ -11,6 +11,7 @@ import Total from "./components/Totale";
 import Frais from "./components/Frais";
 import Calcule from "./components/Calcule";
 import Delete from "@material-ui/icons/Delete";
+import { dispatchCheck_Id_Delete } from "../../../../redux/actions/ActionCheck_id";
 function HeaderShop() {
   const classes = useStyles();
   const state = useSelector((state) => state.handleCart);
@@ -27,6 +28,7 @@ function HeaderShop() {
 
   const deleteAll = () => {
     dispatch({ type: "DELETE_ALL_ITEMS" });
+    dispatch(dispatchCheck_Id_Delete());
   };
   const closeValidate = () => {
     setValide(false);

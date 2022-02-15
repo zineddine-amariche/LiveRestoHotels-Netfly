@@ -10,13 +10,17 @@ import BodyRestaurants from "./Components/Body/BodyRestaurants";
 import useStyles from "./Styles";
 import UseFilter from "./Hooks/UseFilter";
 import Modal from "./Components/Modal/Modal";
+import CheckIdModel from "./Components/Check_Model_id";
+import { useSelector } from "react-redux";
 function Dashboard() {
   const classes = useStyles();
   const theme = useTheme();
 
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
+  const Check_Id = useSelector((state) => state.Check_Id);
 
+  console.log('Check_Id', Check_Id?.id)
   const [ShowFilter, setShowFilter] = useState(true);
   const [modal, setModal] = useState(false);
   const ShowFilterHandeler = () => {
@@ -43,6 +47,7 @@ function Dashboard() {
       <BodyRestaurants ShowFilter={ShowFilter}  />
       <FooterBox />
       {modal && <Modal  ModalClose={ModalClose} />}
+      {Check_Id?.activeModal && <CheckIdModel />}
     </Paper>
   );
 }

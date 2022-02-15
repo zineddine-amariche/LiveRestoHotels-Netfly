@@ -17,8 +17,19 @@ export default function Check_Id(state = initialState, action) {
     case types.CHECK_ID_ACTIVATE:
       return {
         ...state,
-        id: payload,
+        // id: payload,
         activeModal: true,
+      };
+    case types.CHECK_ID_DESACTIVATE:
+      return {
+        ...state,
+        activeModal: false,
+      };
+    case types.CHECK_ID_DELETE:
+      return {
+        ...state,
+        activeModal: false,
+        id: null,
       };
     default:
       return state;

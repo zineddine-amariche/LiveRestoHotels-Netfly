@@ -28,23 +28,28 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
     fontSize: 16,
     fontWeight: 600,
-    margin:'15px 0'
+    margin: "15px 0",
   },
-  Header:{
-      display:"flex",
-      width:"100%",
-      justifyContent:'space-between',
-      margin: '10px 0px',
-      padding:10
+  Header: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    margin: "10px 0px",
+    padding: 10,
   },
-  item:{
+  bodyText: {
+    padding: "20px 20px 40px 20px",
+    color: "#000",
+    fontSize: 18,
+    fontWeight: 600,
+  },
+  item: {
     //   backgroundColor: "#eee",
     //   marginRight:15,
-      width:"20%"
+    width: "20%",
   },
-  Body:{
+  Body: {
     overflowY: "scroll",
-
-  }
+  },
 }));
 export default useStyles;

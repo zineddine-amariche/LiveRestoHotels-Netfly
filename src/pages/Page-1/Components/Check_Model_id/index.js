@@ -4,10 +4,12 @@ import "./Modal.css";
 
 import { Close } from "@material-ui/icons";
 import { Box, Button } from "@material-ui/core";
-import useStyles from "./Styles";
+import useStyles from "./styles";
 import { useSelector } from "react-redux";
+import { dispatchCheck_Id_Delete, dispatchCheck_Id_Desactive } from "../../../../redux/actions/ActionCheck_id";
+import { useDispatch } from "react-redux";
 // import img from "../../assets/DeleteUser.png";
-const Modal = (props) => {
+const CheckIdModel = (props) => {
   const classes = useStyles();
   const { ModalClose } = props;
   const state = useSelector((state) => state.handleCart);
@@ -15,49 +17,56 @@ const Modal = (props) => {
   state.map((i) => {
     sum += i.quantity * i.price;
   });
+  const dispatch = useDispatch();
+  const deleteAll = () => {
+    dispatch({ type: "DELETE_ALL_ITEMS" });
+    dispatch(dispatchCheck_Id_Delete());
+
+  };
   return (
-    <Box className="avsolyte" onClick={() => ModalClose()}>
+    <Box
+      className="avsolyte"
+      onClick={() => {
+        // ModalClose()
+      }}
+    >
       <Box className="model-box">
         <Box className="right">
           <Box className="box-btn">
             <Box className={classes.Header}>
-              <Box className={classes.Title}>Panier </Box>
+              <Box className={classes.Title}>Alert !</Box>
 
               <Button>
                 <Close />
               </Button>
             </Box>
-
-            <Box className={classes.Body}>
-              <Box className={classes.Table}>
-                <Box className={classes.item}>quantity :</Box>
-                <Box className={classes.item}>name :</Box>
-                <Box className={classes.item}>prix :</Box>
-                <Box className={classes.item}>Sous-total :</Box>
-                <Box className={classes.item}>Frais de livraison :</Box>
-              </Box>
-              {state.map((i) => {
-                return (
-                  <Box className={classes.TableBody}>
-                    <Box className={classes.Table}>{i.quantity}</Box>
-                    <Box className={classes.Table}>{i.title}</Box>
-                    <Box className={classes.Table}>{i.price} €</Box>
-                    <Box className={classes.Table}>{sum.toFixed(2)} €</Box>
-                    <Box className={classes.Table}>0 €</Box>
-                  </Box>
-                );
-              })}
+            <Box className={classes.bodyText}>
+              Vous ne pouvez pas ajouter des produits de restaurants différents
+              au sein d'un même panier.<br/> Videz le contenu de votre panier si vous
+              souhaitez ajouter ce produit
             </Box>
+
+            <Box className={classes.Body}></Box>
           </Box>
 
           <Box className="footer-G">
             <Button
-              className="back"
+              className="back-delete"
               onClick={() => {
-                // handelCloseModal();
+                deleteAll();
+                dispatch(dispatchCheck_Id_Desactive());
+
               }}
             >
-              Ok
+              Vider le panier
+            </Button>
+            <Button
+              className="back"
+              onClick={() => {
+                dispatch(dispatchCheck_Id_Desactive());
+              }}
+            >
+              Annuler
             </Button>
           </Box>
         </Box>
@@ -66,4 +75,4 @@ const Modal = (props) => {
   );
 };
 
-export default Modal;
+export default CheckIdModel;

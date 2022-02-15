@@ -7,22 +7,35 @@ import { Link } from "react-router-dom";
 import imageRestaurant from "../../../../assets/imageR1.jpeg";
 import imageVector from "../../../../assets/Vector (2).svg";
 import { useDispatch } from "react-redux";
-import { dispatchCheck_Id, dispatchCheck_Id_Active } from "../../../../redux/actions/ActionCheck_id";
+import {
+  dispatchCheck_Id,
+  dispatchCheck_Id_Active,
+} from "../../../../redux/actions/ActionCheck_id";
 import { useSelector } from "react-redux";
 
 function CardRestaurant(props) {
   const classes = useStyles();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { RestoDta } = props;
   const Check_Id = useSelector((state) => state.Check_Id);
+  const handleCart = useSelector((state) => state.handleCart);
 
-console.log('Check_Id', Check_Id?.id)
-  const Press_Id = (id)=>{
-    Check_Id?.id === id || !Check_Id?.id  && dispatch(dispatchCheck_Id(id))
-    Check_Id?.id !== id && Check_Id?.id && dispatch(dispatchCheck_Id_Active(id))
+  console.log("Check_Id", Check_Id?.id);
+  const Press_Id = (id) => {
+    console.log("CId", id);
 
-  }
+    Check_Id?.id === id || (!Check_Id?.id && dispatch(dispatchCheck_Id(id)));
+    Check_Id?.id !== id &&
+      Check_Id?.id &&
+      dispatch(dispatchCheck_Id_Active(id));
+  };
 
+  const dispatchActiveModel = (id) => {
+    dispatch(dispatchCheck_Id_Active(id));
+  };
+  const dispatchIdToStore = (id) => {
+    !Check_Id?.id && dispatch(dispatchCheck_Id(id));
+  };
   return RestoDta.length > 0 ? (
     RestoDta.map((i) => {
       return (
@@ -67,16 +80,54 @@ console.log('Check_Id', Check_Id?.id)
             </Box>
 
             <Box className={classes.F3C}>
-              <Tooltip title="Commander">
-                <Link
-                  variant="contained"
-                  className={classes.ButtonContent}
-                  to={Check_Id?.id === i.id || !Check_Id?.id && `/details/${i.id}`}
-                  onClick={()=>{Press_Id(i.id)}}
-                >
-                  Commander
-                </Link>
-              </Tooltip>
+              {handleCart.length !== 0 ? (
+                <>
+                  {Check_Id?.id == i.id && (
+                    <Tooltip title="Commander">
+                      <Link
+                        variant="contained"
+                        className={classes.ButtonContent}
+                        // to={Check_Id?.id == i.id || Check_Id?.id == null && `/details/${i.id}`}
+                        to={`/details/${i.id}`}
+                        onClick={() => {
+                          // Press_Id(i.id);
+                        }}
+                      >
+                        Commander
+                      </Link>
+                    </Tooltip>
+                  )}
+                  {Check_Id?.id !== i.id && (
+                    <Tooltip title="Commander">
+                      <Link
+                        variant="contained"
+                        className={classes.ButtonContent}
+                        // to={Check_Id?.id == i.id || Check_Id?.id == null && `/details/${i.id}`}
+                        to={``}
+                        onClick={() => {
+                          dispatchActiveModel(i.id);
+                        }}
+                      >
+                        Commander
+                      </Link>
+                    </Tooltip>
+                  )}
+                </>
+              ) : (
+                <Tooltip title="Commander">
+                  <Link
+                    variant="contained"
+                    className={classes.ButtonContent}
+                    // to={Check_Id?.id == i.id || Check_Id?.id == null && `/details/${i.id}`}
+                    to={`/details/${i.id}`}
+                    onClick={() => {
+                      dispatchIdToStore(i.id);
+                    }}
+                  >
+                    Commander
+                  </Link>
+                </Tooltip>
+              )}
             </Box>
           </Box>
         </Paper>
