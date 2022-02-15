@@ -19,10 +19,11 @@ const useStyles = makeStyles((theme) => {
       "&:hover": {},
     },
     Fab: {
-      position: "fixed",
+      position: "absolute",
       right: 10,
       bottom: 10,
       backgroundColor: "#485",
+      zIndex: 205,
       "&:hover": {
         backgroundColor: "#485",
         color: "#000",
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme) => {
     },
     LeftCol: {
       maxWidth: "80%",
+      backgroundColor: "#000",
+      position: "relative",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "#d48586",
         maxWidth: "100%",
@@ -197,28 +200,23 @@ const useStyles = makeStyles((theme) => {
       color: "#d478",
     },
     ContainerDetailsMenue: {
-      margin: "15px 0 0 0 ",
+      margin: "1px 0 0 0 ",
       display: "flex",
       flexDirection: "column",
-      alignItems: "center",
-      padding: "0px 30px 0 60px",
+      padding: "10px 10px 0 10px",
       backgroundColor: "#fff",
+
       [theme.breakpoints.down("md")]: {
-        // backgroundColor: "#d96",
         margin: "10px 0px",
         width: "100%",
         padding: "5px",
       },
-      // [theme.breakpoints.down("xs")]: {
-      //   // backgroundColor: "#d44",
-      //   margin: "100px 0px 0 12px ",
-      //   transition: "1s ease-in",
-      //   width: "95%",
-      // },
     },
     private: {
       backgroundColor: "#485",
+      margin: "0px 0px 0px -5px",
       color: "#000",
+      width: "80%",
       "& .MuiTabs-indicator": {
         backgroundColor: "#e78",
       },
@@ -245,7 +243,7 @@ const useStyles = makeStyles((theme) => {
       color: "#aac840",
       fontSize: "18px",
       fontWeight: "600",
-      padding: "10px 70px",
+      padding: "10px 20px",
     },
     ContR: {
       position: "relative",
@@ -290,7 +288,6 @@ const useStyles = makeStyles((theme) => {
       },
     },
     containerHeaderShop: {
-      width: "100%",
       alignItems: "center",
       display: "flex",
       flexDirection: "column",
@@ -309,15 +306,14 @@ const useStyles = makeStyles((theme) => {
       // backgroundColor: "#ddd",
       alignItems: "center",
       justifyContent: "center",
-      marginLeft:25
+      marginLeft: 25,
     },
     row: {
       display: "flex",
       // backgroundColor: "#ddd",
       alignItems: "center",
       justifyContent: "center",
-width:"100%"
-
+      width: "100%",
     },
     BoxHeader: {
       display: "flex",
@@ -428,12 +424,11 @@ width:"100%"
       display: "flex",
       marginTop: 15,
       display: "flex",
-      // flexDirection: "column",
-      // backgroundColor: "#c9999c",
       alignItems: "center",
-      // padding: "10px 0px 10px 30px",
       flexWrap: "wrap",
-
+      backgroundColor: "#fff",
+      overflowY: "scroll",
+      height: "100vh",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "#748",
         width: "100%",
@@ -495,15 +490,16 @@ width:"100%"
       width: "100%",
       display: "flex",
       flexWrap: "wrap",
-      justifyContent: "center",
+      // justifyContent: "center",
+      paddingLeft: 0,
     },
     ItemOrderBOX: {
       display: "flex",
       justifyContent: "space-between",
-      width: "48%",
+      width: "49%",
       // marginBottom: 10,
       backgroundColor: "#F8F8F8",
-      margin: "15px 5px 20px 5px",
+      margin: "15px 0px 5px 10px",
       height: "136px",
       overflow: "hidden",
       border: " 1px solid #E5E5E7",
@@ -535,6 +531,8 @@ width:"100%"
     },
     imageDétails: {
       cursor: "pointer",
+      width: "200px",
+      height: "100%",
     },
     ItemOrderLeft: {
       display: "flex",
@@ -662,6 +660,10 @@ width:"100%"
       textDecoration: "underline",
       fontWeight: "600",
     },
+    LinkTo:{
+      cursor:'pointer',
+      margin: '10px',
+    }
   };
 });
 export default useStyles;

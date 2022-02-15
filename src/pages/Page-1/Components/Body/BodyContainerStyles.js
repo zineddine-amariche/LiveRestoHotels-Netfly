@@ -1,44 +1,37 @@
 /** @jsxImportSource theme-ui */
 
 import { makeStyles } from "@material-ui/core/styles";
-const useStyles = makeStyles((theme) => ( {
+const useStyles = makeStyles((theme) => ({
   Body: {
-    // backgroundColor: "#ee2657",
-    // marginTop: 67,
     display: "flex",
-    flexWrap: "wrap",
-    overflow: "hidden",
-    // justifyContent: "center",
-    flexDirection: "column",
-    // alignItems: "center",
     border: "none",
     padding: "0px 0px 0px 10xp",
     position: "relative",
+    height: "100vh",
     [theme.breakpoints.up("md")]: {
       marginTop: 70,
-      // alignSelf: 'center',
-    // backgroundColor: "#ee2657",
 
     },
   },
   BodyRow: {
     display: "flex",
     flexWrap: "wrap",
-    width:"90%",
+    width: "100%",
     border: "none",
     backgroundColor: "#fff",
     overflowY: "scroll",
-    margin:"20px 15px",
+    margin: "0px 0px 0px 0px",
     height: "100%",
-    // alignItems:"center",
-      // justifyContent: "center",
-      [theme.breakpoints.down("md")]: {
-        justifyContent: "center",
-    backgroundColor: "#fff",
-    width:'100%'
-
-  
-      },
+ 
+    [theme.breakpoints.down("md")]: {
+      justifyContent: "center",
+      backgroundColor: "#fff",
+      width: "100%",
+    }, [theme.breakpoints.down("xs")]: {
+      // display: "none",
+      width: "100%",
+ 
+    },
   },
   HeaderTitle: {
     width: "100%",
@@ -52,17 +45,17 @@ const useStyles = makeStyles((theme) => ( {
     fontSize: "25px",
     fontWeight: "600",
   },
+
   BoxBodyFilterCard: {
     display: "flex",
-    height: "100%",
+    height: "100vh",
     width: "100%",
-    backgroundColor: '#fff',
+    backgroundColor: "#eee",
     position: "relative",
+    overflow: "hidden",
     [theme.breakpoints.down("md")]: {
       display: "flex",
-      // justifyContent: "center",
-    width: "100%",
-
+      width: "100%",
     },
   },
   searcher: {
@@ -85,7 +78,6 @@ const useStyles = makeStyles((theme) => ( {
     [theme.breakpoints.down("sm")]: {
       marginTop: 80,
       width: "100%",
-   
     },
   },
   box: {

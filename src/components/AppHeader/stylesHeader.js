@@ -161,16 +161,20 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   ImageInd: {
-    width: "15%",
-    height: "15%",
+   width:'50px',
+   height:25,
+
   },
   GroupBtn: {
-    // backgroundColor: "#eee",
+    // backgroundColor: "#ccc",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    margin:0,
-    padding:0
+    margin:"0px 15px",
+    padding:0,
+    height:50,
+   width:'100px'
+
   },
   ItemNombre: {
     position: "absolute",

@@ -9,13 +9,13 @@ import CardRestaurant from "../CardRestaurant/CardRestaurant";
 import { useEffect } from "react";
 
 function BodyRestaurants(props) {
-  const {ShowFilter} = props
+  const { ShowFilter } = props;
   const classes = useStyles();
   const Resto = useSelector((state) => state.Restaurants);
   const { Restaurants, establishments } = Resto;
   const { data } = Restaurants;
-  const {defaultDeliveryPrice} = data
-  console.log('defaultDeliveryPrice', defaultDeliveryPrice);
+  const { defaultDeliveryPrice } = !!data
+  console.log("defaultDeliveryPrice", defaultDeliveryPrice);
 
   const [RestoDta, setResto] = useState(null);
   useEffect(() => {
@@ -197,31 +197,27 @@ function BodyRestaurants(props) {
     console.log(`carectr`, FilterEstablishments);
   };
 
-
   return (
     <Box className={classes.Body} elevation={0}>
-      <Box className={classes.BoxBodyFilterCard}>
-        {ShowFilter && data && (
-          <FilterRestaunrants
-            filterData={filterData}
-            filterAllData={filterAllData}
-            filterCaractérstique={filterCaractérstique}
-            filterTypePlats={filterTypePlats}
-            filterRestrictions={filterRestrictions}
-            filterPays={filterPays}
-            filterTypePays={filterTypePays}
-          />
-        )}
-
-        {!data ? (
-          <Loading />
-        ) : (
-          <Paper className={classes.BodyRow} elevation={0}>
-            <SearcheBox />
-            {RestoDta && <CardRestaurant RestoDta={RestoDta} />}
-          </Paper>
-        )}
-      </Box>
+          {ShowFilter && data && (
+            <FilterRestaunrants
+              filterData={filterData}
+              filterAllData={filterAllData}
+              filterCaractérstique={filterCaractérstique}
+              filterTypePlats={filterTypePlats}
+              filterRestrictions={filterRestrictions}
+              filterPays={filterPays}
+              filterTypePays={filterTypePays}
+            />
+          )}
+          {!data ? (
+            <Loading />
+          ) : (
+            <Paper className={classes.BodyRow} elevation={0}>
+              <SearcheBox />
+              {RestoDta && <CardRestaurant RestoDta={RestoDta} />}
+            </Paper>
+          )}
     </Box>
   );
 }

@@ -6,11 +6,22 @@ import { Link } from "react-router-dom";
 
 import imageRestaurant from "../../../../assets/imageR1.jpeg";
 import imageVector from "../../../../assets/Vector (2).svg";
+import { useDispatch } from "react-redux";
+import { dispatchCheck_Id, dispatchCheck_Id_Active } from "../../../../redux/actions/ActionCheck_id";
+import { useSelector } from "react-redux";
 
 function CardRestaurant(props) {
   const classes = useStyles();
-
+  const dispatch = useDispatch()
   const { RestoDta } = props;
+  const Check_Id = useSelector((state) => state.Check_Id);
+
+console.log('Check_Id', Check_Id?.id)
+  const Press_Id = (id)=>{
+    Check_Id?.id === id || !Check_Id?.id  && dispatch(dispatchCheck_Id(id))
+    Check_Id?.id !== id && Check_Id?.id && dispatch(dispatchCheck_Id_Active(id))
+
+  }
 
   return RestoDta.length > 0 ? (
     RestoDta.map((i) => {
@@ -60,7 +71,8 @@ function CardRestaurant(props) {
                 <Link
                   variant="contained"
                   className={classes.ButtonContent}
-                  to={`/details/${i.id}`}
+                  to={Check_Id?.id === i.id || !Check_Id?.id && `/details/${i.id}`}
+                  onClick={()=>{Press_Id(i.id)}}
                 >
                   Commander
                 </Link>

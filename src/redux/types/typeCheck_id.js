@@ -1,0 +1,3 @@
+export const CHECK_ID = "CHECK_ID";
+export const CHECK_ID_ACTIVATE = "CHECK_ID_ACTIVATE";
+export const CHECK_ID_DESACTIVATE = "CHECK_ID_DESACTIVATE";

@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     flexDirection: "column",
+
     [theme.breakpoints.down("lg")]: {
       height: "50vh",
       backgroundColor: "#3D3D3D",

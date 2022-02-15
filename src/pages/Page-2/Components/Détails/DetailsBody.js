@@ -23,6 +23,7 @@ function DetailsBody(props) {
   const [loading, setloading] = useState(false);
   const { ShowPanier } = props;
   const classes = useStyles();
+
   function scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -83,16 +84,17 @@ function DetailsBody(props) {
       <Box className={classes.LeftCol}>
         <HeaderBodyDétails establishment={establishment} />
         <LabTabs loading={loading} />
+
+        <Fab color="primary" aria-label="add" className={classes.Fab}>
+          <ArrowDropUp onClick={scrollToTop} />
+        </Fab>
       </Box>
+
       {ShowPanier && (
         <Box className={classes.RightCol}>
           <HeaderShop />
         </Box>
       )}
-
-      <Fab color="primary" aria-label="add" className={classes.Fab}>
-        <ArrowDropUp onClick={scrollToTop} />
-      </Fab>
     </Box>
   );
 }

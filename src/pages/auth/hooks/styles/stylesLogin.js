@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     padding: 10,
     display: "flex",
+    // backgroundColor: "#ccc",
+
   },
   ContainerLogin: {
     backgroundColor: "#fff",
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   LoginNotMatches: {
-    backgroundColor: "#edd",
+    // backgroundColor: "#edd",
     width: "80%",
   },
   loginCarousel: {
@@ -55,6 +57,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "10px 0",
+    // backgroundColor: "#eee",
   },
   boxPaper: {
     width: "100%",
@@ -130,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: "100vh",
     display:'flex',
     justifyContent:'space-between',
-    width:"100%"
+    width:"100%",
   },
 
   ContainerPaperCarousel: {
@@ -444,6 +447,12 @@ const useStyles = makeStyles((theme) => ({
 
   spanError:{
     color:'red'
+  },
+  LangContainer:{
+    // backgroundColor: "#ddd",
+    display:"flex",
+    justifyContent: 'flex-end',
+    margin:10,
   }
 }));
 

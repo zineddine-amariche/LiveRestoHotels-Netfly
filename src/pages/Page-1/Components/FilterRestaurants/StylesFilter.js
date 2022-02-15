@@ -9,30 +9,32 @@ const useStyles = makeStyles((theme) => ({
   ConatinerFilter: {
     backgroundColor: "#fff",
     display: "flex",
-    // height:'100%',
-    maxWidth: "20%",
-    minWidth: "20%",
-    margin: "5px 0 0px 0px",
-    position: "sticky",
+    height: "99.4%",
+    // maxWidth: "20%",
+    // minWidth: "20%",
+    margin: "5px 0px  0px 0px",
+    // position: "fixed",
     // justifyContent: 'start',
-    left: 0,
-    top: 0,
     overflowY: "scroll",
     flexDirection: "column",
-    alignItems: "space-evenly",
     // height:"100%",
     [theme.breakpoints.down("md")]: {
-      display: "flex",
-      backgroundColor: "#fff",
-      maxWidth:'40%'
+      // display: "flex",
+      // backgroundColor: "#fff",
+      // maxWidth:'40%'
     },
     [theme.breakpoints.down("xs")]: {
-      maxWidth:'45%'
+      maxWidth: "99%",
+      minWidth: "99%",
+      position: "abolute",
+      left: 0,
+      top: 0,
+      backgroundColor: "#fff",
     },
     "&:hover": {},
   },
-  FixFilter:{
-    paddingTop:90
-  }
+  FixFilter: {
+    paddingTop: 90,
+  },
 }));
 export default useStyles;

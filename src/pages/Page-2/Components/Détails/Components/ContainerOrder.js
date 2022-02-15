@@ -1,11 +1,19 @@
 import { Box, Paper, Typography } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useStyles from "../../stylesDetails";
 import Plus from "@material-ui/icons/Add";
 import imageDétails from "../../../../../assets/Intersect.svg";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../../../../redux/actions/addToCartAction";
-
+import {
+  Link,
+  Button,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 import ModaLimage from "./ModaLimage";
 
 function ContainerOrder(props) {
@@ -24,54 +32,60 @@ function ContainerOrder(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { categories, value } = props;
+  const { categories, value, refMenue } = props;
+  console.log("categories", value);
+  // ref={refMenue}
   return (
     <Paper className={classes.OrderContainer} elevation={0}>
       {categories.map((i, index) => {
+        // console.log('index', index)
         return (
-          <Box className={classes.ColBodyMenu} key={i.id} value={value}>
-            {value === index && (
-              <>
-                <Box className={classes.BoxBody}>{i.title} :</Box>
-                <Box className={classes.Wraper}>
-                  {i.products.map((i) => {
-                    return (
-                      <Paper
-                        className={classes.ItemOrderBOX}
-                        elevation={0}
-                        key={i.id}
-                      >
-                        <Paper className={classes.ItemOrderLeft} elevation={0}>
-                          <Typography className={classes.TitleBoxOrder}>
-                            {i.title}
-                          </Typography>
-                          <Typography className={classes.TextBoxOrder}>
-                            {i.description}
-                          </Typography>
-                        </Paper>
-                        <Paper className={classes.ContR}>
-                          <Box className={classes.ImageRightBoxDétails}>
-                            <img
-                              src={imageDétails}
-                              alt="restaurant détails"
-                              onClick={() => {
-                                handleClickOpen();
-                                console.log("open Modal");
-                              }}
-                              className={classes.imageDétails}
-                            />
-
-                            <Box className={classes.BTNOpenABS}>
-                              <Plus onClick={() => handleAdd(i)} />
-                            </Box>
-                          </Box>
-                        </Paper>
+          <Box className={classes.ColBodyMenu} key={i.id}>
+            {/* {value === index && ( */}
+            <>
+              <Box className={classes.BoxBody} id={i.title} >
+                {i.title} :
+              </Box>
+              <Box className={classes.Wraper}  >
+                {i.products.map((i) => {
+                  return (
+                    <Paper
+                      className={classes.ItemOrderBOX}
+                      elevation={0}
+                      key={i.id}
+                    >
+                      <Paper className={classes.ItemOrderLeft} elevation={0}>
+                        <Typography className={classes.TitleBoxOrder}>
+                          {i.title}
+                        </Typography>
+                        <Typography className={classes.TextBoxOrder}>
+                          {i.description}
+                        </Typography>
                       </Paper>
-                    );
-                  })}
-                </Box>
-              </>
-            )}
+                      
+                      <Paper class={classes.ContR}  >
+                        <Box class={classes.ImageRightBoxDétails}>
+                          <img
+                            src={i.img}
+                            alt="restaurant détails"
+                            onClick={() => {
+                              handleClickOpen();
+                              console.log("open Modal");
+                            }}
+                            class={classes.imageDétails}
+                          />
+
+                          <Box className={classes.BTNOpenABS}>
+                            <Plus onClick={() => handleAdd(i)} />
+                          </Box>
+                        </Box>
+                      </Paper>
+                    </Paper>
+                  );
+                })}
+              </Box>
+            </>
+
             {open && <ModaLimage handleClose={handleClose} i={imageDétails} />}
           </Box>
         );
@@ -81,3 +95,4 @@ function ContainerOrder(props) {
 }
 
 export default ContainerOrder;
+// )}

@@ -7,8 +7,8 @@ import handleCart from "./handelAddToCartReducer";
 import Dates from "./Dates"
 import Hours from "./hoursReducers"
 import Activation from "./activeMessages"
-
 import Validate from "./validation/validation"
+import Check_Id from "./Check_Id_Restaurants/Check_Id";
 // import shoppingReducer from "./shopReducer";
 const rootReducer = combineReducers({
   auth,
@@ -19,7 +19,8 @@ const rootReducer = combineReducers({
   Dates,
   Hours,
   Activation,
-  Validate
+  Validate,
+  Check_Id
 
   
 });

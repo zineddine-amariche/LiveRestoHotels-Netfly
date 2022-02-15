@@ -5,27 +5,15 @@ import Controls from "../../../../../components/Reusable/RuseForm/Controls/Contr
 import useStyles from "../styles";
 
 function DetailsPersonnel(props) {
-  const {
-    hotel,
-    handleInputChange,
-    formik,
-    register,
-    errors,
-    code,
-    HandelCode,
-    order,
-    handleInputChangeOrder,
-    handleChange
-  } = props;
+  const { formik, code, HandelCode } = props;
   const classes = useStyles();
-  // console.log('formik DetailsPersonnel ',formik)
   return (
     <Box className={classes.DetailsPersonnel}>
       <Box className={classes.InformationTitre}>Informations personnelles</Box>
-       <Field
+      <Field
         className={classes.Field}
         variant="outlined"
-        label="Nom"
+        label="Nom complet"
         name="fullName"
         type="input"
         as={TextField}
@@ -33,8 +21,8 @@ function DetailsPersonnel(props) {
       />
       {formik.errors.fullName && (
         <span className={classes.spanError}>{formik.errors.fullName}</span>
-      )} 
-       <Field
+      )}
+      <Field
         className={classes.Field}
         variant="outlined"
         id="phone"
@@ -68,7 +56,6 @@ function DetailsPersonnel(props) {
         style={{ color: "black" }}
         onChange={HandelCode}
         className={classes.Field}
-        
       />
       {code && (
         <>
