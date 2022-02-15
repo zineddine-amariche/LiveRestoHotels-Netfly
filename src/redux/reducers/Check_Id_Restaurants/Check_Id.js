@@ -1,7 +1,10 @@
 import * as types from "../../types/typeCheck_id";
 
+const Check_id = JSON.parse(localStorage.getItem("Check_id"));
+// const state = Check_id ? Check_id : cart;
+
 const initialState = {
-  id: null,
+  id: Check_id ? Check_id : null,
   activeModal: false,
 };
 

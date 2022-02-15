@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 25,
     fontFamily: "Realway",
     fontWeight: "600",
+    color: "#f00",
   },
   Table: {
     display: "flex",

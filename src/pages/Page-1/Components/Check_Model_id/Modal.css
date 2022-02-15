@@ -38,6 +38,21 @@
   align-items: center;
   padding: 0px 15px;
 }
+.footer-G  .back-delete:hover{
+  background-color: rgb(255, 0, 0);
+  width: 200px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin: 0px 20px;
+  color: rgb(250, 246, 246);
+  opacity: .6;
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  padding: 0px 15px;
+}
 .left {
   background-color: #fff;
   width: 30%;
