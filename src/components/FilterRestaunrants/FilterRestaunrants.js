@@ -51,7 +51,7 @@ function FilterRestaunrants() {
   });
 
   const handleInputChange = (e) => {
-    console.log(e.target.value, e.target.checked);
+    // console.log(e.target.value, e.target.checked);
     setCheckState(() => ({
       ...checkState,
       Hallal: false,
@@ -97,7 +97,7 @@ function FilterRestaunrants() {
       [e.target.value]: e.target.checked,
     }));
     if (e.target.checked) {
-      console.log(`object`, e.target.value);
+      // console.log(`object`, e.target.value);
       //   dispatch({ type: types.USERS_REQUEST, payload: { userStatus: e.target.value } });
     }
   };

@@ -10,7 +10,7 @@ export default function Activation(state = initialState, action) {
 
   switch (action.type) {
     case types.AUTH_ACTIVATE:
-      console.log("AUTH_ACTIVATE");
+      // console.log("AUTH_ACTIVATE");
       return {
         ...state,
         isActive: true,

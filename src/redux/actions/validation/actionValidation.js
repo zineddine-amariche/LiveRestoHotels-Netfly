@@ -17,7 +17,7 @@ export const submitValidation = async (
 
   try {
     const res = await axios.post(url, orders, configHead);
-    console.log("res", res);
+    // console.log("res", res);
     dispatch({ type: VALIDATE, payload: res });
     dispatch({ type: "DELETE_ALL_ITEMS" });
     closeValidate();

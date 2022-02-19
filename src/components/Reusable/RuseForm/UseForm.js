@@ -18,7 +18,7 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
     //     validate({ [name]: value })
   };
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await dispatch({ type: 'REGISTER_REQUEST', payload: data });
   };
   const resetForm = () => {

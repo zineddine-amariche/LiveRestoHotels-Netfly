@@ -1,4 +1,13 @@
-import { Button, CircularProgress, Paper } from "@material-ui/core";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  CircularProgress,
+  Paper,
+  Typography,
+} from "@material-ui/core";
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -14,7 +23,7 @@ import useStyles from "./styles";
 import { Form, Field, Formik } from "formik";
 import TextField from "@material-ui/core/TextField";
 import * as Yup from "yup";
-
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 let Hotel = {
   fullName: "",
   phone: "",
@@ -43,22 +52,16 @@ function ValidationForm(props) {
   const classes = useStyles();
   let params = useParams();
   let { id } = params;
+  const Validate = useSelector((state) => state.Validate);
   const state = useSelector((state) => state.handleCart);
   const auth = useSelector((state) => state.auth);
-  const Validate = useSelector((state) => state.Validate);
   const { data, token } = auth;
   const { customer } = data;
   const [hotel, setdata] = useState(Hotel);
-
-  // console.log("Validate.Validate", Validate.loading);
+  const [IdPaiement, setIdPaiement] = useState();
   const {
     register,
-    handleSubmit,
-    errors,
-    isSubmitting,
     order,
-    onSubmit,
-    handleInputChange,
     setOrder,
     code,
     HandelCode,
@@ -70,7 +73,7 @@ function ValidationForm(props) {
     payments,
     setPayments,
     value,
-    handelChange,
+    handelChangePaiment,
     dispatch,
     navigateToSuccess,
   } = useValidation(Hotel, orderState, billaddress, Products, Payments);
@@ -84,15 +87,14 @@ function ValidationForm(props) {
     sum += i.quantity * i.price;
     all = sum + Delivery;
   });
-
   const handelTotal = () => {
     customer &&
       setOrder({
         ...order,
         ["total"]: all.toFixed(2),
         ["establishment_id"]: id,
-        ["origin_id"]: customer.origin_id,
-        // ["origin_id"]: 2,
+        // ["origin_id"]: customer.origin_id,
+        ["origin_id"]: 2,
         ["customer_id"]: customer.id,
         ["profile_id"]: customer.profile_id,
         ["use_loyalty"]: customer.loyalty,
@@ -115,7 +117,7 @@ function ValidationForm(props) {
     customer &&
       setPayments([
         {
-          id: value,
+          id: IdPaiement,
           amount: all.toFixed(2),
         },
       ]);
@@ -123,12 +125,18 @@ function ValidationForm(props) {
   const HandelHotel = (values) => {
     setdata(values);
   };
+  const handelId = (id) => {
+    if (id == "3") setIdPaiement(3);
+    if (id == "2") setIdPaiement(2);
+    if (id == "1") setIdPaiement(1);
+    if (id == "0") setIdPaiement(0);
+  };
+
   useEffect(() => {
     handelTotal();
     HandelProducts();
     HandelPayments();
-  }, [sum, state, value]);
-
+  }, [sum, state, value, IdPaiement]);
   let orders = {
     hotel,
     order: {
@@ -164,36 +172,33 @@ function ValidationForm(props) {
 
   let validationSchema = Yup.object().shape({
     fullName: Yup.string()
-      .min(8, "fullName is too short - should be 8 chars Minimum.")
-      .max(35, "fullName is too long - should be 35 chars Maximum.")
-      .matches(lengthRegEx, "Must contain at least 8 characters!")
-      .required("fullName is required"),
+      .min(8, "le nom est trop court - doit être de 8 caractères minimum.")
+      .max(35, "Le nom complet est trop long - doit être de 35 caractères maximum.")
+      .matches(lengthRegEx, "Doit contenir au moins 8 caractères !")
+      .required("le nom complet est requis"),
 
     phone: Yup.string()
       .min(10, "Numéro téléphone is too short - should be 10 number Minimum.")
-      .matches(phoneRegex, "Must Valide number!")
-      .required("Numéro téléphone is required"),
+      .matches(phoneRegex, "Doit être un numéro valide !")
+      .required("Numéro téléphone est requis"),
 
     apartement: Yup.number()
-      .max(2, "Numéro apartement is too long - should be 2 number Maximum.")
-      .required("Numéro apartement is required"),
+      .max(2, "Le numéro d'appartement est trop long - doit être de 2 numéros maximum.")
+      .required("Le numéro d'appartement est requis"),
     voucher_code: Yup.string().min(
       4,
-      "voucher_code,is too short - should be 4 characters Minimum "
+      "le code promotionnel est trop court - doit comporter au moins 4 caractères "
     ),
   });
   const Hours = useSelector((state) => state.Hours);
-  // console.log("dataHotel", hotel);
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
-      {/* Hotel Info client */}
       <Formik
         className={classes.FormikHotelInfo}
         initialValues={hotel}
         validationSchema={validationSchema}
       >
         {(formik) => {
-          // console.log("formik", formik);
           HandelHotel(formik.values);
           return [
             <Form
@@ -213,7 +218,50 @@ function ValidationForm(props) {
       </Formik>
       <Dates handleInputChangeOrder={handleInputChangeOrder} order={order} />
 
-      <ModePaiment handelChange={handelChange} value={value} />
+      <Box className={classes.dateContainer}>
+        <Box component="legend" className={classes.InformationTitre}>
+          Mode Paiement :
+        </Box>
+
+        <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <Typography style={{ fontWeight: 600 }}>
+              {IdPaiement
+                ? IdPaiement === 1
+                  ? "Chèques"
+                  : IdPaiement === 2
+                  ? "Espèces"
+                  : IdPaiement === 3
+                  ? "Ticket restaurant"
+                  : IdPaiement === 0
+                  ? "CB en ligne"
+                  : ""
+                : "Choisir un mode"}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Formik initialValues={value}>
+              {(formik) => {
+                handelId(formik.values.value);
+                return [
+                  <Form className={classes.FormItemsPaiements}>
+                    <ModePaiment
+                      formik={formik}
+                      handelChangePaiment={handelChangePaiment}
+                      value={value}
+                    />
+                  </Form>,
+                ];
+              }}
+            </Formik>
+          </AccordionDetails>
+        </Accordion>
+      </Box>
+
       <Remarques
         handleInputChangeOrder={handleInputChangeOrder}
         order={order}
@@ -260,79 +308,3 @@ function ValidationForm(props) {
 }
 
 export default ValidationForm;
-{
-  /* <DetailsPersonnel
-hotel={hotel}
-handleInputChange={handleInputChange}
-register={register}
-code={code}
-HandelCode={HandelCode}
-handleInputChangeOrder={handleInputChangeOrder}
-order={order}
-bill={bill} */
-}
-// />
-// <Formik
-// initialValues={{
-//   hotel,
-// }}
-// validationSchema={validationSchema}
-// >
-// {(formik) => {
-//   // console.log("formik", formik);
-//   // console.log("formik.hotel", formik.values.hotel);
-
-//   return [
-//     <Form
-//       className={classes.ContainerValidation}
-//       autoComplete="on"
-//       style={{ margin: 40 }}
-//       name="hotel"
-//     >
-//       <DetailsPersonnel
-//         hotel={hotel}
-//         handleInputChange={handleInputChange}
-//         register={register}
-//         errors={formik.errors}
-//         code={code}
-//         HandelCode={HandelCode}
-//         handleInputChangeOrder={handleInputChangeOrder}
-//         order={order}
-//         bill={bill}
-//         data={formik.values}
-//         handleChange={formik.handleChange}
-//       />
-//     </Form>,
-//   ];
-// }}
-// </Formik>
-// .matches(specialsRegEx, "Must contain one special caracter")
-
-// .matches(
-//   lowercaseRegEx,
-//   "Must contain one lowercase alphabetical character!"
-// )
-// .matches(
-//   uppercaseRegEx,
-//   "Must contain one uppercase alphabetical character!"
-// )
-// .matches(numericRegEx, "Must contain one numeric character!")
-
-// confirmPassword: Yup.string()
-//   .required("Confirm password is required")
-//   .oneOf([Yup.ref("password")], "Passwords does not match"),
-{
-  /* {auth.error && <Alert severity="error">{auth.error}</Alert>} */
-}
-
-// <DetailsPersonnel
-// hotel={hotel}
-// handleInputChange={handleInputChange}
-// register={register}
-// errors={errors}
-// code={code}
-// HandelCode={HandelCode}
-// handleInputChangeOrder={handleInputChangeOrder}
-// order={order}
-// bill={bill}
-// />

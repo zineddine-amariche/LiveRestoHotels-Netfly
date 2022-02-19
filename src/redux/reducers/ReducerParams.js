@@ -20,7 +20,7 @@ export default function auth(state = initialState, action) {
         dataParams: payload,
       };
     case types.GET_PARAMS_FAILED:
-      console.log("GET_PARAMS", action);
+      // console.log("GET_PARAMS", action);
       return {
         ...state,
         error: "échec de la connexion",

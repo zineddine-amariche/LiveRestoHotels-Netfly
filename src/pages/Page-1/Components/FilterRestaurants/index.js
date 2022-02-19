@@ -27,7 +27,7 @@ function FilterRestaunrants(props) {
   } = props;
   const classes = useStyles();
   const { category, handelCategory } = UseFilter();
-  console.log("category data", category);
+  // console.log("category data", category);
   return (
     <Paper className={classes.ConatinerFilter}>
       <Box className={classes.FixFilter}>

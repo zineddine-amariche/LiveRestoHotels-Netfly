@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     color: COLORS.PRIMARY,
     fontSize: "18px",
     fontWeight: "700",
+    paddingLeft:10
   },
   DetailsPersonnel: {
     // padding: 20,
@@ -65,10 +66,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     fontSize: "17px",
     fontWeight: "600",
-    margin: "15px 5px",
-    width: "70%",
+    margin: "5px 5px",
+    width: "90%",
     padding: 10,
-    marginRight: 35,
+    // marginRight: ,
   },
   Container: {
     width: "100%",
@@ -81,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
   dateContainer: {
     // backgroundColor: "#ccc",
     width: "100%",
+    marginTop:10
   },
   DatesMap: {
     // backgroundColor: "#ccc",
@@ -111,24 +113,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: -30,
   },
   spanError: {
-    color: "red",
-    // backgroundColor: "#ccc",
+    color: "#f00",
     width: "100%",
-    paddingLeft: 15,
-    // marginLeft:15,
-    textAlign: "center",
     display: "flex",
     marginBottom: 4,
+    fontFamily:''
   },
   IndexPanier: {
     backgroundColor: "#fff",
-    width: "95%",
+    width: "98%",
     height: "82%",
     marginTop: -15,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     overflowY: "scroll",
+    overflowX: "hidden",
   },
   FormikHotelInfo: {
     width: "100%",
@@ -140,6 +140,50 @@ const useStyles = makeStyles((theme) => ({
   Field: {
     width: "90%",
     margin: 15,
+    display:'flex',
+    flexDirection: 'column',
   },
+  FormControleCheckBox:{
+    display:"flex",
+    flexDirection: 'column',
+    backgroundColor: '#ccc',
+  },
+  BoxColumnCheck:{
+    display:"flex",
+    flexDirection: 'column',
+    width:'100%',
+    // backgroundColor: '#ccc',
+
+  },
+  FormItemsPaiements:{
+    padding:20
+  },
+  checkBoxItem:{
+    width:20,
+    height:20,
+    marginRight:15
+  },
+  rowItemBoxes:{
+    display:'flex',
+    alignItems: 'center',
+    justifyContent: 'star',
+    width:"100%",
+    margin:'5px 0',
+    justifyContent: 'space-between',
+  },
+  LeftInputItem:{
+    width:"50%"
+  },
+  ItemRight:{
+    display:'flex',
+    alignItems: 'center',
+  },
+  Inpt:{
+    width:"70%",
+    paddingLeft:5
+  },
+  labelCheck:{
+    fontWeight:700  
+  }
 }));
 export default useStyles;

@@ -12,9 +12,10 @@ const useStyles = makeStyles((theme) => {
       // backgroundColor: "#96d",
       display: "flex",
       width: "100%",
-      margin: "75px 0 0px 0px",
+      // margin: "75px 0 0px 0px",
+      flexDirection:'column',
       [theme.breakpoints.down("md")]: {
-        // backgroundColor: "#eee",
+        backgroundColor: "#eee",
       },
       "&:hover": {},
     },
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => {
     HeaderDetailsContainer: {
       backgroundColor: "#0d4",
       width: "100%",
+      height: "50vh",
       [theme.breakpoints.down("md")]: {
         backgroundColor: "#0d4",
       },
@@ -66,6 +68,7 @@ const useStyles = makeStyles((theme) => {
       flexDirection: "column",
       maxWidth: "100%",
       flexWrap: "wrap",
+      backgroundColor: "#ccc",
       [theme.breakpoints.down("md")]: {
         maxWidth: "100%",
       },
@@ -200,7 +203,7 @@ const useStyles = makeStyles((theme) => {
       color: "#d478",
     },
     ContainerDetailsMenue: {
-      margin: "1px 0 0 0 ",
+      margin: "58px 0 0 0 ",
       display: "flex",
       flexDirection: "column",
       padding: "10px 10px 0 10px",
@@ -248,7 +251,17 @@ const useStyles = makeStyles((theme) => {
     ContR: {
       position: "relative",
     },
+    fixed: {
+      position: "fixed",
+      top: 0,
+      backgroundColor: "#fff",
+      width: "100%",
+      zIndex: 100,
+    },
+    fixednull:{
+      position: "sticky",
 
+    },
     BTNOpenABS: {
       position: "absolute",
       top: 0,
@@ -380,7 +393,8 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: "#fff",
       border: "none",
       height: "80%",
-      overflowY: "scroll",
+      // overflowY: "scroll",
+      // overflowX: "hidden",
     },
     BoxMony: {
       backgroundColor: "#fff",
@@ -660,10 +674,10 @@ const useStyles = makeStyles((theme) => {
       textDecoration: "underline",
       fontWeight: "600",
     },
-    LinkTo:{
-      cursor:'pointer',
-      margin: '10px',
-    }
+    LinkTo: {
+      cursor: "pointer",
+      margin: "10px",
+    },
   };
 });
 export default useStyles;

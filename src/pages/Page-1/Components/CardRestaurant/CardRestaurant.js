@@ -20,9 +20,9 @@ function CardRestaurant(props) {
   const Check_Id = useSelector((state) => state.Check_Id);
   const handleCart = useSelector((state) => state.handleCart);
 
-  console.log("Check_Id", Check_Id?.id);
+  // console.log("Check_Id", Check_Id?.id);
   const Press_Id = (id) => {
-    console.log("CId", id);
+    // console.log("CId", id);
 
     Check_Id?.id === id || (!Check_Id?.id && dispatch(dispatchCheck_Id(id)));
     Check_Id?.id !== id &&

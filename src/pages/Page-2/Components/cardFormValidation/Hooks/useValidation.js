@@ -34,13 +34,21 @@ export function useValidation(
 
   const [products, setProducts] = useState(Products);
   const [payments, setPayments] = useState(Payments);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState([]);
 
   const navigate = useNavigate();
 
-  const handelChange = (e) => {
-    setValue(e.target.value);
+  const handelChangePaiment = (e) => {
+    // let val = value;
+    // let i = 0;
+    // let checked = e.target.checked;
+
+    // checked && val.push(e.target.value);
+    // !checked && delete value[i];
+    // !checked && setValue([...value]);
+    // console.log("value", e.target.value);
   };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues({
@@ -77,7 +85,7 @@ export function useValidation(
   };
   const HandelCode = () => {
     setCode(!code);
-    console.log(`code`, code);
+    // console.log(`code`, code);
   };
 
   const dispatch = useDispatch();
@@ -122,7 +130,7 @@ export function useValidation(
     handleInputChangeOrderProducts,
     handleInputChangeOrderPayements,
     value,
-    handelChange,
+    handelChangePaiment,
     dispatch,
     navigateToSuccess,
   };

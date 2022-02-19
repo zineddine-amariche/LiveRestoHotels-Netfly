@@ -1,5 +1,5 @@
 import { Box, Paper, Typography } from "@material-ui/core";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import useStyles from "../../stylesDetails";
 import Plus from "@material-ui/icons/Add";
 import imageDétails from "../../../../../assets/Intersect.svg";
@@ -32,20 +32,19 @@ function ContainerOrder(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { categories, value, refMenue } = props;
-  console.log("categories", value);
-  // ref={refMenue}
+  const { categories, myRef } = props;
+
   return (
     <Paper className={classes.OrderContainer} elevation={0}>
       {categories.map((i, index) => {
-        // console.log('index', index)
         return (
-          <Box className={classes.ColBodyMenu} key={i.id}>
+          <Box className={classes.ColBodyMenu} key={i.id}  >
             {/* {value === index && ( */}
             <>
-              <Box className={classes.BoxBody} id={i.title} >
+              <Box className={classes.BoxBody} id={`tit${i.id}`} >
                 {i.title} :
               </Box>
+                      
               <Box className={classes.Wraper}  >
                 {i.products.map((i) => {
                   return (
@@ -53,6 +52,7 @@ function ContainerOrder(props) {
                       className={classes.ItemOrderBOX}
                       elevation={0}
                       key={i.id}
+
                     >
                       <Paper className={classes.ItemOrderLeft} elevation={0}>
                         <Typography className={classes.TitleBoxOrder}>
@@ -62,15 +62,15 @@ function ContainerOrder(props) {
                           {i.description}
                         </Typography>
                       </Paper>
-                      
-                      <Paper class={classes.ContR}  >
+
+                      <Paper class={classes.ContR}>
                         <Box class={classes.ImageRightBoxDétails}>
                           <img
                             src={i.img}
                             alt="restaurant détails"
                             onClick={() => {
                               handleClickOpen();
-                              console.log("open Modal");
+                              // console.log("open Modal");
                             }}
                             class={classes.imageDétails}
                           />
@@ -84,9 +84,8 @@ function ContainerOrder(props) {
                   );
                 })}
               </Box>
+              {open && <ModaLimage handleClose={handleClose} i={i.img} />}
             </>
-
-            {open && <ModaLimage handleClose={handleClose} i={imageDétails} />}
           </Box>
         );
       })}

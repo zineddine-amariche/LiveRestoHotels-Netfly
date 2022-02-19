@@ -42,7 +42,7 @@ export default function useConfirmReset() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await dispatch({ type: 'RESET_REQUEST', payload: data });
   };
 

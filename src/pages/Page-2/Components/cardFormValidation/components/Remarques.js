@@ -1,8 +1,8 @@
-import { Box, Checkbox, FormControlLabel } from "@material-ui/core";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Checkbox, FormControlLabel, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import Controls from "../../../../../components/Reusable/RuseForm/Controls/Controls";
 import useStyles from "../styles";
-
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore"
 function Remarques(props) {
   const classes = useStyles();
   const [Email, setEmail] = useState(false);
@@ -21,9 +21,16 @@ function Remarques(props) {
       <Box className={classes.InformationTitre}>
         Une remarque pour cette commande ?
       </Box>
-
-        
-      <Box class={classes.ContainerTextArea} >
+      <Accordion style={{ margin: "15px 5px 15px 0" }} elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography style={{fontWeight:600}}>Remarques </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Box class={classes.ContainerTextArea} >
       <Controls.TextArea
         label={"Remarques ... "}
         {...register("comment")}
@@ -58,6 +65,10 @@ function Remarques(props) {
       )}
       </Box>
      
+        </AccordionDetails>
+      </Accordion>
+        
+    
     </Box>
   );
 }

@@ -39,7 +39,7 @@ const Login = () => {
     horizontal: "center",
   });
   const { vertical, horizontal, open } = state;
-  console.log("open", open);
+  // console.log("open", open);
 
   const handleClose = (event, reason) => {
     if (auth.error) {

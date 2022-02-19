@@ -13,27 +13,35 @@ function Details() {
 
   const [ShowPanier, setShowPanier] = useState(false);
 
-  const handelShowPanier = ()=>{
-    setShowPanier(!ShowPanier)
-  } 
+  const handelShowPanier = () => {
+    setShowPanier(!ShowPanier);
+  };
   const matches = useMediaQuery(theme.breakpoints.up("md"));
   const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
 
-
-
   useEffect(() => {
-   if(!matches){
-    setShowPanier(true)
-     
-   } else if (matchesLarge){
-    setShowPanier(true)
+    if (!matches) {
+      setShowPanier(true);
+    } else if (matchesLarge) {
+      setShowPanier(true);
+    }
+  }, [matches, matchesLarge]);
 
-   }
-  }, [matches,matchesLarge])
+  const [actAppBare, setactAppBare] = useState(true);
+  const scroller = () => {
+    if (window.pageYOffset > 480) {
+      setactAppBare(false)
+    } else {
+      setactAppBare(true)
+    
+    }
+
+  };
+  window.addEventListener("scroll", scroller);
   return (
     <Paper className={classes.ContainerDetails} elevation={0}>
-      <AppBarr handelShowPanier={handelShowPanier} />
-      <DetailsBody  ShowPanier={ShowPanier}/>
+     { actAppBare &&<AppBarr handelShowPanier={handelShowPanier} />}
+      <DetailsBody ShowPanier={ShowPanier} actAppBare={actAppBare} />
     </Paper>
   );
 }

@@ -14,7 +14,7 @@ function BodyRestaurants(props) {
   const Resto = useSelector((state) => state.Restaurants);
   const { Restaurants, establishments } = Resto;
   const { data } = Restaurants;
-  const { defaultDeliveryPrice } = !!data
+  const { defaultDeliveryPrice } = !!data;
   console.log("defaultDeliveryPrice", defaultDeliveryPrice);
 
   const [RestoDta, setResto] = useState(null);
@@ -23,7 +23,7 @@ function BodyRestaurants(props) {
   }, [establishments]);
 
   const filterAllData = (e) => {
-    console.log("e.target.value", e.target.value);
+    // console.log("e.target.value", e.target.value);
     if (
       e.target.value == "fermé" ||
       e.target.value == "ouvert" ||
@@ -33,7 +33,7 @@ function BodyRestaurants(props) {
         return establishments;
       });
       setResto(FilterEstablishments);
-      console.log("RestoDta Uncheck", RestoDta);
+      // console.log("RestoDta Uncheck", RestoDta);
     }
   };
   function filterData(e) {
@@ -53,7 +53,7 @@ function BodyRestaurants(props) {
       });
     }
     setResto(FilterEstablishments);
-    console.log(`object`, FilterEstablishments);
+    // console.log(`object`, FilterEstablishments);
   }
   const filterCaractérstique = (e) => {
     console.log(`e.target.value`, e.target.value);
@@ -73,7 +73,7 @@ function BodyRestaurants(props) {
       });
     }
     setResto(FilterEstablishments);
-    console.log(`carectr`, FilterEstablishments);
+    // console.log(`carectr`, FilterEstablishments);
   };
   const filterTypePlats = (e) => {
     if (e.target.value == "Pâtes") {
@@ -144,7 +144,7 @@ function BodyRestaurants(props) {
     }
 
     setResto(FilterEstablishments);
-    console.log(`carectr`, FilterEstablishments);
+    // console.log(`carectr`, FilterEstablishments);
   };
   const filterRestrictions = (e) => {
     if (e.target.value == "SansGluten") {
@@ -163,7 +163,7 @@ function BodyRestaurants(props) {
       });
     }
     setResto(FilterEstablishments);
-    console.log(`carectr`, FilterEstablishments);
+    // console.log(`carectr`, FilterEstablishments);
   };
   const filterPays = (e) => {
     if (e.target.value == "France") {
@@ -177,7 +177,7 @@ function BodyRestaurants(props) {
       });
     }
     setResto(FilterEstablishments);
-    console.log(`carectr`, FilterEstablishments);
+    // console.log(`carectr`, FilterEstablishments);
   };
   const filterTypePays = (e) => {
     if (e.target.value == "Cuisine Traditionnelle Française") {
@@ -194,30 +194,32 @@ function BodyRestaurants(props) {
     }
 
     setResto(FilterEstablishments);
-    console.log(`carectr`, FilterEstablishments);
+    // console.log(`carectr`, FilterEstablishments);
   };
 
   return (
     <Box className={classes.Body} elevation={0}>
-          {ShowFilter && data && (
-            <FilterRestaunrants
-              filterData={filterData}
-              filterAllData={filterAllData}
-              filterCaractérstique={filterCaractérstique}
-              filterTypePlats={filterTypePlats}
-              filterRestrictions={filterRestrictions}
-              filterPays={filterPays}
-              filterTypePays={filterTypePays}
-            />
-          )}
-          {!data ? (
-            <Loading />
-          ) : (
-            <Paper className={classes.BodyRow} elevation={0}>
-              <SearcheBox />
-              {RestoDta && <CardRestaurant RestoDta={RestoDta} />}
-            </Paper>
-          )}
+      {ShowFilter && data && (
+        <FilterRestaunrants
+          filterData={filterData}
+          filterAllData={filterAllData}
+          filterCaractérstique={filterCaractérstique}
+          filterTypePlats={filterTypePlats}
+          filterRestrictions={filterRestrictions}
+          filterPays={filterPays}
+          filterTypePays={filterTypePays}
+        />
+      )}
+      {!data ? (
+        <Box style={{ width: "100%", height: "100vh" ,backgroundColor: "#fff",display:'flex' ,justifyContent: 'center',}}>
+          <Loading />
+        </Box>
+      ) : (
+        <Paper className={classes.BodyRow} elevation={0}>
+          <SearcheBox />
+          {RestoDta && <CardRestaurant RestoDta={RestoDta} />}
+        </Paper>
+      )}
     </Box>
   );
 }

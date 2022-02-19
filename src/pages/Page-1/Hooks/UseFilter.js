@@ -10,7 +10,7 @@ export default function UseFilter(initialFValues) {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
   };
 
   return {

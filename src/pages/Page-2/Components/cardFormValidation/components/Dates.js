@@ -1,10 +1,14 @@
 import {
+  Accordion,
+  AccordionSummary,
   Box,
   FormControl,
   FormControlLabel,
   FormLabel,
   Radio,
   RadioGroup,
+  AccordionDetails,
+  Typography,
 } from "@material-ui/core";
 
 import React, { useEffect, useState } from "react";
@@ -17,7 +21,7 @@ import {
 } from "../../../../../redux/types/dateTypes";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 function Dates(props) {
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -28,7 +32,7 @@ function Dates(props) {
   const [value, setValue] = useState("");
   const { order, handleInputChangeOrder } = props;
   const { data } = Hours;
-
+  const [Getvalues, setGetvalues] = useState(null);
   const fetchDates = async () => {
     const Token = localStorage.getItem("token");
     const url = `https://dev500.live-resto.fr/api/orders/times-availabilities`;
@@ -66,71 +70,90 @@ function Dates(props) {
   useEffect(() => {
     fetchDates();
   }, [value]);
+
+  const getVale = (val) => {
+    setGetvalues(val);
+  };
   return (
     <Box className={classes.dateContainer}>
       <Box component="legend" className={classes.InformationTitre}>
         Date et heure de laivraison
       </Box>
-      <FormControl component="fieldset" className={classes.Dates}>
-        {state.dates.map((Item, index) => {
-          return (
-            <Box className={classes.DatesMap} key={Item.key}>
-              <RadioGroup
-                aria-label="gender"
-                name="controlled-radio-buttons-group"
-                value={value}
-                onChange={handleChange}
-                defaultValue={!!!index}
-              >
-                <FormControlLabel value={Item.key} control={<Radio />} />
-              </RadioGroup>
-              <FormLabel className={classes.DatesContainer}>
-                {Item.label}
-              </FormLabel>
-            </Box>
-          );
-        })}
-      </FormControl>
 
-      {data.availabilities && (
-        <Box className={classes.dateContainer}>
-          <Box component="legend" className={classes.InformationTitre}>
-            Heure de laivraison
-          </Box>
+      <Accordion style={{ margin: "0px 5px 5px 0" }} elevation={0}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography style={{fontWeight:600}}>
+            {/* {!value ? "Choisir une date" : value} */}
+            {!order.for_when ? !value ? "Choisir une date" : value : order.for_when}
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails className={classes.Field}>
           <FormControl component="fieldset" className={classes.Dates}>
-            {data.availabilities &&
-              data.availabilities.map((i) => {
-                return (
-                  <Box className={classes.DatesMap}>
-                    <Box className={classes.BoxRadio}>
-                      {i.map((j, index) => {
-                        return (
-                          <RadioGroup
-                            aria-label="gender"
-                            name="for_when"
-                            value={order.for_when}
-                            onChange={handleInputChangeOrder}
-                            defaultValue={!!!index}
-                          >
-                            <FormControlLabel
-                              value={j.key}
-                              control={<Radio />}
-                              label={j.label}
-                            />
-                          </RadioGroup>
-                        );
-                      })}
-                    </Box>
-                  </Box>
-                );
-              })}
+            {state.dates.map((Item, index) => {
+              return (
+                <Box className={classes.DatesMap} key={Item.key}>
+                  <RadioGroup
+                    aria-label="gender"
+                    name="controlled-radio-buttons-group"
+                    value={value}
+                    onChange={handleChange}
+                    defaultValue={!!!index}
+                  >
+                    <FormControlLabel value={Item.key} control={<Radio />} />
+                  </RadioGroup>
+                  <FormLabel className={classes.DatesContainer}>
+                    {Item.label}
+                  </FormLabel>
+                </Box>
+              );
+            })}
           </FormControl>
-        </Box>
-      )}
 
-      {data.reason && (
-        <Box className={classes.dataHeursReson}>{data.reason}</Box>
-      )}
+          {data.availabilities && (
+            <Box className={classes.dateContainer}>
+              <Box component="legend" className={classes.InformationTitre}>
+                Heure de laivraison
+              </Box>
+              <FormControl component="fieldset" className={classes.Dates}>
+                {data.availabilities &&
+                  data.availabilities.map((i) => {
+                    return (
+                      <Box className={classes.DatesMap}>
+                        <Box className={classes.BoxRadio}>
+                          {i.map((j, index) => {
+                            return (
+                              <RadioGroup
+                                aria-label="gender"
+                                name="for_when"
+                                value={order.for_when}
+                                onChange={handleInputChangeOrder}
+                                defaultValue={!!!index}
+                              >
+                                <FormControlLabel
+                                  value={j.key}
+                                  control={<Radio />}
+                                  label={j.label}
+                                />
+                              </RadioGroup>
+                            );
+                          })}
+                        </Box>
+                      </Box>
+                    );
+                  })}
+              </FormControl>
+            </Box>
+          )}
+
+          {data.reason && (
+            <Box className={classes.dataHeursReson}>{data.reason}</Box>
+          )}
+        </AccordionDetails>
+      </Accordion>
     </Box>
   );
 }

@@ -35,10 +35,10 @@ export default function useResetPassword() {
   } = useForm({ resolver: yupResolver(schema) });
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     dispatch({ type: 'FORGET_REQUEST', payload: data });
   };
 
-  console.log(watch('email'));
+  // console.log(watch('email'));
   return { classes, auth, register, handleSubmit, onSubmit, errors, isSubmitting };
 }

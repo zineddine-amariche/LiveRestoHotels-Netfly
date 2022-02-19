@@ -1,0 +1,126 @@
+//   <Box className={classes.dateContainer}>
+//       <Box component="legend" className={classes.InformationTitre}>
+//         Mode Paiement :
+//       </Box>
+
+    
+//         <Box className={classes.rowItemBoxes}>
+//           <Box className={classes.ItemRight}>
+//             <Field
+//               as={CustomColorCheckbox}
+//               name="value"
+//               value={"1"}
+//               className={classes.checkBoxItem}
+//               disabled
+//             />
+//             <label className={classes.labelCheck}>CB en ligne</label>
+//           </Box>
+//           {formik.values?.value?.includes("1") ? (
+//             <Box className={classes.LeftInputItem}>
+//               <Input
+//                 type="number"
+//                 InputLabelProps={{
+//                   shrink: true,
+//                 }}
+//                 className={classes.Inpt}
+//                 variant="outlined"
+//                 id="input-with-icon-adornment"
+//                 endAdornment={
+//                   <InputAdornment position="start">
+//                     <AccountCircle
+//                       style={{
+//                         marginLeft: 5,
+//                         fontSize: 20,
+//                         color: "#5DBCA3",
+//                       }}
+//                     />
+//                   </InputAdornment>
+//                 }
+//               />
+//             </Box>
+//           ) : null}
+//         </Box>
+//         <Box className={classes.rowItemBoxes}>
+//           <Box className={classes.ItemRight}>
+//             <Field
+//               as={CustomColorCheckbox}
+//               name="value"
+//               value={"2"}
+//               className={classes.checkBoxItem}
+//             />
+//             <label className={classes.labelCheck}>Chèques</label>
+//           </Box>
+//           {formik.values?.value?.includes("2") ? (
+//             <Box className={classes.LeftInputItem}>
+//               <Input
+//                 type="number"
+//                 InputLabelProps={{
+//                   shrink: true,
+//                 }}
+//                 className={classes.Inpt}
+//                 variant="outlined"
+//                 id="input-with-icon-adornment"
+//                 endAdornment={
+//                   <InputAdornment position="start">
+//                     <AccountCircle
+//                       style={{
+//                         marginLeft: 5,
+//                         fontSize: 20,
+//                         color: "#5DBCA3",
+//                       }}
+//                     />
+//                   </InputAdornment>
+//                 }
+//               />
+//             </Box>
+//           ) : null}
+//         </Box>
+//         <Box className={classes.rowItemBoxes}>
+//           <Box className={classes.ItemRight}>
+//             <Field
+//               // type="checkbox"
+//               as={CustomColorCheckbox}
+//               name="value"
+//               value={"3"}
+//               className={classes.checkBoxItem}
+//             />
+//             <label className={classes.labelCheck}>Espèces</label>
+//           </Box>
+//           {formik.values?.value?.includes("3") ? (
+//             <Box className={classes.LeftInputItem}>
+//               <Input
+//                 type="number"
+//                 InputLabelProps={{
+//                   shrink: true,
+//                 }}
+//                 className={classes.Inpt}
+//                 variant="outlined"
+//                 id="input-with-icon-adornment"
+//                 endAdornment={
+//                   <InputAdornment position="start">
+//                     <AccountCircle
+//                       style={{
+//                         marginLeft: 5,
+//                         fontSize: 20,
+//                         color: "#5DBCA3",
+//                       }}
+//                     />
+//                   </InputAdornment>
+//                 }
+//               />
+//             </Box>
+//           ) : null}
+//         </Box>
+//         <Box className={classes.rowItemBoxes}>
+//           <Box className={classes.ItemRight}>
+//             <Field
+//               // type="checkbox"
+//               as={CustomColorCheckbox}
+//               name="value"
+//               value={"4"}
+//               className={classes.checkBoxItem}
+//             />
+//             <label className={classes.labelCheck}>Ticket restaurant</label>
+//           </Box>
+//         </Box>
+//       </Box>

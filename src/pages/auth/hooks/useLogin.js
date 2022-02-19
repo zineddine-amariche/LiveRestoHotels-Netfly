@@ -67,7 +67,7 @@ export default function useLogin() {
   const onSubmit = async (values) => {
     try {
       const res = await axios.post(url, values, configHead);
-      console.log("res", res);
+      // console.log("res", res);
       localStorage.setItem("Login", res.data.customer.id);
       localStorage.setItem("token", res.data.customer.token);
       dispatch({ type: LOGIN, payload: res.data.customer });

@@ -13,88 +13,82 @@ import {
   scroller,
 } from "react-scroll";
 import { useRef } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 // var Scroll   = require('react-scroll');
 // var Element  = Scroll.Element;
 // var scroller = Scroll.scroller;
 function DétailsMenus(props) {
-  const { categories } = props;
+  const { categories,actAppBare } = props;
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
 
-
-  const scrollTo = (val) => {
-    console.log("scrollTo", val);
-    scroller.scrollTo(val, {
-      duration: 100,
-      delay: 100,
-      smooth: true,
-      // containerId: val,
-      offset: 50, // Scrolls to element + 50 pixels down the page
+  const myRef = useRef(null);
+  const executeScroll = (id) => {
+    const section = document.querySelector(`#tit${id}`);
+    console.log('section', section)
+    section?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
     });
-    // refMenue.current?.scrollIntoView()
   };
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-    // scrollTo(newValue);
-  };
-  const refMenue = useRef(null);
 
-  // useEffect(() => {
-  //   refMenue.current?.scrollIntoView()
-  // }, [value])
   
-  
-  const [val, setVale] = useState(null);
 
+  // actAppBare ? classes.fixed :
 
-  const handel = (val) => {
-    setVale(val);
-    console.log('val', val)
-  };
   return (
     <Paper className={classes.ContainerDetailsMenue} elevation={0}>
-      <Box
-        sx={{
-          width: "100%",
-          bgcolor: "#eee",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Box className={classes.IconFV}>
-          <img src={logoSearch} alt="logo search" />
-        </Box>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
-          classes={{
-            indicator: classes.private,
-          }}
-          TabIndicatorProps={{ style: { backgroundColor: "#485" } }}
-        >
-          {categories.map((i) => {
-            return <Tab label={i.title} key={i.title} />;
-          })}
-        </Tabs>
+      <div className={ classes.fixednull } >
+        {categories.map((i) => {
+          return (
+            <a
+              data-link={i.title}
+              className={classes.scrolTo}
+              onClick={()=>{executeScroll(i.id)}}
+            >
+              {i.title}
+            </a>
+          );
+        })}
+      </div>
 
-
-      </Box>
-
-      <ContainerOrder
-        categories={categories}
-        value={value}
-        refMenue={refMenue}
-      />
+      <ContainerOrder categories={categories} myRef={myRef} />
     </Paper>
   );
 }
 
 export default DétailsMenus;
+
+{
+  /* <Box
+sx={{
+  width: "100%",
+  bgcolor: "#ccc",
+  display: "flex",
+  alignItems: "center",
+}}
+>
+<Box className={classes.IconFV}>
+  <img src={logoSearch} alt="logo search" />
+</Box>
+<Tabs
+  // onClick={() => {
+  //   HandelGo(value);
+  // }}
+  value={value}
+  onChange={HandelGo(value)}
+  variant="scrollable"
+  scrollButtons="auto"
+  aria-label="scrollable auto tabs example"
+  classes={{
+    indicator: classes.private,
+  }}
+  TabIndicatorProps={{ style: { backgroundColor: "#485" } }}
+>
+  {categories.map((i) => {
+    return <Tab label={i.title} key={i.id} id={i.id} />;
+  })}
+</Tabs>
+</Box> */
+}
 
 // {categories.map((i) => {
 //   return (
@@ -103,7 +97,6 @@ export default DétailsMenus;
 //     </ScrollIntoView>
 //   );
 // })}
-
 
 // <Box
 // activeClass="active"

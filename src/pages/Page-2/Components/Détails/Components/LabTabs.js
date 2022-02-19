@@ -13,14 +13,26 @@ export default function LabTabs(props) {
   const { loading } = props;
   const classes = useStyles();
   return (
-  
     <Paper elevation={0} >
       {loading ? (
-        <Box >
+        <Box>
           <DétailsMenus categories={categories} />
         </Box>
       ) : (
-        <Loading />
+        <Box
+          style={{
+            width: "100%",
+            height: "35vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Loading />
+          <Box style={{ fontFamily: "", fontWeight: "600", color: "#237a59" }}>
+            Chargement ...
+          </Box>
+        </Box>
       )}
     </Paper>
   );

@@ -13,7 +13,7 @@ export default function Layout() {
   const isAuth = useSelector((state) => state.auth.isAuth);
   const publicRoutes = useMemo(() => ['/login', '/resetpassword'], []);
 
-  console.log(isAuth);
+  // console.log(isAuth);
   //   const history = useHistory();
 
   //   useEffect(() => {
