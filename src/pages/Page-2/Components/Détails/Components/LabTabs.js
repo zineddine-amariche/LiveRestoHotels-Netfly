@@ -10,7 +10,7 @@ export default function LabTabs(props) {
   const restoOne = useSelector((state) => state.Restaurant);
   const { OneResto } = restoOne;
   const { categories } = OneResto;
-  const { loading } = props;
+  const { loading,actAppBare } = props;
   const classes = useStyles();
   return (
     <Paper elevation={0} >

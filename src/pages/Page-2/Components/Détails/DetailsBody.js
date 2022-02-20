@@ -21,7 +21,7 @@ import LabTabs from "../Détails/Components/LabTabs";
 
 function DetailsBody(props) {
   const [loading, setloading] = useState(false);
-  const { ShowPanier } = props;
+  const { ShowPanier, actAppBare } = props;
   const classes = useStyles();
 
   function scrollToTop() {
@@ -83,7 +83,7 @@ function DetailsBody(props) {
     <Box className={classes.ContainerDetails}>
       <Box className={classes.LeftCol}>
         <HeaderBodyDétails establishment={establishment} />
-        <LabTabs loading={loading} />
+        <LabTabs loading={loading} actAppBare={actAppBare} />
 
         <Fab color="primary" aria-label="add" className={classes.Fab}>
           <ArrowDropUp onClick={scrollToTop} />

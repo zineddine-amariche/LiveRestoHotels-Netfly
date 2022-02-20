@@ -18,8 +18,9 @@ import ModaLimage from "./ModaLimage";
 
 function ContainerOrder(props) {
   const [open, setOpen] = React.useState(false);
+  const { categories ,actAppBare} = props;
 
-  const classes = useStyles(open);
+  const classes = useStyles(open,actAppBare);
   const dispatch = useDispatch();
   const handleAdd = (item) => {
     dispatch(addCart(item));
@@ -32,10 +33,10 @@ function ContainerOrder(props) {
   const handleClose = () => {
     setOpen(false);
   };
-  const { categories, myRef } = props;
 
   return (
     <Paper className={classes.OrderContainer} elevation={0}>
+
       {categories.map((i, index) => {
         return (
           <Box className={classes.ColBodyMenu} key={i.id}  >

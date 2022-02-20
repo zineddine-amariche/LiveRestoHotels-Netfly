@@ -10,11 +10,15 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     zIndex: 100,
   },
-  toolbare: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignSelf: "center",
-    border: "none",
+  toolbare: ({ actAppBare }) => {
+    return {
+      display: "flex",
+      justifyContent: "space-between",
+      alignSelf: "center",
+      border: "none",
+      height: actAppBare? "2px" : "px",
+      backgroundColor: actAppBare? "#ccc" : "#cfdd",
+    };
   },
   image: {
     width: "100%",
@@ -23,7 +27,6 @@ export const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
-
   IconReturn: {
     // backgroundColor: "#eee",
     paddingRight: 10,
@@ -90,7 +93,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     // backgroundColor: "#777",
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
     // width:'20%'
     // marginLeft:90
   },
@@ -161,20 +164,18 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   ImageInd: {
-   width:'50px',
-   height:25,
-
+    width: "50px",
+    height: 25,
   },
   GroupBtn: {
     // backgroundColor: "#ccc",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    margin:"0px 15px",
-    padding:0,
-    height:50,
-   width:'100px'
-
+    margin: "0px 15px",
+    padding: 0,
+    height: 50,
+    width: "100px",
   },
   ItemNombre: {
     position: "absolute",

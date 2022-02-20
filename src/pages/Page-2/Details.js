@@ -1,4 +1,4 @@
-import { Paper, useMediaQuery } from "@material-ui/core";
+import { Divider, Paper, useMediaQuery } from "@material-ui/core";
 import React from "react";
 import useStyles from "./stylesDetails";
 import AppBarr from "../../components/AppHeader/AppBar";
@@ -30,17 +30,15 @@ function Details() {
   const [actAppBare, setactAppBare] = useState(true);
   const scroller = () => {
     if (window.pageYOffset > 480) {
-      setactAppBare(false)
+      setactAppBare(false);
     } else {
-      setactAppBare(true)
-    
+      setactAppBare(true);
     }
-
   };
   window.addEventListener("scroll", scroller);
   return (
     <Paper className={classes.ContainerDetails} elevation={0}>
-     { actAppBare &&<AppBarr handelShowPanier={handelShowPanier} />}
+      <AppBarr handelShowPanier={handelShowPanier} />
       <DetailsBody ShowPanier={ShowPanier} actAppBare={actAppBare} />
     </Paper>
   );

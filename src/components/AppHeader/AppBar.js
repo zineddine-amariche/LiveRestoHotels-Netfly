@@ -27,7 +27,6 @@ const HeaderAppBare = (props) => {
   let params = useParams();
   let { id } = params;
   const state = useSelector((state) => state.handleCart);
-  const classes = useStyles();
 
   const { openLangue, setSelectedIndex } = useLangue();
 
@@ -58,6 +57,17 @@ const HeaderAppBare = (props) => {
   const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const ExtraLarge = useMediaQuery(theme.breakpoints.up("xl"));
 
+  const [actAppBare, setactAppBare] = useState(true);
+  const scroller = () => {
+    if (window.pageYOffset > 480) {
+      setactAppBare(false);
+    } else {
+      setactAppBare(true);
+    }
+  };
+  window.addEventListener("scroll", scroller);
+  const classes = useStyles(actAppBare);
+
   return (
     <Box className={classes.appRoot}>
       <AppBar
@@ -72,6 +82,7 @@ const HeaderAppBare = (props) => {
           elevation={0}
         >
           {/* logo container */}
+
           <Box className={classes.containerRow}>
             {location.pathname === `/dashboard` && (
               <Box className={classes.BarreNav} onClick={ShowFilterHandeler}>

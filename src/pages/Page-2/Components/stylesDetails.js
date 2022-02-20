@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => {
       // backgroundColor: "#96d",
       display: "flex",
       width: "100%",
-      // margin: "75px 0 0px 0px",
-      flexDirection:'column',
+      margin: "75px 0 0px 0px",
+      flexDirection: "column",
       [theme.breakpoints.down("md")]: {
         backgroundColor: "#eee",
       },
@@ -33,8 +33,10 @@ const useStyles = makeStyles((theme) => {
     },
     LeftCol: {
       maxWidth: "80%",
-      backgroundColor: "#000",
+      // backgroundColor: "#000",
+      position: "fixed",
       position: "relative",
+      top: 0,
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "#d48586",
         maxWidth: "100%",
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme) => {
     HeaderDetailsContainer: {
       backgroundColor: "#0d4",
       width: "100%",
-      height: "50vh",
+      // height: "100vh",
       [theme.breakpoints.down("md")]: {
         backgroundColor: "#0d4",
       },
@@ -202,18 +204,19 @@ const useStyles = makeStyles((theme) => {
     IconB: {
       color: "#d478",
     },
-    ContainerDetailsMenue: {
-      margin: "58px 0 0 0 ",
-      display: "flex",
-      flexDirection: "column",
-      padding: "10px 10px 0 10px",
-      backgroundColor: "#fff",
-
-      [theme.breakpoints.down("md")]: {
-        margin: "10px 0px",
-        width: "100%",
-        padding: "5px",
-      },
+    ContainerDetailsMenue: ({ actAppBare }) => {
+      return {
+        margin: !actAppBare? "58px 0 0 0 ": "58px 0 0 0 ",
+        display: "flex",
+        flexDirection: "column",
+        padding: "10px 10px 0 10px",
+        backgroundColor: "#fff",
+        [theme.breakpoints.down("md")]: {
+          margin: "10px 0px",
+          width: "100%",
+          padding: "5px",
+        },
+      };
     },
     private: {
       backgroundColor: "#485",
@@ -258,9 +261,12 @@ const useStyles = makeStyles((theme) => {
       width: "100%",
       zIndex: 100,
     },
-    fixednull:{
-      position: "sticky",
-
+    fixednull: {
+      // position: "absolute",
+      // top: 0,
+      // left: 0,
+      // zIndex: 50,
+      // backgroundColor: "#fff",
     },
     BTNOpenABS: {
       position: "absolute",
@@ -436,13 +442,12 @@ const useStyles = makeStyles((theme) => {
     OrderContainer: {
       maxWidth: "100%",
       display: "flex",
-      marginTop: 15,
+      // marginTop: 25,
       display: "flex",
       alignItems: "center",
       flexWrap: "wrap",
-      backgroundColor: "#fff",
       overflowY: "scroll",
-      height: "100vh",
+      height: "86vh",
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "#748",
         width: "100%",
