@@ -7,15 +7,7 @@ const ModePaiment = (props) => {
   const classes = useStyles();
   const { formik } = props;
 
-  const CustomColorCheckbox = withStyles({
-    root: {
-      color: "#5DBCA3",
-      "&$checked": {
-        color: "#5DBCA3",
-      },
-    },
-    checked: {},
-  })((props) => <Checkbox color="default" {...props} />);
+
 
   return (
     <Box
@@ -26,11 +18,13 @@ const ModePaiment = (props) => {
       <Box className={classes.rowItemBoxes}>
         <Box className={classes.ItemRight}>
           <Field
-            as={CustomColorCheckbox}
+            as={Checkbox}
             name="value"
             value="0"
             className={classes.checkBoxItem}
             disabled
+            color= "#5DBCA3"
+
           />
           <label className={classes.labelCheck}>CB en ligne</label>
         </Box>
@@ -62,10 +56,11 @@ const ModePaiment = (props) => {
       <Box className={classes.rowItemBoxes}>
         <Box className={classes.ItemRight}>
           <Field
-            as={CustomColorCheckbox}
+            as={Checkbox}
             name="value"
             value={1}
             className={classes.checkBoxItem}
+            color="#5DBCA3"
           />
           <label className={classes.labelCheck}>Chèques</label>
         </Box>
@@ -98,10 +93,12 @@ const ModePaiment = (props) => {
         <Box className={classes.ItemRight}>
           <Field
             // type="checkbox"
-            as={CustomColorCheckbox}
+            as={Checkbox}
             name="value"
             value="2"
             className={classes.checkBoxItem}
+            color="#5DBCA3"
+
           />
           <label className={classes.labelCheck}>Espèces</label>
         </Box>
@@ -133,10 +130,12 @@ const ModePaiment = (props) => {
       <Box className={classes.rowItemBoxes}>
         <Box className={classes.ItemRight}>
           <Field
-            as={CustomColorCheckbox}
+            as={Checkbox}
             name="value"
             value="3"
             className={classes.checkBoxItem}
+            color="#5DBCA3"
+
           />
           <label className={classes.labelCheck}>Ticket restaurant</label>
         </Box>

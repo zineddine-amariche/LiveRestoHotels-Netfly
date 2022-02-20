@@ -4,6 +4,7 @@ import { Carousel } from "react-bootstrap";
 import "../../../App.css";
 import useStyles from "../hooks/styles/stylesLogin";
 import { useTranslation } from "react-i18next";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const CarouselContainer = () => {
   const classes = useStyles();

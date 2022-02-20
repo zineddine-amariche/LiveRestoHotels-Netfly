@@ -170,6 +170,11 @@ const useStyles = makeStyles((theme) => ({
     width: 20,
     height: 20,
     marginRight: 15,
+    color: "#5DBCA3",
+    "&$checked ": {
+      color: "#5DBCA3",
+    },
+  
   },
   rowItemBoxes: {
     display: "flex",
