@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     color: COLORS.PRIMARY,
     fontSize: "18px",
     fontWeight: "700",
-    paddingLeft:10
+    paddingLeft: 10,
   },
   DetailsPersonnel: {
     // padding: 20,
@@ -43,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
   },
   Select: {
     width: "90%",
-    display:'flex',
-    alignSelf: 'center',
-    marginLeft:15
+    display: "flex",
+    alignSelf: "center",
+    marginLeft: 15,
   },
   SelectionerText: {
     fontSize: "14px",
@@ -54,12 +54,11 @@ const useStyles = makeStyles((theme) => ({
   },
   Remarques: {
     width: "100%",
-    marginTop:25
-
+    marginTop: 25,
   },
-  ContainerTextArea:{
-      // width:"90%"
-      margin:10
+  ContainerTextArea: {
+    // width:"90%"
+    margin: 10,
   },
   BTNM: {
     backgroundColor: "#5DBCA3",
@@ -82,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   dateContainer: {
     // backgroundColor: "#ccc",
     width: "100%",
-    marginTop:10
+    marginTop: 10,
   },
   DatesMap: {
     // backgroundColor: "#ccc",
@@ -117,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: "flex",
     marginBottom: 4,
-    fontFamily:''
+    fontFamily: "",
   },
   IndexPanier: {
     backgroundColor: "#fff",
@@ -138,52 +137,61 @@ const useStyles = makeStyles((theme) => ({
     margin: 4,
   },
   Field: {
-    width: "90%",
-    margin: 15,
-    display:'flex',
-    flexDirection: 'column',
+    width: "100%",
+    // margin: 15,
+    display: "flex",
+    flexDirection: "column",
   },
-  FormControleCheckBox:{
-    display:"flex",
-    flexDirection: 'column',
-    backgroundColor: '#ccc',
-  },
-  BoxColumnCheck:{
-    display:"flex",
-    flexDirection: 'column',
-    width:'100%',
-    // backgroundColor: '#ccc',
-
-  },
-  FormItemsPaiements:{
-    padding:20
-  },
-  checkBoxItem:{
-    width:20,
-    height:20,
-    marginRight:15
-  },
-  rowItemBoxes:{
-    display:'flex',
-    alignItems: 'center',
-    justifyContent: 'star',
+  rowInputs: {
+    display: "flex",
     width:"100%",
-    margin:'5px 0',
-    justifyContent: 'space-between',
-  },
-  LeftInputItem:{
-    width:"50%"
-  },
-  ItemRight:{
-    display:'flex',
+    backgroundColor: "#eee",
     alignItems: 'center',
   },
-  Inpt:{
-    width:"70%",
-    paddingLeft:5
+  ReactFlagsSelect:{
+    width:'70px',
+    border:"1px solid #eee"
   },
-  labelCheck:{
-    fontWeight:700  
-  }
+  FormControleCheckBox: {
+    display: "flex",
+    flexDirection: "column",
+    backgroundColor: "#ccc",
+  },
+  BoxColumnCheck: {
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    // backgroundColor: '#cecc',
+  },
+  FormItemsPaiements: {
+    padding: 20,
+  },
+  checkBoxItem: {
+    width: 20,
+    height: 20,
+    marginRight: 15,
+  },
+  rowItemBoxes: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "star",
+    width: "100%",
+    margin: "5px 0",
+    justifyContent: "space-between",
+  },
+  LeftInputItem: {
+    width: "50%",
+  },
+  ItemRight: {
+    display: "flex",
+    alignItems: "center",
+  },
+  Inpt: {
+    width: "70%",
+    paddingLeft: 5,
+  },
+  labelCheck: {
+    fontWeight: 700,
+  },
 }));
 export default useStyles;

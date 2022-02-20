@@ -9,15 +9,28 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Field } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import useStyles from "../styles";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
-
+import ReactFlagsSelect from "react-flags-select";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { useRef } from "react";
+import InputPhone from "./InputPhone";
+import ReactPhoneInput from "react-phone-input-2";
+
 function DetailsPersonnel(props) {
   const { formik, code, HandelCode } = props;
   const classes = useStyles();
+  // const [selected, setSelected] = useState("DZ");
+  // console.log("selected", selected);
+
+  const [Phone, setPhone] = useState("");
+  const HandelChangePhone = (event) => {
+   setPhone(event.target.value)
+   
+  };
+  console.log('Phone', Phone)
 
   return (
     <Box className={classes.DetailsPersonnel}>
@@ -74,19 +87,28 @@ function DetailsPersonnel(props) {
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={classes.Field}>
-            <Field
-              className={classes.Field}
-              variant="outlined"
-              id="phone"
-              label="Numéro téléphone"
-              name="phone"
-              type="tel"
-              as={TextField}
+            {/* <Field
+              country={"dz"}
+              name='phone'
+              type="input"
               required
-              // value={formik.values.phone}
-              // onChange={formik.handleChange}
-              // onBlur={formik.handleBlur}
-            />
+              as={ReactPhoneInput}
+              control="input"
+
+            /> */}
+                   <Field
+                className={classes.Field}
+                variant="outlined"
+                id="phone"
+                label="Numéro téléphone"
+                name="phone"
+                type="tel"
+                as={TextField}
+                required
+                // value={formik.values.phone}
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+              />
           </AccordionDetails>
         </Accordion>
         <Accordion
@@ -116,18 +138,17 @@ function DetailsPersonnel(props) {
             </Typography>
           </AccordionSummary>
           <AccordionDetails className={classes.Field}>
-              <Field
-                className={classes.Field}
-                variant="outlined"
-                id="apartement"
-                label="Apartement"
-                name="apartement"
-                type="input"
-                as={TextField}
-                required
-              />
-            <Box >
-
+            <Field
+              className={classes.Field}
+              variant="outlined"
+              id="apartement"
+              label="Apartement"
+              name="apartement"
+              type="input"
+              as={TextField}
+              required
+            />
+            <Box>
               <FormControlLabel
                 control={<Checkbox checked={code} />}
                 label="j'ai un code promotionnel"
@@ -162,3 +183,50 @@ function DetailsPersonnel(props) {
   );
 }
 export default DetailsPersonnel;
+
+{
+  /* <Box className={classes.rowInputs}> */
+}
+{
+  /* {!selected && ( */
+}
+{
+  /* <ReactFlagsSelect
+              selected={selected}
+              onSelect={(code) => setSelected(code)}
+              className={classes.ReactFlagsSelect}
+              // searchable={true}
+              searchPlaceholder="Rechercher un pays"
+              showSelectedLabel={false}
+              showOptionLabel={false}
+              selectedSize={18}
+              optionsSize={14}
+              // disabled={true}
+              ref={userFlag}
+              defaultCountry={selected}
+            /> */
+}
+{
+  /* )} */
+}
+
+{
+  /* {selected && (
+              <Field
+                className={classes.Field}
+                variant="outlined"
+                id="phone"
+                label="Numéro téléphone"
+                name="phone"
+                type="tel"
+                as={TextField}
+                required
+                // value={formik.values.phone}
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+              />
+            )} */
+}
+{
+  /* </Box> */
+}

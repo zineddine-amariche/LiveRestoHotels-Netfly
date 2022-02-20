@@ -9,7 +9,7 @@ import { COLORS } from "../../../utils/theme";
 const useStyles = makeStyles((theme) => {
   return {
     ContainerDetails: {
-      // backgroundColor: "#96d",
+      backgroundColor: "#fff",
       display: "flex",
       width: "100%",
       margin: "75px 0 0px 0px",
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => {
       flexDirection: "column",
       maxWidth: "100%",
       flexWrap: "wrap",
-      backgroundColor: "#ccc",
+      backgroundColor: "#fff",
       [theme.breakpoints.down("md")]: {
         maxWidth: "100%",
       },
@@ -451,6 +451,8 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "#748",
         width: "100%",
+      height: "84vh",
+
       },
     },
     AddClassOrder: {
@@ -524,18 +526,18 @@ const useStyles = makeStyles((theme) => {
       border: " 1px solid #E5E5E7",
 
       [theme.breakpoints.down("md")]: {
-        backgroundColor: "#748",
+        // backgroundColor: "#748",
         display: "flex",
         flexWrap: "noWrap",
         width: "47%",
       },
       [theme.breakpoints.down("768px")]: {
-        backgroundColor: "#748",
+        // backgroundColor: "#748",
         display: "flex",
         width: "60%",
       },
       [theme.breakpoints.down("sm")]: {
-        backgroundColor: "#748",
+        // backgroundColor: "#748",
         display: "flex",
         width: "100%",
       },
