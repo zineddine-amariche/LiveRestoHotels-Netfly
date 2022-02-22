@@ -7,10 +7,9 @@ import {
   CircularProgress,
   Paper,
   Typography,
+  TextField,
 } from "@material-ui/core";
-import axios from "axios";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { submitValidation } from "../../../../redux/actions/validation/actionValidation";
@@ -20,9 +19,7 @@ import ModePaiment from "./components/ModePaiment";
 import Remarques from "./components/Remarques";
 import { useValidation } from "./Hooks/useValidation";
 import useStyles from "./styles";
-import { Form, Field, Formik } from "formik";
-import TextField from "@material-ui/core/TextField";
-import * as Yup from "yup";
+import { Field, Form, Formik } from "formik";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 let Hotel = {
   fullName: "",
@@ -55,10 +52,16 @@ function ValidationForm(props) {
   const Validate = useSelector((state) => state.Validate);
   const state = useSelector((state) => state.handleCart);
   const auth = useSelector((state) => state.auth);
-  const { data, token } = auth;
+  const { data } = auth;
   const { customer } = data;
   const [hotel, setdata] = useState(Hotel);
-  const [IdPaiement, setIdPaiement] = useState();
+  const [IdPaiement, setIdPaiement] = useState(1);
+  const [Cheque, setCheque] = useState(0);
+  const [Ticket, setTicket] = useState(0);
+  const [Especes, setEspeces] = useState(0);
+  const [check, setCheck] = useState(true);
+  const [IdArr, setIdArr] = useState([]);
+  console.log("IdArr", IdArr);
   const {
     register,
     order,
@@ -76,17 +79,11 @@ function ValidationForm(props) {
     handelChangePaiment,
     dispatch,
     navigateToSuccess,
+    validationSchema,
+    all,
+    sum,
+    onChangeInput,
   } = useValidation(Hotel, orderState, billaddress, Products, Payments);
-
-  const Resto = useSelector((state) => state.Restaurants);
-  const { Delivery } = Resto;
-
-  let sum = 0;
-  let all = 0;
-  state.map((i) => {
-    sum += i.quantity * i.price;
-    all = sum + Delivery;
-  });
   const handelTotal = () => {
     customer &&
       setOrder({
@@ -113,12 +110,41 @@ function ValidationForm(props) {
         }))
       );
   };
+  const GetCheque = (e) => {
+    const { name, value } = e.target;
+    setCheque({
+      ...value,
+      [name]: value,
+    });
+  };
+  const GetTicket = (e) => {
+    const { name, value } = e.target;
+    setTicket({
+      ...value,
+      [name]: value,
+    });
+  };
+  const GetEspèces = (e) => {
+    const { name, value } = e.target;
+    setEspeces({
+      ...value,
+      [name]: value,
+    });
+  };
   const HandelPayments = () => {
     customer &&
       setPayments([
         {
-          id: IdPaiement,
-          amount: all.toFixed(2),
+          id: 3,
+          amount: Cheque?.amount || 0,
+        },
+        {
+          id: 5,
+          amount: Ticket?.amount || 0,
+        },
+        {
+          id: 4,
+          amount: Especes?.amount || 0,
         },
       ]);
   };
@@ -126,17 +152,47 @@ function ValidationForm(props) {
     setdata(values);
   };
   const handelId = (id) => {
-    if (id == "3") setIdPaiement(3);
     if (id == "2") setIdPaiement(2);
     if (id == "1") setIdPaiement(1);
-    if (id == "0") setIdPaiement(0);
+    if (id == "5") setIdPaiement(5);
+    if (id == "3") setIdPaiement(3);
+  };
+
+  const calculeSum = () => {
+    let sum =
+      parseFloat(Cheque?.amount || (0).toFixed(2)) +
+      parseFloat(Ticket?.amount || (0).toFixed(2)) +
+      parseFloat(Especes?.amount || (0).toFixed(2));
+    // console.log(
+    //   "sum",
+    //   sum,
+    //   all,
+    //   Especes?.amount,
+    //   Ticket?.amount,
+    //   Cheque?.amount
+    // );
+
+    setCheck(sum);
   };
 
   useEffect(() => {
     handelTotal();
     HandelProducts();
     HandelPayments();
-  }, [sum, state, value, IdPaiement]);
+    calculeSum();
+  }, [
+    sum,
+    state,
+    value,
+    IdPaiement,
+    Cheque?.amount,
+    Ticket?.amount,
+    Especes?.amount,
+    all,
+    Cheque,
+    Ticket,
+    Especes,
+  ]);
   let orders = {
     hotel,
     order: {
@@ -166,30 +222,7 @@ function ValidationForm(props) {
       Authorization: `Bearer ${Token}`,
     },
   };
-  const lengthRegEx = /(?=.{8,})/;
-  const phoneRegex =
-    /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g;
 
-  let validationSchema = Yup.object().shape({
-    fullName: Yup.string()
-      .min(8, "le nom est trop court - doit être de 8 caractères minimum.")
-      .max(35, "Le nom complet est trop long - doit être de 35 caractères maximum.")
-      .matches(lengthRegEx, "Doit contenir au moins 8 caractères !")
-      .required("le nom complet est requis"),
-
-    phone: Yup.string()
-      .min(10, "Numéro téléphone is too short - should be 10 number Minimum.")
-      .matches(phoneRegex, "Doit être un numéro valide !")
-      .required("Numéro téléphone est requis"),
-
-    apartement: Yup.number()
-      .max(2, "Le numéro d'appartement est trop long - doit être de 2 numéros maximum.")
-      .required("Le numéro d'appartement est requis"),
-    voucher_code: Yup.string().min(
-      4,
-      "le code promotionnel est trop court - doit comporter au moins 4 caractères "
-    ),
-  });
   const Hours = useSelector((state) => state.Hours);
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
@@ -211,6 +244,7 @@ function ValidationForm(props) {
                 code={code}
                 order={order}
                 HandelCode={HandelCode}
+                onChangeInput={onChangeInput}
               />
             </Form>,
           ];
@@ -230,29 +264,32 @@ function ValidationForm(props) {
             id="panel1a-header"
           >
             <Typography style={{ fontWeight: 600 }}>
-              {IdPaiement
-                ? IdPaiement === 1
-                  ? "Chèques"
-                  : IdPaiement === 2
-                  ? "Espèces"
-                  : IdPaiement === 3
-                  ? "Ticket restaurant"
-                  : IdPaiement === 0
-                  ? "CB en ligne"
-                  : ""
-                : "Choisir un mode"}
+              Choisir un mode :
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Formik initialValues={value}>
               {(formik) => {
-                handelId(formik.values.value);
+                // console.log("formik.values", formik);
+                handelId(formik.values.id);
+
                 return [
-                  <Form className={classes.FormItemsPaiements}>
+                  <Form
+                    className={classes.FormItemsPaiements}
+                    autoComplete="on"
+                  >
                     <ModePaiment
                       formik={formik}
                       handelChangePaiment={handelChangePaiment}
                       value={value}
+                      Cheque={Cheque}
+                      GetCheque={GetCheque}
+                      GetTicket={GetTicket}
+                      Ticket={Ticket}
+                      GetEspèces={GetEspèces}
+                      Especes={Especes}
+                      check={check}
+                      all={all}
                     />
                   </Form>,
                 ];
@@ -273,7 +310,6 @@ function ValidationForm(props) {
         <span className={classes.spanError}>{Validate.error.message}</span>
       )}
       <Button
-        // disabled={auth.loading || isSubmitting}
         type="submit"
         fullWidth
         variant="contained"
@@ -291,9 +327,9 @@ function ValidationForm(props) {
         disabled={hotel.fullName.length >= 8 ? false : true}
         disabled={hotel.phone.length > 10 ? false : true}
         disabled={hotel.apartement ? false : true}
+        disabled={check !== all ? true : false}
+        // disabled={Object.keys(IdArr)?.includes("3") || Object.keys(IdArr)?.includes("4") || Object.keys(IdArr)?.includes("5") ? true : false}
       >
-        {/* {auth.loading && ( */}
-        {/* )} */}
         Passer ma commande
         {Validate.loading && (
           <CircularProgress
@@ -308,3 +344,45 @@ function ValidationForm(props) {
 }
 
 export default ValidationForm;
+
+{
+  /* {IdPaiement
+                ? IdPaiement === 1
+                  ? "Chèques"
+                  : IdPaiement === 2
+                  ? "Espèces"
+                  : IdPaiement === 3
+                  ? "Ticket restaurant"
+                  : IdPaiement === 0
+                  ? "CB en ligne"
+                  : ""
+                :  */
+}
+{
+  /* <Field
+                      label={"Chèques"}
+                      value={Cheque.amount}
+                      onChange={GetCheque}
+                      name="amount"
+                      required
+                      as={TextField}
+                    /> */
+}
+{
+  /* <Field
+                      label={"Ticket restaurant"}
+                      value={Ticket.amount}
+                      onChange={GetTicket}
+                      name="amount"
+                      required
+                      as={TextField}
+                    />
+                    <Field
+                      label={"Espèces"}
+                      value={Especes.amount}
+                      onChange={GetEspèces}
+                      name="amount"
+                      required
+                      as={TextField}
+                    /> */
+}

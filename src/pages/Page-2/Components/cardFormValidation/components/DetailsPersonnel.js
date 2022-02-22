@@ -25,12 +25,12 @@ function DetailsPersonnel(props) {
   // const [selected, setSelected] = useState("DZ");
   // console.log("selected", selected);
 
-  const [Phone, setPhone] = useState("");
-  const HandelChangePhone = (event) => {
-   setPhone(event.target.value)
+  // const [Phone, setPhone] = useState("");
+  // const HandelChangePhone = (event) => {
+  //  setPhone(event.target.value)
    
-  };
-  console.log('Phone', Phone)
+  // };
+  // console.log('Phone', Phone)
 
   return (
     <Box className={classes.DetailsPersonnel}>

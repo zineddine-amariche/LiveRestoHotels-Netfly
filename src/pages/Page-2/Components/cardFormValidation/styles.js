@@ -192,7 +192,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   Inpt: {
-    width: "70%",
+    width: "100%",
     paddingLeft: 5,
   },
   labelCheck: {
