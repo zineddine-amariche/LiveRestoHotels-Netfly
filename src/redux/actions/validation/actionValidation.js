@@ -17,9 +17,9 @@ export const submitValidation = async (
   await axios
     .post(url, orders, configHead)
     .then((res) => {
-      if (!res.ok) {
-        throw Error("can't validate this order",res.error);
-      }
+      // if (!res.ok) {
+      //   throw Error("can't validate this order", res.error);
+      // }
       dispatch({ type: VALIDATE, payload: res });
       dispatch({ type: "DELETE_ALL_ITEMS" });
       closeValidate();
@@ -33,20 +33,23 @@ export const submitValidation = async (
     //   return err;
     // });
 
-  try {
-    const res = await axios.post(url, orders, configHead);
-    // console.log("res", res);
-    dispatch({ type: VALIDATE, payload: res });
-    dispatch({ type: "DELETE_ALL_ITEMS" });
-    closeValidate();
-    navigateToSuccess();
-    return res;
-  } catch (error) {
-    console.log("error", error.response);
-    dispatch({ type: VALIDATE_FAILED, payload: error });
+    // try {
+    //   const res = await axios.post(url, orders, configHead);
+    //   // console.log("res", res);
+    //   dispatch({ type: VALIDATE, payload: res });
+    //   dispatch({ type: "DELETE_ALL_ITEMS" });
+    //   closeValidate();
+    //   navigateToSuccess();
+    //   return res;
+    // } catch (error) {
+    //   console.log("error", error.response);
+    //   dispatch({ type: VALIDATE_FAILED, payload: error });
 
-    // return error;
-  }
+    //   // return error;
+    // }
+    .catch((error) => {
+      dispatch({ type: VALIDATE_FAILED, payload: error });
+    });
 };
 
 export const dispatchValidation = (res) => {

@@ -10,7 +10,6 @@ import {
   Drawer,
   Container,
   Fab,
-  Snackbar,
   Paper,
 } from "@material-ui/core";
 import Form from "./components/Form";
@@ -32,29 +31,13 @@ const Login = () => {
   const { isAuth, isActive } = auth;
   const dispatch = useDispatch();
 
-  const [openSuuces, setOpen] = React.useState(true);
-  const [state, setState] = React.useState({
-    open: true,
-    vertical: "top",
-    horizontal: "center",
-  });
-  const { vertical, horizontal, open } = state;
+
   // console.log("open", open);
 
-  const handleClose = (event, reason) => {
-    if (auth.error) {
-       setState(!state);
-    }
-  };
 
-  // const handleCloseSuccess = (event, reason) => {
-  //   if (openSuuces) {
-  //     auth.error && setOpen(!openSuuces);
-  //   }
-  // };
-  // useEffect(() => {
-  //   setState(!open);
-  // }, [open]);
+
+
+
   return (
     <Paper className={classes.ContainerLogin}>
       {!matches && (
@@ -68,44 +51,7 @@ const Login = () => {
 
       {matches && (
         <Paper className={classes.Heighter}>
-          <Paper className={classes.Abolute}>
-            {auth.error && (
-              <Snackbar
-                open={open}
-                autoHideDuration={6000}
-                onClose={handleClose}
-                anchorOrigin={{ vertical, horizontal }}
-                key={vertical + horizontal}
-              >
-                <Alert
-                  onClose={handleClose}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  {auth.error} !
-                </Alert>
-              </Snackbar>
-            )}
-            <Paper className={classes.Abolute}>
-              {isAuth && (
-                <Snackbar
-                  open={openSuuces}
-                  autoHideDuration={6000}
-                  onClose={handleCloseSuccess}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                  key={vertical + horizontal}
-                >
-                  <Alert
-                    onClose={handleCloseSuccess}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                  >
-                    {t("login_succes")}
-                  </Alert>
-                </Snackbar>
-              )}
-            </Paper>
-          </Paper>
+     
           <Paper className={classes.ContainerPaperCarousel}>
             <CarouselContainer />
           </Paper>

@@ -52,6 +52,8 @@ function ValidationForm(props) {
   const Validate = useSelector((state) => state.Validate);
   const state = useSelector((state) => state.handleCart);
   const auth = useSelector((state) => state.auth);
+  const Hours = useSelector((state) => state.Hours);
+
   const { data } = auth;
   const { customer } = data;
   const [hotel, setdata] = useState(Hotel);
@@ -60,8 +62,8 @@ function ValidationForm(props) {
   const [Ticket, setTicket] = useState(0);
   const [Especes, setEspeces] = useState(0);
   const [check, setCheck] = useState(true);
-  const [IdArr, setIdArr] = useState([]);
-  console.log("IdArr", IdArr);
+  const [ValidationInfopr, setValidation] = useState(false);
+  const [checkPaymentValid, setCheckPaymentValid] = useState(false);
   const {
     register,
     order,
@@ -84,6 +86,10 @@ function ValidationForm(props) {
     sum,
     onChangeInput,
   } = useValidation(Hotel, orderState, billaddress, Products, Payments);
+  console.log("Cheque", Cheque);
+  const handelValidationPayments = (valur) => {
+    setCheckPaymentValid(valur);
+  };
   const handelTotal = () => {
     customer &&
       setOrder({
@@ -148,8 +154,9 @@ function ValidationForm(props) {
         },
       ]);
   };
-  const HandelHotel = (values) => {
+  const HandelHotel = (values, validation) => {
     setdata(values);
+    setValidation(validation);
   };
   const handelId = (id) => {
     if (id == "2") setIdPaiement(2);
@@ -157,7 +164,6 @@ function ValidationForm(props) {
     if (id == "5") setIdPaiement(5);
     if (id == "3") setIdPaiement(3);
   };
-
   const calculeSum = () => {
     let sum =
       parseFloat(Cheque?.amount || (0).toFixed(2)) +
@@ -193,6 +199,15 @@ function ValidationForm(props) {
     Ticket,
     Especes,
   ]);
+  const Token = localStorage.getItem("token");
+
+  let configHead = {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept-Language": "fr",
+      Authorization: `Bearer ${Token}`,
+    },
+  };
   let orders = {
     hotel,
     order: {
@@ -211,19 +226,8 @@ function ValidationForm(props) {
     },
     bill: bill,
   };
-  // console.log("orders", orders);
+  console.log("orders", orders);
 
-  const Token = localStorage.getItem("token");
-
-  let configHead = {
-    headers: {
-      "Content-Type": "application/json",
-      "Accept-Language": "fr",
-      Authorization: `Bearer ${Token}`,
-    },
-  };
-
-  const Hours = useSelector((state) => state.Hours);
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
       <Formik
@@ -232,7 +236,7 @@ function ValidationForm(props) {
         validationSchema={validationSchema}
       >
         {(formik) => {
-          HandelHotel(formik.values);
+          HandelHotel(formik.values, formik.isValid);
           return [
             <Form
               autoComplete="on"
@@ -250,93 +254,106 @@ function ValidationForm(props) {
           ];
         }}
       </Formik>
-      <Dates handleInputChangeOrder={handleInputChangeOrder} order={order} />
 
-      <Box className={classes.dateContainer}>
-        <Box component="legend" className={classes.InformationTitre}>
-          Mode Paiement :
+      {ValidationInfopr && hotel.apartement  ? (
+        <Dates handleInputChangeOrder={handleInputChangeOrder} order={order} />
+      ) : null}
+
+      {ValidationInfopr && order.for_when  ? (
+        <Box className={classes.dateContainer}>
+          <Box component="legend" className={classes.InformationTitre}>
+            Mode Paiement :
+          </Box>
+          <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography style={{ fontWeight: 600 }}>
+                Choisir un mode :
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Formik initialValues={value}>
+                {(formik) => {
+                  // console.log("formik.values", formik);
+                  handelId(formik.values.id);
+
+                  return [
+                    <Form
+                      className={classes.FormItemsPaiements}
+                      autoComplete="on"
+                    >
+                      <ModePaiment
+                        formik={formik}
+                        handelChangePaiment={handelChangePaiment}
+                        handelValidationPayments={handelValidationPayments}
+                        value={value}
+                        Cheque={Cheque}
+                        GetCheque={GetCheque}
+                        GetTicket={GetTicket}
+                        Ticket={Ticket}
+                        GetEspèces={GetEspèces}
+                        Especes={Especes}
+                        check={check}
+                        all={all}
+                      />
+                    </Form>,
+                  ];
+                }}
+              </Formik>
+            </AccordionDetails>
+          </Accordion>
         </Box>
-        <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography style={{ fontWeight: 600 }}>
-              Choisir un mode :
-            </Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Formik initialValues={value}>
-              {(formik) => {
-                // console.log("formik.values", formik);
-                handelId(formik.values.id);
+      ) : null}
 
-                return [
-                  <Form
-                    className={classes.FormItemsPaiements}
-                    autoComplete="on"
-                  >
-                    <ModePaiment
-                      formik={formik}
-                      handelChangePaiment={handelChangePaiment}
-                      value={value}
-                      Cheque={Cheque}
-                      GetCheque={GetCheque}
-                      GetTicket={GetTicket}
-                      Ticket={Ticket}
-                      GetEspèces={GetEspèces}
-                      Especes={Especes}
-                      check={check}
-                      all={all}
-                    />
-                  </Form>,
-                ];
-              }}
-            </Formik>
-          </AccordionDetails>
-        </Accordion>
-      </Box>
-
-      <Remarques
-        handleInputChangeOrder={handleInputChangeOrder}
-        order={order}
-        register={register}
-        handleInputChangebillEmail={handleInputChangebillEmail}
-        billaddress={billaddress}
-      />
-      {Validate.error && (
-        <span className={classes.spanError}>{Validate.error.message}</span>
-      )}
-      <Button
-        type="submit"
-        fullWidth
-        variant="contained"
-        className={classes.BTNM}
-        onClick={() => {
-          submitValidation(
-            dispatch,
-            orders,
-            configHead,
-            closeValidate,
-            navigateToSuccess
-          );
-        }}
-        disabled={Hours.data.reason ? true : false}
-        disabled={hotel.fullName.length >= 8 ? false : true}
-        disabled={hotel.phone.length > 10 ? false : true}
-        disabled={hotel.apartement ? false : true}
-        disabled={check !== all ? true : false}
-      >
-        Passer ma commande
-        {Validate.loading && (
-          <CircularProgress
-            color="black"
-            className={classes.circularProgress}
-            size={20}
+      {ValidationInfopr && order.for_when && payments.lenght !== 0 && checkPaymentValid ? (
+        <>
+          <Remarques
+            handleInputChangeOrder={handleInputChangeOrder}
+            order={order}
+            register={register}
+            handleInputChangebillEmail={handleInputChangebillEmail}
+            billaddress={billaddress}
           />
-        )}
-      </Button>
+          {Validate.error && (
+            <span className={classes.spanError}>{Validate.error.message}</span>
+          )}
+        </>
+      ) : null}
+
+      {ValidationInfopr && hotel.apartement && order.for_when ? (
+        <Button
+          type="submit"
+          fullWidth
+          variant="contained"
+          className={classes.BTNM}
+          onClick={() => {
+            submitValidation(
+              dispatch,
+              orders,
+              configHead,
+              closeValidate,
+              navigateToSuccess
+            );
+          }}
+          disabled={Hours.data.reason ? true : false}
+          disabled={hotel.fullName.length >= 8 ? false : true}
+          disabled={hotel.phone.length > 10 ? false : true}
+          disabled={hotel.apartement ? false : true}
+          disabled={check !== all ? true : false}
+        >
+          Passer ma commande
+          {Validate.loading && (
+            <CircularProgress
+              color="black"
+              className={classes.circularProgress}
+              size={20}
+            />
+          )}
+        </Button>
+      ) : null}
     </Paper>
   );
 }

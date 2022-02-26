@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 /** @jsxImportSource theme-ui */
-import React from "react";
+import React, { useEffect } from "react";
 
 import {
   Box,
@@ -12,17 +12,21 @@ import {
   Link,
   Typography,
   Paper,
+  Snackbar,
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useLogin from "../hooks/useLogin";
 import { useTranslation } from "react-i18next";
-import { Field, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
+import { useSelector } from "react-redux";
+import { AUTH_DESACTIVE_ERROR } from "../../../redux/types/authTypes";
+import { useDispatch } from "react-redux";
 
-export default function Form() {
+export default function FormLogin() {
   const [open, setOpen] = React.useState(true);
   const { t } = useTranslation(["form"]);
   //Data
@@ -30,9 +34,37 @@ export default function Form() {
     email: "",
     password: "",
   };
+  const [openSuuces, setOpens] = React.useState(true);
+
+
 
   const [state, setState] = useState(initialValues);
   const { classes, onSubmit } = useLogin();
+
+  const auth = useSelector((state) => state.auth);
+  const { isAuth, isActive ,snack_err} = auth;
+
+  const handleClose = (event, reason) => {
+    if (snack_err) {
+      dispatch({type:AUTH_DESACTIVE_ERROR})
+
+    }
+  };
+
+  const handleCloseSuccess = (event, reason) => {
+    if (openSuuces) {
+      auth.error && setOpen(!openSuuces);
+    }
+  };
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+ if(snack_err){
+   setTimeout(() => {
+    dispatch({type:AUTH_DESACTIVE_ERROR})
+   }, 6000);
+ }
+  }, [snack_err])
 
   //password validation
   const emailRegex =
@@ -47,9 +79,21 @@ export default function Form() {
       // .matches(emailRegex, "Must Valide Password!")
       .required("Password is required"),
   });
-  return (
+  return [
     <Paper sx={{ bg: "#fff", padding: "25px 25px" }} elevation={0}>
-      <Box marginTop="20px" display="flex" justifyContent="center">
+      <Paper className={classes.Abolute}>
+        <Snackbar
+          open={snack_err}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        >
+          <Alert onClose={handleClose} severity="error" sx={{ width: "22vw" }}>
+            {auth.error} !
+          </Alert>
+        </Snackbar>
+      </Paper>
+      <Box marginTop="60px" display="flex" justifyContent="center">
         <Typography
           sx={{ color: "btnBackground", marginBottom: 15 }}
           component="h1"
@@ -67,7 +111,7 @@ export default function Form() {
         {(formik) => {
           // console.log("formik", formik);
           return (
-            <Box className={classes.InputContainer}>
+            <Form className={classes.InputContainer}>
               <Field
                 className={classes.inputStyles}
                 variant="outlined"
@@ -80,7 +124,7 @@ export default function Form() {
                 autoFocus
               />
 
-              {formik.errors.email && (
+              {formik.errors.email &&  formik.touched.email && (
                 <span className={classes.spanError}>{formik.errors.email}</span>
               )}
 
@@ -95,7 +139,7 @@ export default function Form() {
                 autoComplete="current-password"
               />
 
-              {formik.errors.password && (
+              {formik.errors.password && formik.touched.password && (
                 <span className={classes.spanError}>
                   {formik.errors.password}
                 </span>
@@ -128,23 +172,20 @@ export default function Form() {
               <Button
                 variant="contained"
                 fullWidth
-                onClick={() => {
-                  onSubmit(formik.values);
-                }}
+                type="submit"
                 sx={{
                   bg: "#237a57",
                   color: "white",
                   fontWeight: "600",
                 }}
+                onClick={() => onSubmit(formik.values)}
               >
                 {t("form_submit")}
               </Button>
-            </Box>
+            </Form>
           );
         }}
       </Formik>
-    </Paper>
-  );
+    </Paper>,
+  ];
 }
-
-

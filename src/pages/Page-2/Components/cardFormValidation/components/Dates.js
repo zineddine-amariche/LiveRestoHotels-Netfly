@@ -69,6 +69,7 @@ function Dates(props) {
 
   useEffect(() => {
     fetchDates();
+   
   }, [value]);
 
   const getVale = (val) => {

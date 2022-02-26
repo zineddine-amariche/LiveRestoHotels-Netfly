@@ -8,9 +8,6 @@ import {
 import useStyles from "../styles";
 import { Field, Form } from "formik";
 import AccountCircle from "@material-ui/icons/Euro";
-import { withStyles } from "@material-ui/styles";
-import { useValidation } from "../Hooks/useValidation";
-import Controls from "../../../../../components/Reusable/RuseForm/Controls/Controls";
 import { useEffect } from "react";
 const ModePaiment = (props) => {
   const classes = useStyles();
@@ -24,8 +21,18 @@ const ModePaiment = (props) => {
     Especes,
     check,
     all,
+    handelValidationPayments,
   } = props;
-  // console.log("check", check);
+
+  useEffect(() => {
+    if (
+      formik?.values?.id?.includes("3") ||
+      formik?.values?.id?.includes("4") ||
+      formik?.values?.id?.includes("5")
+    ) {
+      handelValidationPayments(true);
+    } else handelValidationPayments(false);
+  }, [formik.values]);
 
   return (
     <Box
@@ -145,9 +152,14 @@ const ModePaiment = (props) => {
           </Box>
         ) : null}
       </Box>
-      {formik?.values?.id?.includes("3") || formik?.values?.id?.includes("4") || formik?.values?.id?.includes("5") 
-        ? check !== all &&
-         <Box style={{color:"#f00",fontSize:'12px', marginTop:20}}>La somme des paiements  ne correspond pas au total de la commande</Box> 
+      {formik?.values?.id?.includes("3") ||
+      formik?.values?.id?.includes("4") ||
+      formik?.values?.id?.includes("5")
+        ? check !== all && (
+            <Box style={{ color: "#f00", fontSize: "12px", marginTop: 20 }}>
+              La somme des paiements ne correspond pas au total de la commande
+            </Box>
+          )
         : null}
     </Box>
   );

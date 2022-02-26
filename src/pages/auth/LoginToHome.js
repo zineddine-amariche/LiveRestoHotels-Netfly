@@ -25,18 +25,30 @@ import { useNavigate } from "react-router-dom";
 import { dispatchAction } from "../../redux/actions/actionActiovation";
 import Language from "../../components/AppHeader/components/Language";
 import useLangue from "../../components/AppHeader/Hooks/useLangue";
+import { AUTH_DESACTIVE_SUCCESS } from "../../redux/types/authTypes";
 
 const LoginToHome = () => {
-  // const { t } = useTranslation();
   const { classes, matches } = useLogin();
-  const navigate = useNavigate();
+
   const auth = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuth, isActive } = auth;
+
+
+
+  const { isAuth, isActive, snack_succ } = auth;
   const { t, i18n } = useTranslation(["login"]);
 
-  const { openLangue, setSelectedIndex } = useLangue();
+  const { setSelectedIndex } = useLangue();
 
+  const IsActive = localStorage.getItem("isActive");
+  const AcctiveLess = IsActive ? IsActive : isActive;
+
+  const handleCloseSuccess = () => {
+    if (snack_succ) {
+      dispatch({ type: AUTH_DESACTIVE_SUCCESS });
+    }
+  };
   useEffect(() => {
     switch (i18n.language) {
       case "fr":
@@ -56,26 +68,13 @@ const LoginToHome = () => {
         break;
     }
   }, []);
-  console.log("isActive", isActive);
-  const [openSuuces, setOpenSuuces] = React.useState(true);
-  const [state, setState] = React.useState({
-    open: true,
-    vertical: "top",
-    horizontal: "center",
-  });
-  const { vertical, horizontal, open } = state;
-  const handleCloseSnack = (event, reason) => {
-    if (auth.error) {
-      setState(!state);
+  useEffect(() => {
+    if (snack_succ) {
+      setTimeout(() => {
+        dispatch({ type: AUTH_DESACTIVE_SUCCESS });
+      }, 6000);
     }
-  };
-  const handleCloseSuccess = (event, reason) => {
-    if (openSuuces) {
-      setOpenSuuces(!openSuuces);
-    }
-  };
-  const IsActive = localStorage.getItem("isActive");
-  const AcctiveLess = IsActive ? IsActive : isActive;
+  }, [snack_succ]);
 
   return (
     <>
@@ -134,46 +133,6 @@ const LoginToHome = () => {
         </Box>
       ) : (
         <Paper className={classes.Heighter}>
-          <Paper className={classes.Abolute}>
-            {auth.error && (
-              <Snackbar
-                open={open}
-                autoHideDuration={6000}
-                onClose={handleCloseSnack}
-                anchorOrigin={{ vertical, horizontal }}
-                key={vertical + horizontal}
-              >
-                <Alert
-                  onClose={handleCloseSnack}
-                  severity="error"
-                  sx={{ width: "100%" }}
-                >
-                  {auth.error} !
-                </Alert>
-              </Snackbar>
-            )}
-            <Paper className={classes.Abolute}>
-              {AcctiveLess ? (
-                <Box></Box>
-              ) : (
-                <Snackbar
-                  open={openSuuces}
-                  autoHideDuration={6000}
-                  onClose={handleCloseSuccess}
-                  anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                  key={vertical + horizontal}
-                >
-                  <Alert
-                    onClose={handleCloseSuccess}
-                    severity="success"
-                    sx={{ width: "100%" }}
-                  >
-                    {t("login_succes")}
-                  </Alert>
-                </Snackbar>
-              )}
-            </Paper>
-          </Paper>
           <Paper className={classes.ContainerPaperCarousel}>
             <CarouselContainer />
           </Paper>
@@ -189,6 +148,24 @@ const LoginToHome = () => {
             </Box>
             <Paper className={classes.HoldBox} elevation={0}>
               {/* <Paper></Paper> */}
+              {AcctiveLess ? (
+                <Box></Box>
+              ) : (
+                <Snackbar
+                  open={snack_succ}
+                  autoHideDuration={6000}
+                  onClose={handleCloseSuccess}
+                  anchorOrigin={{ vertical: "top", horizontal: "right" }}
+                >
+                  <Alert
+                    onClose={handleCloseSuccess}
+                    severity="success"
+                    sx={{ width: "22vw" }}
+                  >
+                    {t("login_succes")}
+                  </Alert>
+                </Snackbar>
+              )}
               <Paper className={classes.boxPaper}>
                 <Paper className={classes.title} elevation={0}>
                   {t("login_welcome")}
@@ -205,12 +182,9 @@ const LoginToHome = () => {
                     aria-label="go"
                     onClick={() => {
                       dispatch(dispatchAction());
-                      // dispatch({ type: AUTH_ACTIVATE });
                       {
                         !AcctiveLess && localStorage.setItem("isActive", true);
                       }
-
-                      // dispatch({type:AUTH_ACTIVATE});
                       navigate("/");
                     }}
                   >
