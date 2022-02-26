@@ -6,7 +6,7 @@ function SearcheBox() {
     const classes = useStyles()
     return (
         <Paper className={classes.searcher} elevation={0}>
-            <TextField 
+            {/* <TextField 
             variant="outlined" 
             label="Chercher un restaurant" 
             className={classes.box}
@@ -14,7 +14,7 @@ function SearcheBox() {
                 endAdornment:<SearchIcon position="end"/>
             }}
 
-            />
+            /> */}
         </Paper>
     )
 }

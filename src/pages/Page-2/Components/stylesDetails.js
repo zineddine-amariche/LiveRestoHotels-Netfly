@@ -206,7 +206,7 @@ const useStyles = makeStyles((theme) => {
     },
     ContainerDetailsMenue: ({ actAppBare }) => {
       return {
-        margin: !actAppBare? "58px 0 0 0 ": "58px 0 0 0 ",
+        // margin: !actAppBare? "50px 0 0 0 ": "58px 0 0 0 ",
         display: "flex",
         flexDirection: "column",
         padding: "10px 10px 0 10px",
@@ -215,6 +215,7 @@ const useStyles = makeStyles((theme) => {
           margin: "10px 0px",
           width: "100%",
           padding: "5px",
+
         },
       };
     },
@@ -447,11 +448,13 @@ const useStyles = makeStyles((theme) => {
       alignItems: "center",
       flexWrap: "wrap",
       overflowY: "scroll",
-      height: "86vh",
+      height: "82vh",
       [theme.breakpoints.down("md")]: {
-        // backgroundColor: "#748",
+        backgroundColor: "#748",
         width: "100%",
-      height: "84vh",
+      height: "80vh",
+      backgroundColor: "#fff",
+
 
       },
     },

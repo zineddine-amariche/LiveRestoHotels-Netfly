@@ -256,7 +256,6 @@ function ValidationForm(props) {
         <Box component="legend" className={classes.InformationTitre}>
           Mode Paiement :
         </Box>
-
         <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -328,7 +327,6 @@ function ValidationForm(props) {
         disabled={hotel.phone.length > 10 ? false : true}
         disabled={hotel.apartement ? false : true}
         disabled={check !== all ? true : false}
-        // disabled={Object.keys(IdArr)?.includes("3") || Object.keys(IdArr)?.includes("4") || Object.keys(IdArr)?.includes("5") ? true : false}
       >
         Passer ma commande
         {Validate.loading && (

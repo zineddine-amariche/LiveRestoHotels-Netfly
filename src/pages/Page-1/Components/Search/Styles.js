@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ( {
     },
   },
   searcher: {
-    height: "80px",
+    height: "40px",
     width: "100%",
     zIndex: 10,
     backgroundColor: "transparent",

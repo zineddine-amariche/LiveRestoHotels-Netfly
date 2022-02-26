@@ -85,9 +85,9 @@ function DetailsBody(props) {
         <HeaderBodyDétails establishment={establishment} />
         <LabTabs loading={loading} actAppBare={actAppBare} />
 
-        <Fab color="primary" aria-label="add" className={classes.Fab}>
+        {/* <Fab color="primary" aria-label="add" className={classes.Fab}>
           <ArrowDropUp onClick={scrollToTop} />
-        </Fab>
+        </Fab> */}
       </Box>
 
       {ShowPanier && (

@@ -25,7 +25,7 @@ const ModePaiment = (props) => {
     check,
     all,
   } = props;
-  console.log("check", check);
+  // console.log("check", check);
 
   return (
     <Box

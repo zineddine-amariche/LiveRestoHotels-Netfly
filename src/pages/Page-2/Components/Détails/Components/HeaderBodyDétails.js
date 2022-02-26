@@ -30,7 +30,7 @@ function HeaderBodyDétails(props) {
                 <span className={classes.BacYellow}></span>
 
                 {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
-                <Typography variant="body2" className={classes.body2}>
+                <Typography  className={classes.body2}>
                   {establishment && establishment.caption}
                 </Typography>
                 <span className={classes.VoirPlus}>Plus d'infromation</span>
