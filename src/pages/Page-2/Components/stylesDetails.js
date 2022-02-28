@@ -4,8 +4,12 @@
 // md, medium: 900px
 // lg, large: 1200px
 // xl, extra-large: 1536px
+
+
 import { makeStyles } from "@material-ui/core/styles";
+
 import { COLORS } from "../../../utils/theme";
+
 const useStyles = makeStyles((theme) => {
   return {
     ContainerDetails: {
@@ -33,14 +37,27 @@ const useStyles = makeStyles((theme) => {
     },
     LeftCol: {
       maxWidth: "80%",
-      // backgroundColor: "#000",
+      backgroundColor: "#fff",
       position: "fixed",
       position: "relative",
       top: 0,
       [theme.breakpoints.down("md")]: {
         // backgroundColor: "#d48586",
         maxWidth: "100%",
+        backgroundColor:'#ccc2',
       },
+      [theme.breakpoints.down("lg")]: {
+        // backgroundColor: "#d48586",
+        maxWidth: "100%",
+        backgroundColor:'#ccc2',
+      },
+    },
+    CloseSHopCard:{
+      backgroundColor:'#ccc7',
+      position: "absolute",
+      width:'100%',
+      height:'100%',
+      zIndex:10
     },
     HeaderDetailsContainer: {
       backgroundColor: "#0d4",
@@ -290,6 +307,7 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: "#ccc",
       position: "fixed",
       right: 0,
+      zIndex:10,
       [theme.breakpoints.down("lg")]: {
         // display: "none",
         width: "35%",
@@ -458,6 +476,7 @@ const useStyles = makeStyles((theme) => {
 
       },
     },
+
     AddClassOrder: {
       backgroundColor: "#fff",
       width: "90%",

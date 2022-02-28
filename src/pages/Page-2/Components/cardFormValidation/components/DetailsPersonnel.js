@@ -9,35 +9,70 @@ import {
   Typography,
 } from "@material-ui/core";
 import { Field } from "formik";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from "../styles";
 import "react-phone-input-2/lib/style.css";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 
 function DetailsPersonnel(props) {
   const { formik, code, HandelCode } = props;
   const classes = useStyles();
-console.log('formik', formik)
+  console.log("formik", formik);
+
+  const [expanded, setExpanded] = React.useState("panel1");
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
+
+  const RestfullName = () => {
+    // formik.resetForm()
+    formik.setFieldValue("fullName", "");
+  };
+
+  const RestPhone = () => {
+    // formik.resetForm()
+    formik.setFieldValue("phone", "");
+  };
+  const RestAppartement = () => {
+    // formik.resetForm()
+    formik.setFieldValue("apartement", "");
+  };
+
   return (
     <Box className={classes.DetailsPersonnel}>
       <Box className={classes.InformationTitre}>Informations personnelles</Box>
       <Box style={{ margin: "10px 0" }}>
-        <Accordion style={{ margin: "0px 5px 5px 0" }} elevation={0}>
+        <Accordion
+          expanded={
+            formik.values.fullName.length ? false : expanded === "panel1"
+          }
+          onChange={handleChange("panel1")}
+          style={{ margin: "0px 5px 5px 0" }}
+          elevation={0}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography style={{ fontWeight: 600 }}>
-              {!formik.errors.fullName && formik.values.fullName
-                ? `Nom complet : ${formik.values.fullName}`
-                : !formik.errors.fullName && "Nom complet"}
-              {formik.errors.fullName && (
-                <span className={classes.spanError}>
-                  {formik.errors.fullName}
-                </span>
-              )}
-            </Typography>
+            <Box className={classes.RowApp}>
+              <Typography style={{ fontWeight: 600 }}>
+                {!formik.errors.fullName && formik.values.fullName
+                  ? ` ${formik.values.fullName}`
+                  : !formik.errors.fullName}
+                {formik.errors.fullName && (
+                  <span className={classes.spanError}>
+                    {formik.errors.fullName}
+                  </span>
+                )}
+              </Typography>
+              {formik.values.fullName.length ? (
+                <Box onClick={RestfullName}>
+                  <AutoFixHighIcon fontSize="small" sx={{ marginLeft: 20 }} />{" "}
+                </Box>
+              ) : null}
+            </Box>
           </AccordionSummary>
           <AccordionDetails className={classes.Field}>
             <Field
@@ -53,37 +88,40 @@ console.log('formik', formik)
         </Accordion>
         {formik.values.fullName.length ? (
           <Accordion
-            // disabled={formik.values.fullName.length ? false : true}
             style={{ margin: "0px 5px 5px 0" }}
             elevation={0}
+            expanded={
+              formik.values.fullName.length && formik.values.phone.length
+                ? false
+                : true
+            }
+            onChange={handleChange("panel2")}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography style={{ fontWeight: 600 }}>
-                {!formik.errors.phone && formik.values.fullName  
-                  ? `Numéro téléphone : ${formik.values.phone}`
-                  : !formik.errors.phone && "Numéro téléphone"}
+              <Box className={classes.RowApp}>
+                <Typography style={{ fontWeight: 600 }}>
+                  {!formik.errors.phone && formik.values.fullName
+                    ? `${formik.values.phone}`
+                    : !formik.errors.phone && "Numéro téléphone"}
 
-                { formik.touched.phone && formik.errors.phone && (
-                  <span className={classes.spanError}>
-                    {formik.errors.phone}
-                  </span>
-                )}
-              </Typography>
+                  {formik.touched.phone && formik.errors.phone && (
+                    <span className={classes.spanError}>
+                      {formik.errors.phone}
+                    </span>
+                  )}
+                </Typography>
+                {formik.values.phone.length ? (
+                  <Box onClick={RestPhone}>
+                    <AutoFixHighIcon fontSize="small" sx={{ marginLeft: 20 }} />{" "}
+                  </Box>
+                ) : null}
+              </Box>
             </AccordionSummary>
             <AccordionDetails className={classes.Field}>
-              {/* <Field
-              country={"dz"}
-              name='phone'
-              type="input"
-              required
-              as={ReactPhoneInput}
-              control="input"
-
-            /> */}
               <Field
                 className={classes.Field}
                 variant="outlined"
@@ -104,28 +142,35 @@ console.log('formik', formik)
           <Accordion
             elevation={0}
             style={{ margin: "0px 5px 5px 0" }}
-            // disabled={
-            //   formik.values.fullName.length && formik.values.phone.length
-            //     ? false
-            //     : true
-            // }
+            expanded={
+              formik.values.phone.length && formik.values.apartement.length
+                ? false
+                : true
+            }
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel2a-content"
               id="panel2a-header"
             >
-              <Typography style={{ fontWeight: 600 }}>
-                {!formik.errors.apartement && formik.values.apartement
-                  ? `Numéro de l'partement : ${formik.values.apartement}`
-                  : !formik.errors.apartement && "Numéro de l'partement"}
+              <Box className={classes.RowApp}>
+                <Typography style={{ fontWeight: 600 }}>
+                  {!formik.errors.apartement && formik.values.apartement
+                    ? ` ${formik.values.apartement}`
+                    : !formik.errors.apartement && "Numéro de l'partement"}
 
-                {formik.touched.apartement && formik.errors.apartement && (
-                  <span className={classes.spanError}>
-                    {formik.errors.apartement}
-                  </span>
-                )}
-              </Typography>
+                  {formik.touched.apartement && formik.errors.apartement && (
+                    <span className={classes.spanError}>
+                      {formik.errors.apartement}
+                    </span>
+                  )}
+                </Typography>
+                {formik.values.apartement.length ? (
+                  <Box onClick={RestAppartement}>
+                    <AutoFixHighIcon fontSize="small" sx={{ marginLeft: 20 }} />{" "}
+                  </Box>
+                ) : null}
+              </Box>
             </AccordionSummary>
             <AccordionDetails className={classes.Field}>
               <Field
@@ -174,30 +219,6 @@ console.log('formik', formik)
   );
 }
 export default DetailsPersonnel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {
   /* <Box className={classes.rowInputs}> */

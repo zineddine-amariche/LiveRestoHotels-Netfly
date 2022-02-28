@@ -33,7 +33,7 @@ const ModePaiment = (props) => {
       handelValidationPayments(true);
     } else handelValidationPayments(false);
   }, [formik.values]);
-
+console.log('check', check)
   return (
     <Box
       role="group"
@@ -155,18 +155,18 @@ const ModePaiment = (props) => {
       {formik?.values?.id?.includes("3") ||
       formik?.values?.id?.includes("4") ||
       formik?.values?.id?.includes("5")
-        ? check !== all && (
+       ? check === 0 || check === all  ? null : check >= 1 ?  (
             <Box style={{ color: "#f00", fontSize: "12px", marginTop: 20 }}>
               La somme des paiements ne correspond pas au total de la commande
             </Box>
-          )
+          ) :null
         : null}
     </Box>
   );
 };
 
 export default ModePaiment;
-
+// ? Cheque.amount === ""  || Ticket.amount === "" || Especes.amount === ""? null :
 {
   /* <Field
               type="number"

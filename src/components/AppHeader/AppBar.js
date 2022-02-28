@@ -53,9 +53,9 @@ const HeaderAppBare = (props) => {
   const GoabackHome = () => {
     navigate("/");
   };
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
-  const ExtraLarge = useMediaQuery(theme.breakpoints.up("xl"));
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesLarge = useMediaQuery(theme.breakpoints.down("lg"));
+  const ExtraLarge = useMediaQuery(theme.breakpoints.down("xl"));
 
   const [actAppBare, setactAppBare] = useState(true);
   const scroller = () => {
@@ -106,7 +106,7 @@ const HeaderAppBare = (props) => {
                 src={shoppingCart}
                 className={classes.CarteShopImage}
                 onClick={() => {
-                  if (!matchesLarge) {
+                  if (matchesLarge || ExtraLarge||matches) {
                     location.pathname === `/details/${id}` &&
                       handelShowPanier();
                   }

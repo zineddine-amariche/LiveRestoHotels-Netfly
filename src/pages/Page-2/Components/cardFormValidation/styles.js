@@ -70,6 +70,13 @@ const useStyles = makeStyles((theme) => ({
     padding: 10,
     // marginRight: ,
   },
+  RowApp:{
+    // backgroundColor: "#ccc",
+    display:'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width:"100%"
+  },
   Container: {
     width: "100%",
     margin: 5,

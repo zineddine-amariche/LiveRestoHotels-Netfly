@@ -86,7 +86,6 @@ function ValidationForm(props) {
     sum,
     onChangeInput,
   } = useValidation(Hotel, orderState, billaddress, Products, Payments);
-  console.log("Cheque", Cheque);
   const handelValidationPayments = (valur) => {
     setCheckPaymentValid(valur);
   };
@@ -227,7 +226,11 @@ function ValidationForm(props) {
     bill: bill,
   };
   console.log("orders", orders);
+  const [expanded, setExpanded] = React.useState('panel1');
 
+  const handleChangeEx = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
       <Formik
@@ -264,7 +267,8 @@ function ValidationForm(props) {
           <Box component="legend" className={classes.InformationTitre}>
             Mode Paiement :
           </Box>
-          <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}>
+
+          <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}   expanded={expanded === 'panel1'}  onChange={handleChangeEx('panel1')} >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"

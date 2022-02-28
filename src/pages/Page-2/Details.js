@@ -16,8 +16,9 @@ function Details() {
   const handelShowPanier = () => {
     setShowPanier(!ShowPanier);
   };
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
-  const matchesLarge = useMediaQuery(theme.breakpoints.up("lg"));
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+  const matchesLarge = useMediaQuery(theme.breakpoints.down("lg"));
+  const ExtraLarge = useMediaQuery(theme.breakpoints.down("xl"));
 
   useEffect(() => {
     if (!matches) {
@@ -25,7 +26,10 @@ function Details() {
     } else if (matchesLarge) {
       setShowPanier(true);
     }
-  }, [matches, matchesLarge]);
+    else if (ExtraLarge) {
+      setShowPanier(true);
+    }
+  }, [matches, matchesLarge,ExtraLarge]);
 
   const [actAppBare, setactAppBare] = useState(true);
   const scroller = () => {
@@ -39,7 +43,7 @@ function Details() {
   return (
     <Paper className={classes.ContainerDetails} elevation={0}>
       <AppBarr handelShowPanier={handelShowPanier} />
-      <DetailsBody ShowPanier={ShowPanier} actAppBare={actAppBare} />
+      <DetailsBody ShowPanier={ShowPanier} actAppBare={actAppBare} handelShowPanier={handelShowPanier} />
     </Paper>
   );
 }

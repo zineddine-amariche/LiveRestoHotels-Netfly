@@ -75,13 +75,19 @@ function Dates(props) {
   const getVale = (val) => {
     setGetvalues(val);
   };
+
+  const [expanded, setExpanded] = React.useState('panel1');
+
+  const handleChangeEx = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   return (
     <Box className={classes.dateContainer}>
       <Box component="legend" className={classes.InformationTitre}>
         Date et heure de laivraison
       </Box>
 
-      <Accordion style={{ margin: "0px 5px 5px 0" }} elevation={0}>
+      <Accordion style={{ margin: "0px 5px 5px 0" }} elevation={0} expanded={expanded === 'panel1'}  onChange={handleChangeEx('panel1')}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"

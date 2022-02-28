@@ -1,4 +1,14 @@
 const theme = {
+
+  // breakpoints: {
+  //   values: {
+  //     xs: 0,
+  //     sm: 400,
+  //     md: 700,
+  //     lg: 1200,
+  //     xl: 1536,
+  //   },
+  // },
   initialColorName: "light",
   colors: {
     text: "white",

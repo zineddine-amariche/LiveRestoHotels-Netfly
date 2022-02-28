@@ -33,8 +33,6 @@ export function useValidation(
   const [bill, setbillEmail] = useState("");
   const [code, setCode] = useState(false);
 
-  
-
   const [products, setProducts] = useState(Products);
   const [payments, setPayments] = useState(Payments);
 
@@ -65,8 +63,6 @@ export function useValidation(
       [name]: value,
     });
   };
-
-
 
   const handleInputChangebillEmail = (e) => {
     setbillEmail(e.target.value);
@@ -141,10 +137,9 @@ export function useValidation(
       .required("Numéro téléphone est requis"),
 
     apartement: Yup.number()
-      .max(
-        2,
-        "Le numéro d'appartement est trop long - doit être de 2 numéros maximum."
-      )
+      // .max(
+      //   "Le numéro d'appartement est trop long - doit être de 2 numéros maximum."
+      // )
       .required("Le numéro d'appartement est requis"),
     voucher_code: Yup.string().min(
       4,
@@ -183,6 +178,5 @@ export function useValidation(
     all,
     sum,
     onChangeInput,
-  
   };
 }
