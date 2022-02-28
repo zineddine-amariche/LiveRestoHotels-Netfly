@@ -84,13 +84,12 @@ function DetailsBody(props) {
   const matchesxs = useMediaQuery(theme.breakpoints.down("xs"));
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
   const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+
+  // 
   const matchesLarge = useMediaQuery(theme.breakpoints.down("lg"));
   const ExtraLarge = useMediaQuery(theme.breakpoints.down("xl"));
-  console.log("matchesxs", matchesxs);
-  console.log("matchessm", matchessm);
-  console.log("matches", matches);
-  console.log("matchesLarge", matchesLarge);
-  console.log("ExtraLarge", ExtraLarge);
+
   return (
     <Box className={classes.ContainerDetails}>
       <Box className={classes.LeftCol}>
@@ -106,22 +105,17 @@ function DetailsBody(props) {
             onClick={handelShowPanier}
           ></Box>
         )}
-        {matchesLarge && ShowPanier && (
-          <Box
-            className={classes.CloseSHopCard}
-            onClick={handelShowPanier}
-          ></Box>
-        )}
-        {/* {ExtraLarge && ShowPanier && (
+        {/* {matches && ShowPanier && (
           <Box
             className={classes.CloseSHopCard}
             onClick={handelShowPanier}
           ></Box>
         )} */}
+
         <HeaderBodyDétails establishment={establishment} />
         <LabTabs loading={loading} actAppBare={actAppBare} />
-
-        {/* <Fab color="primary" aria-label="add" className={classes.Fab}>
+{/* 
+        <Fab color="primary" aria-label="add" className={classes.Fab}>
           <ArrowDropUp onClick={scrollToTop} />
         </Fab> */}
       </Box>

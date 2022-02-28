@@ -5,7 +5,6 @@
 // lg, large: 1200px
 // xl, extra-large: 1536px
 
-
 import { makeStyles } from "@material-ui/core/styles";
 
 import { COLORS } from "../../../utils/theme";
@@ -18,9 +17,6 @@ const useStyles = makeStyles((theme) => {
       width: "100%",
       margin: "75px 0 0px 0px",
       flexDirection: "column",
-      [theme.breakpoints.down("md")]: {
-        backgroundColor: "#eee",
-      },
       "&:hover": {},
     },
     Fab: {
@@ -36,28 +32,34 @@ const useStyles = makeStyles((theme) => {
       },
     },
     LeftCol: {
-      maxWidth: "80%",
+      width: "80%",
       backgroundColor: "#fff",
       position: "fixed",
       position: "relative",
       top: 0,
-      [theme.breakpoints.down("md")]: {
-        // backgroundColor: "#d48586",
-        maxWidth: "100%",
-        backgroundColor:'#ccc2',
-      },
       [theme.breakpoints.down("lg")]: {
-        // backgroundColor: "#d48586",
-        maxWidth: "100%",
-        backgroundColor:'#ccc2',
+        // display: "none",
+        width: "65%",
+      },
+      [theme.breakpoints.down("md")]: {
+        // display: "none",
+        width: "65%",
+      },
+      [theme.breakpoints.down("sm")]: {
+        // display: "none",
+        width: "100%",
+      },
+      [theme.breakpoints.down("xs")]: {
+        // display: "none",
+        width: "100%",
       },
     },
-    CloseSHopCard:{
-      backgroundColor:'#ccc7',
+    CloseSHopCard: {
+      backgroundColor: "#ccc7",
       position: "absolute",
-      width:'100%',
-      height:'100%',
-      zIndex:10
+      width: "100%",
+      height: "100%",
+      zIndex: 10,
     },
     HeaderDetailsContainer: {
       backgroundColor: "#0d4",
@@ -223,7 +225,6 @@ const useStyles = makeStyles((theme) => {
     },
     ContainerDetailsMenue: ({ actAppBare }) => {
       return {
-        // margin: !actAppBare? "50px 0 0 0 ": "58px 0 0 0 ",
         display: "flex",
         flexDirection: "column",
         padding: "10px 10px 0 10px",
@@ -232,7 +233,6 @@ const useStyles = makeStyles((theme) => {
           margin: "10px 0px",
           width: "100%",
           padding: "5px",
-
         },
       };
     },
@@ -301,13 +301,14 @@ const useStyles = makeStyles((theme) => {
       justifyContent: "center",
     },
     RightCol: {
-      height: "100%",
+      height: "100vh",
       width: "20%",
       boxShadow: " rgba(149, 157, 165, 0.2) 0px 8px 24px",
       backgroundColor: "#ccc",
       position: "fixed",
       right: 0,
-      zIndex:10,
+      zIndex: 10,
+
       [theme.breakpoints.down("lg")]: {
         // display: "none",
         width: "35%",
@@ -330,7 +331,9 @@ const useStyles = makeStyles((theme) => {
       display: "flex",
       flexDirection: "column",
       height: "100vh",
-      backgroundColor: "#fff",
+      // backgroundColor: "#ccc",
+      // overflowY: "scroll",
+      // height: "90%",
     },
     BoxHeaderShop: {
       width: "100%",
@@ -417,9 +420,18 @@ const useStyles = makeStyles((theme) => {
       alignItems: "center",
       backgroundColor: "#fff",
       border: "none",
-      height: "80%",
+      // height: "80%",
       // overflowY: "scroll",
       // overflowX: "hidden",
+    },
+    BoxHeaderShopBodyItems: {
+      height: "74vh",
+      overflowY: "scroll",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      // backgroundColor: "#ccc",
+      marginBottom: 10,
     },
     BoxMony: {
       backgroundColor: "#fff",
@@ -470,10 +482,12 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down("md")]: {
         backgroundColor: "#748",
         width: "100%",
-      height: "80vh",
-      backgroundColor: "#fff",
-
-
+        height: "80vh",
+        backgroundColor: "#ccc",
+      },
+      [theme.breakpoints.down("lg")]: {
+        backgroundColor: "#748",
+        width: "100%",
       },
     },
 
@@ -535,6 +549,7 @@ const useStyles = makeStyles((theme) => {
       flexWrap: "wrap",
       // justifyContent: "center",
       paddingLeft: 0,
+      // backgroundColor: "#ccc",
     },
     ItemOrderBOX: {
       display: "flex",
@@ -542,26 +557,27 @@ const useStyles = makeStyles((theme) => {
       width: "49%",
       // marginBottom: 10,
       backgroundColor: "#F8F8F8",
-      margin: "15px 0px 5px 10px",
+      margin: "15px 0px 5px 5px",
       height: "136px",
       overflow: "hidden",
       border: " 1px solid #E5E5E7",
 
       [theme.breakpoints.down("md")]: {
-        // backgroundColor: "#748",
         display: "flex",
-        flexWrap: "noWrap",
-        width: "47%",
+        width: "90%",
+        margin: "15px 10px 5px 10px",
+        justifyContent: 'center',
+        
       },
-      [theme.breakpoints.down("768px")]: {
-        // backgroundColor: "#748",
+      [theme.breakpoints.down("lg")]: {
         display: "flex",
-        width: "60%",
+        width: "95%",
       },
       [theme.breakpoints.down("sm")]: {
-        // backgroundColor: "#748",
         display: "flex",
         width: "100%",
+        margin: "15px 10px 5px 10px",
+
       },
     },
     BoxItemBody: {

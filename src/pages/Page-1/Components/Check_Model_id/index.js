@@ -6,7 +6,10 @@ import { Close } from "@material-ui/icons";
 import { Box, Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
-import { dispatchCheck_Id_Delete, dispatchCheck_Id_Desactive } from "../../../../redux/actions/ActionCheck_id";
+import {
+  dispatchCheck_Id_Delete,
+  dispatchCheck_Id_Desactive,
+} from "../../../../redux/actions/ActionCheck_id";
 import { useDispatch } from "react-redux";
 // import img from "../../assets/DeleteUser.png";
 const CheckIdModel = (props) => {
@@ -21,7 +24,6 @@ const CheckIdModel = (props) => {
   const deleteAll = () => {
     dispatch({ type: "DELETE_ALL_ITEMS" });
     dispatch(dispatchCheck_Id_Delete());
-
   };
   return (
     <Box
@@ -36,14 +38,19 @@ const CheckIdModel = (props) => {
             <Box className={classes.Header}>
               <Box className={classes.Title}>Alert !</Box>
 
-              <Button>
+              <Button
+                onClick={() => {
+                  dispatch(dispatchCheck_Id_Desactive());
+                }}
+              >
                 <Close />
               </Button>
             </Box>
             <Box className={classes.bodyText}>
               Vous ne pouvez pas ajouter des produits de restaurants différents
-              au sein d'un même panier.<br/> Videz le contenu de votre panier si vous
-              souhaitez ajouter ce produit
+              au sein d'un même panier.
+              <br /> Videz le contenu de votre panier si vous souhaitez ajouter
+              ce produit
             </Box>
 
             <Box className={classes.Body}></Box>
@@ -55,7 +62,6 @@ const CheckIdModel = (props) => {
               onClick={() => {
                 deleteAll();
                 dispatch(dispatchCheck_Id_Desactive());
-
               }}
             >
               Vider le panier

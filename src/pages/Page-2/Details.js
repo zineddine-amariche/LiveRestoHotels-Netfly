@@ -19,17 +19,18 @@ function Details() {
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const matchesLarge = useMediaQuery(theme.breakpoints.down("lg"));
   const ExtraLarge = useMediaQuery(theme.breakpoints.down("xl"));
+  const matchesxs = useMediaQuery(theme.breakpoints.down("xs"));
+  const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
 
   useEffect(() => {
-    if (!matches) {
+    if (matches) {
       setShowPanier(true);
     } else if (matchesLarge) {
       setShowPanier(true);
-    }
-    else if (ExtraLarge) {
+    } else if (ExtraLarge || matchesxs || matchessm) {
       setShowPanier(true);
     }
-  }, [matches, matchesLarge,ExtraLarge]);
+  }, [matches, matchesLarge, ExtraLarge,matchessm,matchesxs]);
 
   const [actAppBare, setactAppBare] = useState(true);
   const scroller = () => {
@@ -43,7 +44,11 @@ function Details() {
   return (
     <Paper className={classes.ContainerDetails} elevation={0}>
       <AppBarr handelShowPanier={handelShowPanier} />
-      <DetailsBody ShowPanier={ShowPanier} actAppBare={actAppBare} handelShowPanier={handelShowPanier} />
+      <DetailsBody
+        ShowPanier={ShowPanier}
+        actAppBare={actAppBare}
+        handelShowPanier={handelShowPanier}
+      />
     </Paper>
   );
 }

@@ -33,6 +33,7 @@ function HeaderShop() {
   const closeValidate = () => {
     setValide(false);
   };
+
   return (
     <Paper className={classes.containerHeaderShop} elevation={0}>
       <Box className={classes.BoxHeaderShop}>
@@ -81,7 +82,7 @@ function HeaderShop() {
               </Typography>
             </>
           ) : (
-            <>
+            <Box className={classes.BoxHeaderShopBodyItems}>
               <CardShop state={state} />
               <Box className={classes.BoxMony}>
                 {data && <Calcule />}
@@ -97,7 +98,7 @@ function HeaderShop() {
                   Valider
                 </Button>
               </Box>
-            </>
+            </Box>
           )}
         </Box>
       ) : (

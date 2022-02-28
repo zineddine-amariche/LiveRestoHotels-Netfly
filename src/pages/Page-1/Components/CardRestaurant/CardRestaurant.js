@@ -87,7 +87,6 @@ function CardRestaurant(props) {
                       <Link
                         variant="contained"
                         className={classes.ButtonContent}
-                        // to={Check_Id?.id == i.id || Check_Id?.id == null && `/details/${i.id}`}
                         to={`/details/${i.id}`}
                         onClick={() => {
                           // Press_Id(i.id);
