@@ -1,4 +1,4 @@
-import { Divider, Paper, useMediaQuery } from "@material-ui/core";
+import { Paper, useMediaQuery, Box } from "@material-ui/core";
 import React from "react";
 import useStyles from "./stylesDetails";
 import AppBarr from "../../components/AppHeader/AppBar";
@@ -6,6 +6,7 @@ import DetailsBody from "./Components/Détails/DetailsBody";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useTheme } from "@material-ui/core/styles";
+import CARSP from "./Button-Panier";
 
 function Details() {
   const classes = useStyles();
@@ -30,7 +31,7 @@ function Details() {
     } else if (ExtraLarge || matchesxs || matchessm) {
       setShowPanier(true);
     }
-  }, [matches, matchesLarge, ExtraLarge,matchessm,matchesxs]);
+  }, [matches, matchesLarge, ExtraLarge, matchessm, matchesxs]);
 
   const [actAppBare, setactAppBare] = useState(true);
   const scroller = () => {
@@ -49,6 +50,9 @@ function Details() {
         actAppBare={actAppBare}
         handelShowPanier={handelShowPanier}
       />
+      {/* {matches && <Box className={classes.CARDBUTTON}>SHOW MY CARD SHOP</Box>} */}
+      {matchesxs && <CARSP  handelShowPanier={handelShowPanier}/>}
+      {matchessm && <CARSP handelShowPanier={handelShowPanier}/>}
     </Paper>
   );
 }

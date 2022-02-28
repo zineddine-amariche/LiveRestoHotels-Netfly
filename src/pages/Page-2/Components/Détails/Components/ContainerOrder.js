@@ -5,15 +5,6 @@ import Plus from "@material-ui/icons/Add";
 import imageDétails from "../../../../../assets/Intersect.svg";
 import { useDispatch } from "react-redux";
 import { addCart } from "../../../../../redux/actions/addToCartAction";
-import {
-  Link,
-  Button,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
 import ModaLimage from "./ModaLimage";
 
 function ContainerOrder(props) {
