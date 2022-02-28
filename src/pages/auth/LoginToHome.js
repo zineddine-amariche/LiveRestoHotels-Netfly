@@ -166,7 +166,7 @@ const LoginToHome = () => {
                   </Alert>
                 </Snackbar>
               )}
-              <Paper className={classes.boxPaper}>
+              <Paper className={classes.boxPaper} elevation={1}>
                 <Paper className={classes.title} elevation={0}>
                   {t("login_welcome")}
                 </Paper>

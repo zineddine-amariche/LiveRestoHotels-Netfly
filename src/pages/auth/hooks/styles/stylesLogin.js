@@ -66,8 +66,9 @@ const useStyles = makeStyles((theme) => ({
     // flexDirection: "column",
     // alignItems: "center",
     // justifyContent: "center",
-    height: "45vh",
+    // height: "45vh",
     // marginBottom:60
+    padding:'15px 0'
   },
   title: {
     fontWeight: "700",

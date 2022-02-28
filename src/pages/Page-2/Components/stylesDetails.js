@@ -62,11 +62,11 @@ const useStyles = makeStyles((theme) => {
       zIndex: 10,
     },
     HeaderDetailsContainer: {
-      backgroundColor: "#0d4",
+      // backgroundColor: "#0d4",
       width: "100%",
       // height: "100vh",
       [theme.breakpoints.down("md")]: {
-        backgroundColor: "#0d4",
+        // backgroundColor: "#0d4",
       },
     },
     Image: {
@@ -480,13 +480,13 @@ const useStyles = makeStyles((theme) => {
       overflowY: "scroll",
       height: "82vh",
       [theme.breakpoints.down("md")]: {
-        backgroundColor: "#748",
+        // backgroundColor: "#748",
         width: "100%",
         height: "80vh",
         backgroundColor: "#ccc",
       },
       [theme.breakpoints.down("lg")]: {
-        backgroundColor: "#748",
+        // backgroundColor: "#748",
         width: "100%",
       },
     },
@@ -496,7 +496,7 @@ const useStyles = makeStyles((theme) => {
       width: "90%",
       padding: "20px 90px",
       [theme.breakpoints.down("lg")]: {
-        backgroundColor: "#eee",
+        // backgroundColor: "#eee",
       },
     },
     TitileOrderOpen: {
@@ -525,7 +525,7 @@ const useStyles = makeStyles((theme) => {
       width: "40%",
       // backgroundColor: "#789",
       [theme.breakpoints.down("xs")]: {
-        backgroundColor: "#eee",
+        // backgroundColor: "#eee",
         marginLeft: 35,
         transition: "1s ease-in",
       },

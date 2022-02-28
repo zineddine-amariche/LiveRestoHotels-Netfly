@@ -13,9 +13,12 @@ import {
   Typography,
   Paper,
   Snackbar,
+  InputAdornment,
+  IconButton,
 } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
 import CircularProgress from "@material-ui/core/CircularProgress";
 import useLogin from "../hooks/useLogin";
 import { useTranslation } from "react-i18next";
@@ -40,10 +43,11 @@ export default function FormLogin() {
 
   const [state, setState] = useState(initialValues);
   const { classes, onSubmit } = useLogin();
-
+  const [showPassword, setShowPassword] = useState(false);
   const auth = useSelector((state) => state.auth);
   const { isAuth, isActive ,snack_err} = auth;
-
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const handleClose = (event, reason) => {
     if (snack_err) {
       dispatch({type:AUTH_DESACTIVE_ERROR})
@@ -137,9 +141,23 @@ export default function FormLogin() {
                 as={TextField}
                 required
                 autoComplete="current-password"
+                type={showPassword ? "text" : "password"} 
+                InputProps={{ // <-- This is where the toggle button is added.
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
               />
 
-              {formik.errors.password && formik.touched.password && (
+              {formik.errors.password && formik.touched.email && (
                 <span className={classes.spanError}>
                   {formik.errors.password}
                 </span>
