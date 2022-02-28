@@ -15,7 +15,7 @@ function BodyRestaurants(props) {
   const { Restaurants, establishments } = Resto;
   const { data } = Restaurants;
   const { defaultDeliveryPrice } = !!data;
-  console.log("defaultDeliveryPrice", defaultDeliveryPrice);
+  // console.log("defaultDeliveryPrice", defaultDeliveryPrice);
 
   const [RestoDta, setResto] = useState(null);
   useEffect(() => {

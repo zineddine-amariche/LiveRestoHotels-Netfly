@@ -6,6 +6,7 @@ const Check_id = JSON.parse(localStorage.getItem("Check_id"));
 const initialState = {
   id: Check_id ? Check_id : null,
   activeModal: false,
+  id_Clicked:null
 };
 
 export default function Check_Id(state = initialState, action) {
@@ -34,6 +35,11 @@ export default function Check_Id(state = initialState, action) {
         activeModal: false,
         id: null,
       };
+      case types.CHECK_ID_CLICKED:
+        return {
+          ...state,
+          id_Clicked:payload
+        };
     default:
       return state;
   }

@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import {
   dispatchCheck_Id,
   dispatchCheck_Id_Active,
+  dispatchCheck_Id_Clicked,
 } from "../../../../redux/actions/ActionCheck_id";
 import { useSelector } from "react-redux";
 
@@ -104,6 +105,8 @@ function CardRestaurant(props) {
                         // to={Check_Id?.id == i.id || Check_Id?.id == null && `/details/${i.id}`}
                         to={``}
                         onClick={() => {
+                          // console.log('i.id', i.id)
+                          dispatchCheck_Id_Clicked(i.id)
                           dispatchActiveModel(i.id);
                         }}
                       >

@@ -2,7 +2,7 @@
 import React from "react";
 import "./Modal.css";
 
-import { Close } from "@material-ui/icons";
+import { Close, NavigateBefore } from "@material-ui/icons";
 import { Box, Button } from "@material-ui/core";
 import useStyles from "./styles";
 import { useSelector } from "react-redux";
@@ -11,16 +11,21 @@ import {
   dispatchCheck_Id_Desactive,
 } from "../../../../redux/actions/ActionCheck_id";
 import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+
 // import img from "../../assets/DeleteUser.png";
 const CheckIdModel = (props) => {
   const classes = useStyles();
   const { ModalClose } = props;
   const state = useSelector((state) => state.handleCart);
+  const Check_Id = useSelector((state) => state.Check_Id);
+
   let sum = 0;
   state.map((i) => {
     sum += i.quantity * i.price;
   });
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const deleteAll = () => {
     dispatch({ type: "DELETE_ALL_ITEMS" });
     dispatch(dispatchCheck_Id_Delete());
@@ -62,7 +67,9 @@ const CheckIdModel = (props) => {
               onClick={() => {
                 deleteAll();
                 dispatch(dispatchCheck_Id_Desactive());
+                navigate(`/details/${Check_Id?.id_Clicked}`);
               }}
+              disabled={Check_Id?.id_Clicked ? false : true}
             >
               Vider le panier
             </Button>
