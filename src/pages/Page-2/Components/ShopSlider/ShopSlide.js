@@ -29,6 +29,8 @@ function HeaderShop() {
   const deleteAll = () => {
     dispatch({ type: "DELETE_ALL_ITEMS" });
     dispatch(dispatchCheck_Id_Delete());
+    localStorage.setItem("Cart", null);
+
   };
   const closeValidate = () => {
     setValide(false);
@@ -82,8 +84,11 @@ function HeaderShop() {
               </Typography>
             </>
           ) : (
+            <>
             <Box className={classes.BoxHeaderShopBodyItems}>
               <CardShop state={state} />
+              </Box>
+
               <Box className={classes.BoxMony}>
                 {data && <Calcule />}
                 {data && <Frais />}
@@ -97,8 +102,9 @@ function HeaderShop() {
                 >
                   Valider
                 </Button>
-              </Box>
             </Box>
+            </>
+
           )}
         </Box>
       ) : (

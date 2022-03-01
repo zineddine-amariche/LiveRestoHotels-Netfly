@@ -22,6 +22,7 @@ export const submitValidation = async (
       // }
       dispatch({ type: VALIDATE, payload: res });
       dispatch({ type: "DELETE_ALL_ITEMS" });
+      localStorage.setItem("Cart", null);
       closeValidate();
       navigateToSuccess();
       return res;

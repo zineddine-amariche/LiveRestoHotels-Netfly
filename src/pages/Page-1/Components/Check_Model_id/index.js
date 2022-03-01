@@ -29,6 +29,8 @@ const CheckIdModel = (props) => {
   const deleteAll = () => {
     dispatch({ type: "DELETE_ALL_ITEMS" });
     dispatch(dispatchCheck_Id_Delete());
+    localStorage.setItem("Cart", null);
+
   };
   return (
     <Box
@@ -67,9 +69,10 @@ const CheckIdModel = (props) => {
               onClick={() => {
                 deleteAll();
                 dispatch(dispatchCheck_Id_Desactive());
-                navigate(`/details/${Check_Id?.id_Clicked}`);
+                
+                navigate(`/details/${Check_Id?.Clicked}`);
               }}
-              disabled={Check_Id?.id_Clicked ? false : true}
+              disabled={Check_Id?.Clicked ? false : true}
             >
               Vider le panier
             </Button>

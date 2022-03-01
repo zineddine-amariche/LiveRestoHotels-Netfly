@@ -1,10 +1,10 @@
 import {
   CHECK_ID,
   CHECK_ID_ACTIVATE,
-  CHECK_ID_CLICKED,
   CHECK_ID_DELETE,
   CHECK_ID_DESACTIVATE,
 } from "../../types/typeCheck_id";
+import { CHECK_ID_CLICKED } from "../../types/typeCheck_id";
 
 export const dispatchCheck_Id = (data) => {
   return {

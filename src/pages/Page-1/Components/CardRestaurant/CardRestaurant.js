@@ -1,4 +1,4 @@
-import { Box, Paper, Typography, Tooltip } from "@material-ui/core";
+import { Box, Paper, Typography, Tooltip,Button } from "@material-ui/core";
 import React from "react";
 import useStyles from "./stylesSearchBare";
 import Star from "@material-ui/icons/Star";
@@ -99,19 +99,17 @@ function CardRestaurant(props) {
                   )}
                   {Check_Id?.id !== i.id && (
                     <Tooltip title="Commander">
-                      <Link
+                      <Button
                         variant="contained"
                         className={classes.ButtonContent}
-                        // to={Check_Id?.id == i.id || Check_Id?.id == null && `/details/${i.id}`}
                         to={``}
                         onClick={() => {
-                          // console.log('i.id', i.id)
-                          dispatchCheck_Id_Clicked(i.id)
+                          dispatch(dispatchCheck_Id_Clicked(i.id));
                           dispatchActiveModel(i.id);
                         }}
                       >
                         Commander
-                      </Link>
+                      </Button>
                     </Tooltip>
                   )}
                 </>

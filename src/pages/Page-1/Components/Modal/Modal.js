@@ -21,6 +21,8 @@ const Modal = (props) => {
   const deleteAll = () => {
     dispatch({ type: "DELETE_ALL_ITEMS" });
     dispatch(dispatchCheck_Id_Delete());
+    localStorage.setItem("Cart", null);
+
 
   };
   return (

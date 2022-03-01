@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => {
       top: 0,
       [theme.breakpoints.down("lg")]: {
         // display: "none",
-        width: "65%",
+        width: "75%",
       },
       [theme.breakpoints.down("md")]: {
         // display: "none",
@@ -311,7 +311,7 @@ const useStyles = makeStyles((theme) => {
 
       [theme.breakpoints.down("lg")]: {
         // display: "none",
-        width: "35%",
+        width: "25%",
       },
       [theme.breakpoints.down("md")]: {
         // display: "none",
@@ -330,7 +330,7 @@ const useStyles = makeStyles((theme) => {
       alignItems: "center",
       display: "flex",
       flexDirection: "column",
-      height: "100vh",
+      height: "100%",
       // backgroundColor: "#ccc",
       // overflowY: "scroll",
       // height: "90%",
@@ -425,20 +425,24 @@ const useStyles = makeStyles((theme) => {
       // overflowX: "hidden",
     },
     BoxHeaderShopBodyItems: {
-      height: "74vh",
+      height: "53vh",
       overflowY: "scroll",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      // backgroundColor: "#ccc",
+      backgroundColor: "#fff",
       marginBottom: 10,
+      width:'100%'
     },
     BoxMony: {
       backgroundColor: "#fff",
-      width: "90%",
+      width: "100%",
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      position: "absolute",
+      bottom:90,
+      right:0
     },
     RowST: {
       display: "flex",
