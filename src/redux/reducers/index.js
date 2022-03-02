@@ -9,6 +9,7 @@ import Hours from "./hoursReducers"
 import Activation from "./activeMessages"
 import Validate from "./validation/validation"
 import Check_Id from "./Check_Id_Restaurants/Check_Id";
+import coordinates from "./user_activity";
 const rootReducer = combineReducers({
   auth,
   params,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   Activation,
   Validate,
   Check_Id,
+  coordinates
 
   
 });

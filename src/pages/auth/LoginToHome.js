@@ -26,6 +26,7 @@ import { dispatchAction } from "../../redux/actions/actionActiovation";
 import Language from "../../components/AppHeader/components/Language";
 import useLangue from "../../components/AppHeader/Hooks/useLangue";
 import { AUTH_DESACTIVE_SUCCESS } from "../../redux/types/authTypes";
+import { dispatchNotRedirected } from "../../redux/actions/Coordinates";
 
 const LoginToHome = () => {
   const { classes, matches } = useLogin();
@@ -33,7 +34,8 @@ const LoginToHome = () => {
   const auth = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const coordinates = useSelector((state) => state.coordinates);
+  const { IsRedirected } = coordinates;
 
 
   const { isAuth, isActive, snack_succ } = auth;
@@ -182,6 +184,8 @@ const LoginToHome = () => {
                     aria-label="go"
                     onClick={() => {
                       dispatch(dispatchAction());
+                     if(IsRedirected){ dispatch(dispatchNotRedirected())}
+                      
                       {
                         !AcctiveLess && localStorage.setItem("isActive", true);
                       }

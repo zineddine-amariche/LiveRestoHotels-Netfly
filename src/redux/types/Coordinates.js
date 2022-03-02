@@ -1,0 +1,2 @@
+export const IS_REDIRECTED = 'IS_REDIRECTED';
+export const IS_NOT_REDIRECTED = 'IS_NOT_REDIRECTED';

@@ -7,11 +7,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useTheme } from "@material-ui/core/styles";
 import CARSP from "./Button-Panier";
-
 function Details() {
   const classes = useStyles();
   const theme = useTheme();
-
   const [ShowPanier, setShowPanier] = useState(false);
 
   const handelShowPanier = () => {
@@ -42,8 +40,10 @@ function Details() {
     }
   };
   window.addEventListener("scroll", scroller);
+
+
   return (
-    <Paper className={classes.ContainerDetails} elevation={0}>
+    <Paper className={classes.ContainerDetails} elevation={0} id="stopped">
       <AppBarr handelShowPanier={handelShowPanier} />
       <DetailsBody
         ShowPanier={ShowPanier}

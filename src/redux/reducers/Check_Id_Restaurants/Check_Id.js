@@ -11,7 +11,7 @@ const initialState = {
 
 export default function Check_Id(state = initialState, action) {
   const { type, payload } = action;
-console.log('payload', payload)
+// console.log('payload', payload)
   switch (action.type) {
     case types.CHECK_ID:
       return {
