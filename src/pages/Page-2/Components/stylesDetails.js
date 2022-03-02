@@ -425,7 +425,7 @@ const useStyles = makeStyles((theme) => {
       // overflowX: "hidden",
     },
     BoxHeaderShopBodyItems: {
-      height: "53vh",
+      height: "58vh",
       overflowY: "scroll",
       display: "flex",
       flexDirection: "column",
@@ -443,6 +443,16 @@ const useStyles = makeStyles((theme) => {
       position: "absolute",
       bottom:90,
       right:0
+    },
+    ValidationBox:{
+      width: "19vw",
+      backgroundColor: "#fff",
+      display: 'flex',
+      flexDirection: 'column',
+
+    },
+    col:{
+width:'100%'
     },
     RowST: {
       display: "flex",

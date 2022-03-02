@@ -2,45 +2,32 @@
 
 /** @jsxImportSource theme-ui */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import {
-  Box,
-  Drawer,
-  Container,
-  Fab,
-  Paper,
-} from "@material-ui/core";
+import { Box, Drawer, Paper } from "@material-ui/core";
 import Form from "./components/Form";
 import useLogin from "./hooks/useLogin";
 import Logo from "../../assets/logo.png";
-import { ArrowRightAlt } from "@material-ui/icons";
 import CarouselContainer from "./components/BoostCarousel";
-import { useSelector } from "react-redux";
-import Alert from "@material-ui/lab/Alert";
-import { useDispatch } from "react-redux";
-import { AUTH_ACTIVATE } from "../../redux/types/authTypes";
 import { useNavigate } from "react-router-dom";
-import LoginToHome from "./LoginToHome";
+import Close from "@material-ui/icons/Close";
+import Menue from "@material-ui/icons/MenuOpen";
+import useStyles from "./hooks/styles/stylesLogin";
 const Login = () => {
   const { t } = useTranslation(["login"]);
-  const { classes, matches, Faketoken } = useLogin();
+  const { md, xlg, lg, sm, xs, xsU, smU, lgU, xlgU, mdU } = useLogin();
   const navigate = useNavigate();
-  const auth = useSelector((state) => state.auth);
-  const { isAuth, isActive } = auth;
-  const dispatch = useDispatch();
+  const [FromClose, setFromClose] = useState(true);
 
-
-  // console.log("open", open);
-
-
-
-
-
+  const classes = useStyles({ FromClose });
+  const CloseForm = () => {
+    setFromClose(!FromClose);
+  };
+console.log('xs', xs)
   return (
-    <Paper className={classes.ContainerLogin}>
-      {!matches && (
+    <Box className={classes.ContainerLogin}>
+      {xs && (
         <Box className={classes.ContainerLoginItems}>
           <Box className={classes.ImageBoxContainer}>
             <img src={Logo} alt="NBK Logo" className={classes.BoxImage} />
@@ -49,12 +36,19 @@ const Login = () => {
         </Box>
       )}
 
-      {matches && (
+      {!xs && (
         <Paper className={classes.Heighter}>
-     
           <Paper className={classes.ContainerPaperCarousel}>
-            <CarouselContainer />
+            {/* <Box className={classes.MenueBtn}>
+              {!FromClose ? (
+                <Menue onClick={CloseForm} />
+              ) : (
+                <Close onClick={CloseForm} />
+              )}
+            </Box> */}
+            <CarouselContainer FromClose={FromClose} />
           </Paper>
+
           <Drawer
             variant="permanent"
             anchor="right"
@@ -63,12 +57,12 @@ const Login = () => {
             }}
           >
             <Box className={classes.BoxContainerForm}>
-              <Form></Form>
+              <Form FromClose={FromClose} CloseForm={CloseForm}></Form>
             </Box>
           </Drawer>
         </Paper>
       )}
-    </Paper>
+    </Box>
   );
 };
 

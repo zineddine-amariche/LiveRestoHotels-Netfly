@@ -28,8 +28,11 @@ import * as Yup from "yup";
 import { useSelector } from "react-redux";
 import { AUTH_DESACTIVE_ERROR } from "../../../redux/types/authTypes";
 import { useDispatch } from "react-redux";
+import  Close from "@material-ui/icons/Close"
+import  Menue from "@material-ui/icons/MenuOpen"
 
-export default function FormLogin() {
+
+export default function FormLogin({FromClose,CloseForm}) {
   const [open, setOpen] = React.useState(true);
   const { t } = useTranslation(["form"]);
   //Data
@@ -42,12 +45,14 @@ export default function FormLogin() {
 
 
   const [state, setState] = useState(initialValues);
-  const { classes, onSubmit } = useLogin();
+  const { classes, onSubmit } = useLogin(FromClose);
   const [showPassword, setShowPassword] = useState(false);
   const auth = useSelector((state) => state.auth);
   const { isAuth, isActive ,snack_err} = auth;
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
+
+
   const handleClose = (event, reason) => {
     if (snack_err) {
       dispatch({type:AUTH_DESACTIVE_ERROR})
@@ -84,7 +89,8 @@ export default function FormLogin() {
       .required("Password is required"),
   });
   return [
-    <Paper sx={{ bg: "#fff", padding: "25px 25px" }} elevation={0}>
+    <Paper sx={{ bg: "#fff", padding: "25px 25px"  }} elevation={0}>
+     {/* {!FromClose ? <Menue onClick={CloseForm}  /> : <Close onClick={CloseForm} />} */}
       <Paper className={classes.Abolute}>
         <Snackbar
           open={snack_err}
@@ -178,13 +184,13 @@ export default function FormLogin() {
                   }
                   label={t("form_remember_me")}
                 />
-                <Link
+                {/* <Link
                   href="/resetPassword"
                   variant="body2"
                   sx={{ color: "btnBackground" }}
                 >
                   {t("form_forgot")}
-                </Link>
+                </Link> */}
               </Box>
 
               <Button

@@ -19,7 +19,7 @@ const Total = () => {
       });
       return (
         <Typography style={{ fontWeight: "bold" }}>
-          {all.toFixed(2)} €
+          {all?.toFixed(2)} €
         </Typography>
       );
     }

@@ -1,9 +1,18 @@
-import { Box, Button, Paper, Typography } from "@material-ui/core";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  Button,
+  Paper,
+  Typography,
+} from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import useStyles from "../stylesDetails";
 import RemoveShoppingCart from "@material-ui/icons/RemoveShoppingCart";
 import logoShop from "../../../../assets/shopping-cart (1).svg";
 import CardShop from "./components/CardShop ";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { useDispatch, useSelector } from "react-redux";
 import ValidationForm from "../cardFormValidation/index";
 import logo from "../../../../assets/chevron-right.svg";
@@ -30,12 +39,15 @@ function HeaderShop() {
     dispatch({ type: "DELETE_ALL_ITEMS" });
     dispatch(dispatchCheck_Id_Delete());
     localStorage.setItem("Cart", null);
-
   };
   const closeValidate = () => {
     setValide(false);
   };
+  const [expanded, setExpanded] = React.useState('panel1');
 
+  const handleChange = (panel) => (event, newExpanded) => {
+    setExpanded(newExpanded ? panel : false);
+  };
   return (
     <Paper className={classes.containerHeaderShop} elevation={0}>
       <Box className={classes.BoxHeaderShop}>
@@ -85,26 +97,43 @@ function HeaderShop() {
             </>
           ) : (
             <>
-            <Box className={classes.BoxHeaderShopBodyItems}>
-              <CardShop state={state} />
+              <Box className={classes.BoxHeaderShopBodyItems}>
+                <CardShop state={state} />
               </Box>
-
-              <Box className={classes.BoxMony}>
-                {data && <Calcule />}
-                {data && <Frais />}
-                {data && <Total />}
-                <Button
-                  variant="contained"
-                  className={classes.BTNM}
-                  onClick={() => {
-                    setValide(true);
-                  }}
+              <Accordion className={classes.BoxMony} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  // className={classes.ValidationBox}
                 >
-                  Valider
-                </Button>
-            </Box>
+                  <Typography></Typography>
+                </AccordionSummary>
+                <Box className={classes.ValidationBox}>
+                  <AccordionDetails>
+                    <Box className={classes.col}>
+                      <Box>
+                        {data && <Calcule />}
+                        {data && <Frais />}
+                        {data && <Total />}
+                      </Box>
+                      <Box sx={{width:'100%'}}>
+                        <Button
+                        fullWidth
+                          variant="contained"
+                          className={classes.BTNM}
+                          onClick={() => {
+                            setValide(true);
+                          }}
+                        >
+                          Valider
+                        </Button>
+                      </Box>
+                    </Box>
+                  </AccordionDetails>
+                </Box>
+              </Accordion>
             </>
-
           )}
         </Box>
       ) : (

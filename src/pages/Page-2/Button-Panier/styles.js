@@ -13,13 +13,13 @@ const useStyles = makeStyles((theme) => {
   return {
     CARDBUTTON: {
       position: "fixed",
-      bottom: -10,
+      bottom: 3,
       left: 0,
       backgroundColor: "#fff",
       width: "100%",
       height: "8vh",
       display: "flex",
-      padding: 10,
+      height: "6vh",
     },
     BtnContainer: {
       backgroundColor: "#5dbca3",

@@ -93,7 +93,7 @@ function ValidationForm(props) {
     customer &&
       setOrder({
         ...order,
-        ["total"]: all.toFixed(2),
+        ["total"]: all?.toFixed(2),
         ["establishment_id"]: id,
         // ["origin_id"]: customer.origin_id,
         ["origin_id"]: 2,

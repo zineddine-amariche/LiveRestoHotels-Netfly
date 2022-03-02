@@ -56,10 +56,7 @@ const HeaderAppBare = (props) => {
 
   const matchesxs = useMediaQuery(theme.breakpoints.down("xs"));
   const matchessm = useMediaQuery(theme.breakpoints.down("sm"));
-
   const matches = useMediaQuery(theme.breakpoints.down("md"));
-
-
   const matchesLarge = useMediaQuery(theme.breakpoints.down("lg"));
   const ExtraLarge = useMediaQuery(theme.breakpoints.down("xl"));
 

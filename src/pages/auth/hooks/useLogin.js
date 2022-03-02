@@ -34,11 +34,22 @@ const initialState = {
   success: "",
 };
 
-export default function useLogin() {
-  const classes = useStyles();
+export default function useLogin(FromClose) {
+  // console.log('FromClose', FromClose)
+  const classes = useStyles(FromClose);
   const theme = useTheme();
   const navigate = useNavigate();
-  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+  const xs = useMediaQuery(theme.breakpoints.down("xs"));
+  const sm = useMediaQuery(theme.breakpoints.down("sm"));
+  const md = useMediaQuery(theme.breakpoints.down("md"));
+  const lg = useMediaQuery(theme.breakpoints.down("lg"));
+  const xlg = useMediaQuery(theme.breakpoints.down("xl"));
+
+  const xsU = useMediaQuery(theme.breakpoints.up("xs"));
+  const smU = useMediaQuery(theme.breakpoints.up("sm"));
+  const mdU= useMediaQuery(theme.breakpoints.up("md"));
+  const lgU = useMediaQuery(theme.breakpoints.up("lg"));
+  const xlgU = useMediaQuery(theme.breakpoints.up("xl"));
   const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const [authUser, setAuthUser] = useState(initialState);
@@ -77,7 +88,6 @@ export default function useLogin() {
   };
   return {
     classes,
-    matches,
     auth,
     register,
     handleSubmit,
@@ -88,5 +98,15 @@ export default function useLogin() {
     handleChangeInput,
     authUser,
     Faketoken,
+    xs,
+    sm,
+    lg,
+    xlg,
+    md,
+    xsU,
+    smU,
+    lgU,
+    xlgU,
+    mdU
   };
 }
