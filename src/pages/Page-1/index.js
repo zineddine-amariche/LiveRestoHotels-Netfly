@@ -8,7 +8,7 @@ import useStyles from "./Styles";
 import Modal from "./Components/Modal/Modal";
 import CheckIdModel from "./Components/Check_Model_id";
 import { useSelector } from "react-redux";
-import { dispatchRedirected } from "../../redux/actions/Coordinates";
+import { dispatchRedirected ,dispatchNotRedirected} from "../../redux/actions/Coordinates";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -36,20 +36,23 @@ function Dashboard() {
   var timer;
   function mouseStopped() {
     // console.log("mouse stoped");
+    // console.log('timer', timer)
+
     if (!IsRedirected) {
       dispatch(dispatchRedirected());
       navigate("/login");
-
     }
   }
 
   window.addEventListener("mousemove", function () {
     // console.log("Mouse moving");
+    // if (IsRedirected) {
+    //   dispatch(dispatchNotRedirected());
+    // }
     clearTimeout(timer);
+    // console.log('timer', timer)
     timer = setTimeout(mouseStopped, 200000);
   });
-
- 
 
   useEffect(() => {
     if (!matches) {
@@ -58,7 +61,6 @@ function Dashboard() {
       setShowFilter(true);
     }
   }, [matches, matchesLarge]);
-
 
   return (
     <Paper className={classes.ContainerHome} id="stopped">
