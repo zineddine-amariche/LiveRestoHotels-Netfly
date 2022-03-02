@@ -46,7 +46,7 @@ function Dashboard() {
   window.addEventListener("mousemove", function () {
     // console.log("Mouse moving");
     clearTimeout(timer);
-    timer = setTimeout(mouseStopped, 20000);
+    timer = setTimeout(mouseStopped, 200000);
   });
 
  
