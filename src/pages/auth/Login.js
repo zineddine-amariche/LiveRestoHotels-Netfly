@@ -39,13 +39,6 @@ console.log('xs', xs)
       {!xs && (
         <Paper className={classes.Heighter}>
           <Paper className={classes.ContainerPaperCarousel}>
-            {/* <Box className={classes.MenueBtn}>
-              {!FromClose ? (
-                <Menue onClick={CloseForm} />
-              ) : (
-                <Close onClick={CloseForm} />
-              )}
-            </Box> */}
             <CarouselContainer FromClose={FromClose} />
           </Paper>
 

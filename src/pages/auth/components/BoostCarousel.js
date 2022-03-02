@@ -16,19 +16,19 @@ const CarouselContainer = () => {
           <Paper className={classes.BoxTopSlid} elevation={0}>
             <Box className={classes.LeftSlid}>
               <Box className={classes.RowTitles}>
-                <Typography className={classes.TextNumber}>01</Typography>
+                <Typography className={classes.TextNumber} >01</Typography>
               </Box>
               <Box className={classes.ContentText}>
                 <Typography className={classes.TextTitle}>
                   {t("form_carousel_1_title")}
                 </Typography>
-                <Typography className={classes.TextInfo}>
+                <Typography className={classes.TextInfoF}>
                   {t("form_carousel_1_text1")}
                 </Typography>
-                <Typography className={classes.TextInfo}>
+                <Typography className={classes.TextInfoF}>
                   {t("form_carousel_1_text2")}
                 </Typography>
-                <Typography className={classes.TextInfo}>
+                <Typography className={classes.TextInfoF}>
                   {t("form_carousel_1_text3")}
                 </Typography>
               </Box>
@@ -60,9 +60,9 @@ const CarouselContainer = () => {
           <Paper className={classes.BoxTopSlidMidle} elevation={0}>
             <Box className={classes.LeftSlidMidle}>
               <Box className={classes.RowTitles}>
-                <Typography className={classes.TextNumber}>02</Typography>
+                <Typography className={classes.TextNumberMidel}>02</Typography>
               </Box>
-              <Box className={classes.ContentText}>
+              <Box className={classes.ContentTextMidel}>
                 <Typography className={classes.TextTitle}>
                   {t("form_carousel_2_title1")}
                 </Typography>
@@ -76,58 +76,55 @@ const CarouselContainer = () => {
             </Box>
             <Box className={classes.BoxImageGif2}></Box>
           </Paper>
-          <Paper className={classes.BoxTopSlid2} elevation={0}>
+          <Box className={classes.BoxTopSlid2} elevation={0}>
             <Box className={classes.BoxImageGif3}></Box>
-
-            <Box className={classes.LeftSlid2}>
-              <Box className={classes.ContentText}>
-                <Typography className={classes.TextTitle}>
-                  {t("form_carousel_2_title2")}
-                </Typography>
-                <Typography className={classes.TextInfBig}>
-                  {t("form_carousel_2_subtitle2")}
-                </Typography>
-                <Typography className={classes.TextInfo}>
-                  {t("form_carousel_2_text2")}
-                </Typography>
-              </Box>
+            <Box className={classes.ContentTextMidels}>
+              <Typography className={classes.TextTitle}>
+                {t("form_carousel_2_title2")}
+              </Typography>
+              <Typography className={classes.TextInfBig}>
+                {t("form_carousel_2_subtitle2")}
+              </Typography>
+              <Typography className={classes.TextInfo}>
+                {t("form_carousel_2_text2")}
+              </Typography>
             </Box>
-          </Paper>
+          </Box>
         </Paper>
       </Carousel.Item>
       <Carousel.Item interval={5000} className={classes.PaperConatinerSilder2}>
         <Paper className={classes.BoxCenterContainer} elevation={0}>
-          <Paper className={classes.BoxTopSlid} elevation={0}>
-            <Box className={classes.LeftSlid}>
+          <Paper className={classes.BoxBottomSlid} elevation={0}>
+            <Box className={classes.LeftSlidBottom}>
               <Box className={classes.RowTitles}>
-                <Typography className={classes.TextNumber}>03</Typography>
+                <Typography className={classes.TextNumberBottom}>03</Typography>
               </Box>
-              <Box className={classes.ContentText}>
-                <Typography className={classes.TextTitle}>
+              <Box className={classes.ContentTextBottom}>
+                <Typography className={classes.TextTitleBottom}>
                   {t("form_carousel_3_title1")}
                 </Typography>
-                <Typography className={classes.TextInfBig}>
+                <Typography className={classes.TextInfBigBottom}>
                   {t("form_carousel_3_subtitle1")}
                 </Typography>
-                <Typography className={classes.TextInfo}>
+                <Typography className={classes.TextInfoBottom}>
                   {t("form_carousel_3_text1")}
                 </Typography>
               </Box>
             </Box>
             <Box className={classes.BoxImageGif4}></Box>
           </Paper>
-          <Paper className={classes.BoxTopSlid2} elevation={0}>
+          <Paper className={classes.BoxTopSlid2Bottom} elevation={0}>
             <Box className={classes.BoxImageGif5}></Box>
 
             <Box className={classes.LeftSlid2}>
-              <Box className={classes.ContentText}>
-                <Typography className={classes.TextTitle}>
+              <Box className={classes.ContentTextBottom}>
+                <Typography className={classes.TextTitleBottom}>
                   {t("form_carousel_3_title2")}
                 </Typography>
-                <Typography className={classes.TextInfBig}>
+                <Typography className={classes.TextInfBigBottom}>
                   {t("form_carousel_3_subtitle2")}
                 </Typography>
-                <Typography className={classes.TextInfo}>
+                <Typography className={classes.TextInfoBottom}>
                   {t("form_carousel_3_text2")}
                 </Typography>
               </Box>
@@ -140,5 +137,3 @@ const CarouselContainer = () => {
 };
 
 export default CarouselContainer;
-
-
