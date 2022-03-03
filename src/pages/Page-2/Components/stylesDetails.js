@@ -432,7 +432,7 @@ const useStyles = makeStyles((theme) => {
       alignItems: "center",
       backgroundColor: "#fff",
       marginBottom: 10,
-      width:'100%'
+      width: "100%",
     },
     BoxMony: {
       backgroundColor: "#fff",
@@ -441,18 +441,39 @@ const useStyles = makeStyles((theme) => {
       flexDirection: "column",
       alignItems: "center",
       position: "absolute",
-      bottom:90,
-      right:0
+      bottom: 90,
+      right: 0,
     },
-    ValidationBox:{
+    ValidationBox: {
       width: "19vw",
       backgroundColor: "#fff",
-      display: 'flex',
-      flexDirection: 'column',
+      display: "flex",
+      flexDirection: "column",
 
+      [theme.breakpoints.down("md")]: {
+        width: "30vw",
+        // backgroundColor: "#ccc",
+
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "50vw",
+        // backgroundColor: "#ccc",
+
+      },
+      [theme.breakpoints.down("xs")]: {
+        width: "60vw",
+        // backgroundColor: "#333",
+
+      },
     },
-    col:{
-width:'100%'
+    col: {
+      width: "100%",
+      [theme.breakpoints.down("sm")]: {
+        // display: "none",
+        // width: "100%",
+        // backgroundColor: "#333",
+
+      },
     },
     RowST: {
       display: "flex",
@@ -580,8 +601,7 @@ width:'100%'
         display: "flex",
         width: "90%",
         margin: "15px 10px 5px 10px",
-        justifyContent: 'center',
-        
+        justifyContent: "center",
       },
       [theme.breakpoints.down("lg")]: {
         display: "flex",
@@ -591,7 +611,6 @@ width:'100%'
         display: "flex",
         width: "100%",
         margin: "15px 10px 5px 10px",
-
       },
     },
     BoxItemBody: {

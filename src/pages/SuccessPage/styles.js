@@ -48,8 +48,17 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 100,
     color: "#AAC840",
     fontFamily: "Oswald",
+    [theme.breakpoints.down("lg")]: {
+      fontSize: 65,
+    },
     [theme.breakpoints.down("md")]: {
-      fontSize: 60,
+      fontSize: 55,
+    },
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 50,
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 30,
     },
   },
   Text: {
@@ -57,11 +66,27 @@ const useStyles = makeStyles((theme) => ({
     color: "#AAC840",
     fontWeight: 700,
     fontFamily: "Helvetica",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 22,
+
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 18,
+
+    },
   },
   TextA: {
     fontSize: 18,
     color: "#000",
     fontWeight: "400",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: 16,
+
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 14,
+
+    },
   },
   Btn: {
     backgroundColor: "#5DBCA3",

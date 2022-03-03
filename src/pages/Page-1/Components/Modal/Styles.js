@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   Body:{
     overflowY: "scroll",
+    height:"40vh"
 
   }
 }));
