@@ -188,9 +188,8 @@ function DetailsPersonnel(props) {
                   control={<Checkbox checked={code} />}
                   label="j'ai un code promotionnel"
                   value={code}
-                  style={{ color: "black" }}
+                  style={{ color: "black",display: "flex" }}
                   onChange={HandelCode}
-                  style={{ display: "flex" }}
                 />
               </Box>
               {code && (

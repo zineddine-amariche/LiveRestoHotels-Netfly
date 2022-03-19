@@ -100,7 +100,7 @@ export function useValidation(
     formState: { errors, isSubmitting },
   } = useForm({ resolver: yupResolver(schema) });
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await dispatch({ type: "LOGIN_REQUEST", payload: data });
   };
   const navigateToSuccess = () => {

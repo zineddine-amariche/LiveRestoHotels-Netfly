@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import {
   Accordion,
   AccordionDetails,
@@ -226,7 +227,7 @@ function ValidationForm(props) {
     bill: bill,
   };
   console.log("orders", orders);
-  const [expanded, setExpanded] = React.useState('panel1');
+  const [expanded, setExpanded] = React.useState("panel1");
 
   const handleChangeEx = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -258,17 +259,22 @@ function ValidationForm(props) {
         }}
       </Formik>
 
-      {ValidationInfopr && hotel.apartement  ? (
+      {ValidationInfopr && hotel.apartement ? (
         <Dates handleInputChangeOrder={handleInputChangeOrder} order={order} />
       ) : null}
 
-      {ValidationInfopr && order.for_when  ? (
+      {ValidationInfopr && order.for_when ? (
         <Box className={classes.dateContainer}>
           <Box component="legend" className={classes.InformationTitre}>
             Mode Paiement :
           </Box>
 
-          <Accordion style={{ margin: "0px 5px 0px 0" }} elevation={0}   expanded={expanded === 'panel1'}  onChange={handleChangeEx('panel1')} >
+          <Accordion
+            style={{ margin: "0px 5px 0px 0" }}
+            elevation={0}
+            expanded={expanded === "panel1"}
+            onChange={handleChangeEx("panel1")}
+          >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
@@ -312,7 +318,10 @@ function ValidationForm(props) {
         </Box>
       ) : null}
 
-      {ValidationInfopr && order.for_when && payments.lenght !== 0 && checkPaymentValid ? (
+      {ValidationInfopr &&
+      order.for_when &&
+      payments.lenght !== 0 &&
+      checkPaymentValid ? (
         <>
           <Remarques
             handleInputChangeOrder={handleInputChangeOrder}
@@ -342,11 +351,20 @@ function ValidationForm(props) {
               navigateToSuccess
             );
           }}
-          disabled={Hours.data.reason ? true : false}
-          disabled={hotel.fullName.length >= 8 ? false : true}
-          disabled={hotel.phone.length > 10 ? false : true}
-          disabled={hotel.apartement ? false : true}
-          disabled={check !== all ? true : false}
+          disabled={
+            Hours.data.reason
+              ? true
+              : false || hotel.fullName.length >= 8
+              ? false
+              : true || hotel.phone.length > 10
+              ? false
+              : true || hotel.apartement
+              ? false
+              : true || check !== all
+              ? true
+              : false
+          }
+       
         >
           Passer ma commande
           {Validate.loading && (
@@ -363,45 +381,3 @@ function ValidationForm(props) {
 }
 
 export default ValidationForm;
-
-{
-  /* {IdPaiement
-                ? IdPaiement === 1
-                  ? "Chèques"
-                  : IdPaiement === 2
-                  ? "Espèces"
-                  : IdPaiement === 3
-                  ? "Ticket restaurant"
-                  : IdPaiement === 0
-                  ? "CB en ligne"
-                  : ""
-                :  */
-}
-{
-  /* <Field
-                      label={"Chèques"}
-                      value={Cheque.amount}
-                      onChange={GetCheque}
-                      name="amount"
-                      required
-                      as={TextField}
-                    /> */
-}
-{
-  /* <Field
-                      label={"Ticket restaurant"}
-                      value={Ticket.amount}
-                      onChange={GetTicket}
-                      name="amount"
-                      required
-                      as={TextField}
-                    />
-                    <Field
-                      label={"Espèces"}
-                      value={Especes.amount}
-                      onChange={GetEspèces}
-                      name="amount"
-                      required
-                      as={TextField}
-                    /> */
-}

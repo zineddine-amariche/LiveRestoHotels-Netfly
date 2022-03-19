@@ -143,7 +143,6 @@ export default function FormLogin({FromClose,CloseForm}) {
                 variant="outlined"
                 label={t("form_input_password")}
                 name="password"
-                type="input"
                 as={TextField}
                 required
                 autoComplete="current-password"
